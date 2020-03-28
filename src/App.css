@@ -1,38 +1,121 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
+  color: #15222b;
+  font-size: 16px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* --- Navigation --- */
+#globalNav {
+  height: 68px;
+  box-shadow: 0 1px 0 0 #e0e0e0;
+  position: relative;
+  background-color: #32475b;
+  border-bottom: 0.5px solid #354d60;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#globalNavLogo {
+  display: inline;
+  position: absolute;
+  top: 14px;
+  left: 1%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+#globalNavLogo a {
   color: white;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 40px;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+#globalNavLogo a:hover {
+  text-decoration: underline;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#globalNavLogo a span {
+  color: white;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+#uniKölnLogo {
+  width: 55px;
+  height: auto;
+  position: absolute;
+  background-color: white;
+  left: 100%;
+  top: 0px;
+  bottom: 0px;
+  padding-left: 10px;
+  border-left: 1px solid #354d60;
+}
+
+#globalNav > a {
+  color: white;
+  float: right;
+  text-decoration: none;
+  padding: 22px 14px 19px 10px;
+  font-size: 17px;
+}
+
+#globalNav > a:hover {
+  background-color: #253746;
+}
+
+/* --- MAP --- */
+#map {
+  height: 100vh;
+}
+
+#zoomToExtBtn {
+  position: absolute;
+  z-index: 1;
+  margin-top: 270px;
+  margin-left: 20px;
+  display: inline;
+  background-color: #4a657d;
+  height: 60px;
+  width: 60px;
+  border: 1px solid #354d60 !important;
+  border-radius: 50px;
+}
+
+#zoomToExtBtn:hover,
+#getlocationbtn:hover,
+.ol-control button:hover {
+  border: 4px solid #002c37 !important;
+}
+
+#getlocationbtn {
+  position: absolute;
+  z-index: 1;
+  margin-top: 190px;
+  margin-left: 20px;
+  display: inline;
+  background-color: #4a657d;
+  height: 60px;
+  width: 60px;
+  border: 1px solid #354d60 !important;
+  border-radius: 50px;
+}
+
+.ol-control button {
+  border-radius: 50px !important;
+  margin-top: 20px !important;
+  height: 60px !important;
+  width: 60px !important;
+  border: 1px solid #354d60 !important;
+  color: black !important;
+  background-color: #4a657d !important;
+
+  margin-left: 10px !important;
+}
+
+.ol-unselectable {
+  background-color: white;
+  width: 0;
+  height: 0;
 }
