@@ -9,21 +9,19 @@ import buildingsData from '../data/geoData/buildingsData.geojson';
 
 // adding GeoJSON to the map (buildings)
 
-export const vector = () => {
-  new OlVector({
-    source: new OlVectorSource({
-      url: buildingsData,
-      format: new GeoJSON()
-    }),
-    style: new Style({
-      //stroke: new Stroke({
-      //color: "black",
-      //width: 0.2
-      // }),
-      fill: new Fill({
-        color: 'grey'
-      })
-    }),
-    minResolution: 0.4
-  });
-};
+export const Buildings = new OlVector({
+  source: new OlVectorSource({
+    url: buildingsData,
+    format: new GeoJSON()
+  }),
+  style: new Style({
+    //stroke: new Stroke({
+    //color: "black",
+    //width: 0.2
+    // }),
+    fill: new Fill({
+      color: '#4a657d'
+    })
+  }),
+  minResolution: 0.4
+});

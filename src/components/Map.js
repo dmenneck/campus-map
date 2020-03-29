@@ -10,8 +10,11 @@ import 'antd/dist/antd.css';
 import { MapComponent } from '@terrestris/react-geo';
 
 import { LayerGroup } from './LayerGroup';
-import { vector } from './Layers';
-import { Buttons } from './Buttons';
+import { Buildings } from './Layers';
+import { ControlButtons } from './ControlButtons';
+import { FunctionalButtons } from './FunctionalButtons';
+import Draggables from './Draggables';
+import { ContextProvider } from './AppContext';
 
 const center = [771105.02, 6608382.01]; //Cologne
 
@@ -27,13 +30,18 @@ const map = new OlMap({
 });
 
 // add Layers to map
+map.addLayer(Buildings);
 
 // Map Function
 const Map = () => {
   return (
     <div className='App'>
-      <Buttons map={map} />
-      <MapComponent map={map} />
+      <ContextProvider>
+        <Draggables map={map} />
+        <FunctionalButtons />
+        <ControlButtons map={map} />
+        <MapComponent map={map} />
+      </ContextProvider>
     </div>
   );
 };

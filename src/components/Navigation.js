@@ -7,11 +7,11 @@ const Navigation = () => {
   return (
     <div>
       <div id='globalNav'>
+        <img id='uniKölnLogo' src={UniKölnLogo} alt=''></img>
         <div id='globalNavLogo'>
           <a href='Map.js'>
             Campus Map <span>Universität zu Köln</span>
           </a>
-          <img id='uniKölnLogo' src={UniKölnLogo} alt=''></img>
         </div>
         <NavLink to='./Contact'>Kontakt</NavLink>
         <NavLink to='./Informations'>Infos</NavLink>

@@ -19,16 +19,14 @@
 #globalNavLogo {
   display: inline;
   position: absolute;
-  top: 14px;
-  left: 1%;
+  margin-top: 16px;
 }
 
 #globalNavLogo a {
   color: white;
   font-size: 24px;
   font-weight: bold;
-  line-height: 40px;
-  width: 100%;
+  margin-left: 80px;
 }
 
 #globalNavLogo a:hover {
@@ -42,15 +40,10 @@
 }
 
 #uniKölnLogo {
-  width: 55px;
-  height: auto;
+  width: 60px;
+  margin-left: 10px;
+  margin-top: 4.5px;
   position: absolute;
-  background-color: white;
-  left: 100%;
-  top: 0px;
-  bottom: 0px;
-  padding-left: 10px;
-  border-left: 1px solid #354d60;
 }
 
 #globalNav > a {
@@ -76,7 +69,7 @@
   margin-top: 270px;
   margin-left: 20px;
   display: inline;
-  background-color: #4a657d;
+  background-color: #a5b6c7;
   height: 60px;
   width: 60px;
   border: 1px solid #354d60 !important;
@@ -86,7 +79,7 @@
 #zoomToExtBtn:hover,
 #getlocationbtn:hover,
 .ol-control button:hover {
-  border: 4px solid #002c37 !important;
+  border: 1px solid #002c37 !important;
 }
 
 #getlocationbtn {
@@ -95,7 +88,7 @@
   margin-top: 190px;
   margin-left: 20px;
   display: inline;
-  background-color: #4a657d;
+  background-color: #a5b6c7;
   height: 60px;
   width: 60px;
   border: 1px solid #354d60 !important;
@@ -109,7 +102,7 @@
   width: 60px !important;
   border: 1px solid #354d60 !important;
   color: black !important;
-  background-color: #4a657d !important;
+  background-color: #a5b6c7 !important;
 
   margin-left: 10px !important;
 }
@@ -118,4 +111,44 @@
   background-color: white;
   width: 0;
   height: 0;
+}
+
+#draggable {
+  position: absolute;
+  z-index: 1;
+  background-color: #e3e8eb;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 20%;
+  border-radius: 5px;
+  height: 400px;
+}
+
+.draggableBackground {
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #4a657d;
+  color: white;
+}
+
+#BtnWrapper {
+  position: absolute;
+  z-index: 1;
+  display: inline;
+  border-bottom: 2px solid #253746;
+  bottom: 10px;
+  left: 45%;
+  margin-left: -100px;
+}
+
+.BtnFunctional {
+  display: none;
+  background-color: #a5b6c7;
+  margin: 0 5px 0 5px;
+  border-radius: 50px;
+  height: 60px;
+  width: 80px;
+}
+
+.BtnFunctional:hover {
+  border: 1px solid #002c37;
 }
