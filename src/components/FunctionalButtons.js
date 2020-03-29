@@ -2,7 +2,9 @@ import React, { useContext } from 'react';
 import { AppContext } from './AppContext';
 
 export const FunctionalButtons = ({ map }) => {
-  const [btnBackgroundLayer, setBtnBackgroundLayer] = useContext(AppContext);
+  const { value, value2 } = useContext(AppContext);
+  const [btnBackgroundLayer, setBtnBackgroundLayer] = value;
+  const [btnAgFeatureGrid, setBtnAgFeatureGrid] = value2;
 
   const toggleDraggableBackgroundLayer = () => {
     if (btnBackgroundLayer === false) {
@@ -10,6 +12,16 @@ export const FunctionalButtons = ({ map }) => {
       console.log('Visible!');
     } else {
       setBtnBackgroundLayer(false);
+      console.log('Not Visible!');
+    }
+  };
+
+  const toggleAgFeatureGrid = () => {
+    if (btnAgFeatureGrid === false) {
+      setBtnAgFeatureGrid(!false);
+      console.log('Visible!');
+    } else {
+      setBtnAgFeatureGrid(false);
       console.log('Not Visible!');
     }
   };
@@ -23,7 +35,9 @@ export const FunctionalButtons = ({ map }) => {
         >
           1
         </button>
-        <button className='BtnFunctional'>2</button>
+        <button onClick={toggleAgFeatureGrid} className='BtnFunctional'>
+          2
+        </button>
         <button className='BtnFunctional'>3</button>
         <button className='BtnFunctional'>4</button>
       </div>

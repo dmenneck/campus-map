@@ -13,7 +13,8 @@ import { LayerGroup } from './LayerGroup';
 import { Buildings } from './Layers';
 import { ControlButtons } from './ControlButtons';
 import { FunctionalButtons } from './FunctionalButtons';
-import Draggables from './Draggables';
+import DraggableOne from './draggables/DraggableOne';
+import Draggables from './draggables/Draggables';
 import { ContextProvider } from './AppContext';
 
 const center = [771105.02, 6608382.01]; //Cologne

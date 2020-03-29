@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 import Draggable from 'react-draggable';
-import { AppContext } from './AppContext';
-import { LayerGroup } from './LayerGroup';
+import { AppContext } from '../AppContext';
+import { LayerGroup } from '../LayerGroup';
 
 import { LayerTree } from '@terrestris/react-geo';
 
-const Draggables = ({ map }) => {
-  const [btnBackgroundLayer, setBtnBackgroundLayer] = useContext(AppContext);
+const DraggableOne = ({ map }) => {
+  const { value } = useContext(AppContext);
+  const [btnBackgroundLayer, setBtnBackgroundLayer] = value;
 
   return (
     <div>
@@ -28,4 +29,4 @@ const Draggables = ({ map }) => {
   );
 };
 
-export default Draggables;
+export default DraggableOne;

@@ -4,10 +4,16 @@ export const AppContext = createContext();
 
 export const ContextProvider = props => {
   const [btnBackgroundLayer, setBtnBackgroundLayer] = useState(false);
-
-  const value = [btnBackgroundLayer, setBtnBackgroundLayer];
+  const [btnAgFeatureGrid, setBtnAgFeatureGrid] = useState(false);
 
   return (
-    <AppContext.Provider value={value}>{props.children}</AppContext.Provider>
+    <AppContext.Provider
+      value={{
+        value: [btnBackgroundLayer, setBtnBackgroundLayer],
+        value2: [btnAgFeatureGrid, setBtnAgFeatureGrid]
+      }}
+    >
+      {props.children}
+    </AppContext.Provider>
   );
 };
