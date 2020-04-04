@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import OlMap from 'ol/Map';
 import OlView from 'ol/View';
@@ -13,9 +13,11 @@ import { LayerGroup } from './LayerGroup';
 import { Buildings } from './Layers';
 import { ControlButtons } from './ControlButtons';
 import { FunctionalButtons } from './FunctionalButtons';
-import DraggableOne from './draggables/DraggableOne';
 import Draggables from './draggables/Draggables';
 import { ContextProvider } from './AppContext';
+import DrawerComponent from './Drawer';
+import ClickedBuilding from './ClickedBuilding';
+import ShowClickedBuildingsInfo from './ShowClickedBuildingsInfo';
 
 const center = [771105.02, 6608382.01]; //Cologne
 
@@ -25,9 +27,9 @@ const map = new OlMap({
   view: new OlView({
     center: center,
     zoom: 0.9,
-    maxResolution: 7
+    maxResolution: 7,
   }),
-  layers: [LayerGroup]
+  layers: [LayerGroup],
 });
 
 // add Layers to map
@@ -38,6 +40,9 @@ const Map = () => {
   return (
     <div className='App'>
       <ContextProvider>
+        <ShowClickedBuildingsInfo />
+        <ClickedBuilding map={map} />
+        <DrawerComponent />
         <Draggables map={map} />
         <FunctionalButtons />
         <ControlButtons map={map} />

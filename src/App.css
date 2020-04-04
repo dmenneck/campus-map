@@ -69,7 +69,7 @@
   margin-top: 270px;
   margin-left: 20px;
   display: inline;
-  background-color: #a5b6c7;
+  background-color: white;
   height: 60px;
   width: 60px;
   border: 1px solid #354d60 !important;
@@ -79,7 +79,7 @@
 #zoomToExtBtn:hover,
 #getlocationbtn:hover,
 .ol-control button:hover {
-  border: 1px solid #002c37 !important;
+  border: 2px solid #002c37 !important;
 }
 
 #getlocationbtn {
@@ -88,7 +88,7 @@
   margin-top: 190px;
   margin-left: 20px;
   display: inline;
-  background-color: #a5b6c7;
+  background-color: white;
   height: 60px;
   width: 60px;
   border: 1px solid #354d60 !important;
@@ -102,7 +102,7 @@
   width: 60px !important;
   border: 1px solid #354d60 !important;
   color: black !important;
-  background-color: #a5b6c7 !important;
+  background-color: white !important;
 
   margin-left: 10px !important;
 }
@@ -141,13 +141,42 @@
 }
 
 .BtnFunctional {
-  background-color: #a5b6c7;
-  margin: 0 5px 0 5px;
+  background-color: white;
+  border: 1px solid #002c37;
+  margin: 0 5px 0px 5px;
   border-radius: 50px;
   height: 60px;
-  width: 80px;
+  width: 60px;
 }
 
 .BtnFunctional:hover {
-  border: 1px solid #002c37;
+  border: 2px solid #002c37;
+  background-color: #c8d1db;
+}
+
+.closeImg {
+  position: absolute;
+  right: 10px;
+  top: 6px;
+  width: 20px;
+  height: auto;
+}
+
+.layerIcon {
+  width: 30px;
+  height: auto;
+}
+
+.btnVisible {
+  width: 0;
+  padding: 0;
+}
+
+#logoSchriftzug {
+  width: 90%;
+  padding: 10px;
+  height: auto;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
 }

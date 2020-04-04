@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ZoomToExtentButton, GeoLocationButton } from '@terrestris/react-geo';
 
-import haus from '../data/img/haus.jpg';
+import haus from '../data/img/haus.png';
 import geoLocation from '../data/img/geoLocation.png';
 
 export const ControlButtons = ({ map }) => {

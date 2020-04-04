@@ -1,24 +1,22 @@
 import React, { useContext } from 'react';
 import Draggable from 'react-draggable';
 import { AppContext } from '../AppContext';
-import { LayerGroup } from '../LayerGroup';
+import Legend from '../Legend';
+
 import close from '../../data/img/close.png';
 
-import { LayerTree } from '@terrestris/react-geo';
-
-const DraggableOne = ({ map }) => {
-  const { value } = useContext(AppContext);
-  const [btnBackgroundLayer, setBtnBackgroundLayer] = value;
+const DraggableThree = ({ map }) => {
+  const { value3 } = useContext(AppContext);
+  const [btnLegend, setBtnLegend] = value3;
 
   const closeWindow = () => {
-    setBtnBackgroundLayer(false);
+    setBtnLegend(false);
     console.log('window closed!');
   };
 
   return (
     <div>
-      {/* Draggable ONE */}
-      {btnBackgroundLayer ? (
+      {btnLegend ? (
         <Draggable
           handle='.handle'
           defaultPosition={{ x: 100, y: 150 }}
@@ -27,7 +25,7 @@ const DraggableOne = ({ map }) => {
         >
           <div id='draggable'>
             <div className='handle draggableBackground'>
-              Grundkarten-Galerie
+              Legende
               <button className='btnVisible'>
                 <img
                   src={close}
@@ -37,7 +35,7 @@ const DraggableOne = ({ map }) => {
                 />
               </button>
             </div>
-            <LayerTree map={map} layerGroup={LayerGroup} />
+            <Legend />
           </div>
         </Draggable>
       ) : null}
@@ -45,4 +43,4 @@ const DraggableOne = ({ map }) => {
   );
 };
 
-export default DraggableOne;
+export default DraggableThree;
