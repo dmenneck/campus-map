@@ -7,12 +7,13 @@ const Legend = () => {
   async function showData() {
     const response = await fetch(url);
     const data = await response.json();
-    const links = data.features[2].properties.Hyperlinks;
-    const splittedLinks = links.split(',');
-
-    const individualLinks = splittedLinks.map((link) => <li>{link}</li>);
-
-    setLink(individualLinks);
+    const links = data.features[0].properties.name;
+    console.log(links);
+    // const splittedLinks = links.split(',');
+    // const individualLinks = splittedLinks.map((link, index) => (
+    //   <li key={index}>{link}</li>
+    // ));
+    // setLink(individualLinks);
   }
   return (
     <div>

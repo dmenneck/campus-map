@@ -131,7 +131,7 @@
 }
 
 #BtnWrapper {
-  position: absolute;
+  position: absolute !important;
   z-index: 1;
   display: inline;
   border-bottom: 2px solid #253746;
@@ -167,11 +167,6 @@
   height: auto;
 }
 
-.btnVisible {
-  width: 0;
-  padding: 0;
-}
-
 #logoSchriftzug {
   width: 90%;
   padding: 10px;
@@ -179,4 +174,52 @@
   position: absolute;
   bottom: 10px;
   left: 0;
+}
+
+#Name {
+  color: white;
+  padding: 5px;
+  font-size: 24px;
+  text-decoration: underline;
+  position: absolute;
+  top: 0px;
+}
+
+#showBuildingData {
+  background-color: #32475b;
+  border: 2px solid #36304a;
+  position: absolute;
+  height: 300px;
+  overflow-y: scroll;
+  z-index: 1;
+  bottom: 1em;
+  left: 1em;
+}
+
+.containerName {
+  color: white;
+  position: absolute;
+  padding: 10px;
+  display: inline;
+  background-color: #253746;
+}
+
+.container-table100 {
+  padding: 16.5px 15px;
+}
+
+.wrap-table100 {
+  width: 30em;
+  display: grid;
+  padding-top: 20px;
+  grid-template-columns: 1fr 1fr;
+}
+
+#einrichtungen {
+  margin-top: 15px;
+}
+
+.column {
+  padding: 2px;
+  color: white;
 }

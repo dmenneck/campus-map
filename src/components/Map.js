@@ -17,7 +17,6 @@ import Draggables from './draggables/Draggables';
 import { ContextProvider } from './AppContext';
 import DrawerComponent from './Drawer';
 import ClickedBuilding from './ClickedBuilding';
-import ShowClickedBuildingsInfo from './ShowClickedBuildingsInfo';
 
 const center = [771105.02, 6608382.01]; //Cologne
 
@@ -40,7 +39,6 @@ const Map = () => {
   return (
     <div className='App'>
       <ContextProvider>
-        <ShowClickedBuildingsInfo />
         <ClickedBuilding map={map} />
         <DrawerComponent />
         <Draggables map={map} />

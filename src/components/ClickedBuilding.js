@@ -1,24 +1,32 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { AppContext } from './AppContext';
+import ShowBuildingData from './ShowBuildingData';
 
 // when the user clicks on a building, the state changes
+
 function ClickedBuilding({ map }) {
   const { value6 } = useContext(AppContext);
   const [clickedBuildingsInformation, setclickedBuildingsInformation] = value6;
+  let data = '';
 
   function OnMouseMove(browserEvent) {
     var coordinate = browserEvent.coordinate;
     var pixel = map.getPixelFromCoordinate(coordinate);
 
-    let data = map.forEachFeatureAtPixel(pixel, function (feature) {
-      return feature.values_;
+    map.forEachFeatureAtPixel(pixel, function (feature) {
+      data = feature.values_;
+
+      setclickedBuildingsInformation(data);
     });
-    setclickedBuildingsInformation(data);
   }
 
   map.on('click', OnMouseMove);
 
-  return <div></div>;
+  return (
+    <div>
+      <ShowBuildingData map={map} />
+    </div>
+  );
 }
 
 export default ClickedBuilding;

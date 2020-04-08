@@ -1,8 +1,11 @@
 import React, { useContext } from 'react';
 import { AppContext } from './AppContext';
+import { Tabs } from 'antd';
 
 import layer from '../data/img/layer.png';
 import grid from '../data/img/grid.png';
+
+const { TabPane } = Tabs;
 
 export const FunctionalButtons = ({ map }) => {
   const { value, value2, value3, value4, value5 } = useContext(AppContext);

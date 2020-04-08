@@ -11,7 +11,7 @@ export const ContextProvider = (props) => {
   const [
     clickedBuildingsInformation,
     setclickedBuildingsInformation,
-  ] = useState();
+  ] = useState([]);
 
   return (
     <AppContext.Provider
