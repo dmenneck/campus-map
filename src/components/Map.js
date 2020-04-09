@@ -17,6 +17,7 @@ import Draggables from './draggables/Draggables';
 import { ContextProvider } from './AppContext';
 import DrawerComponent from './Drawer';
 import ClickedBuilding from './ClickedBuilding';
+import SearchComponent from './Search';
 
 const center = [771105.02, 6608382.01]; //Cologne
 
@@ -44,6 +45,7 @@ const Map = () => {
         <Draggables map={map} />
         <FunctionalButtons />
         <ControlButtons map={map} />
+        <SearchComponent />
         <MapComponent map={map} />
       </ContextProvider>
     </div>

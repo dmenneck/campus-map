@@ -18,7 +18,7 @@ export const ControlButtons = ({ map }) => {
         extent={extent1}
         fitOptions={{
           duration: 3000,
-          maxZoom: 10
+          maxZoom: 10,
         }}
       >
         <img

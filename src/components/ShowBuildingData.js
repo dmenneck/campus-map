@@ -26,7 +26,7 @@ function ShowBuildingData({ map }) {
 
   return (
     <div id='showBuildingData'>
-      <div className='container-table100'>
+      {/* <div className='container-table100'>
         <h3 className='containerName'>Gebäude</h3>
         <div className='wrap-table100'>
           <div className='table100-head'>
@@ -48,7 +48,7 @@ function ShowBuildingData({ map }) {
         <div>
           <div>Erste Einrichtung</div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

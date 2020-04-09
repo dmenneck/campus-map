@@ -1,18 +1,17 @@
 import React, { useContext } from 'react';
 import { AppContext } from './AppContext';
-import { Tabs } from 'antd';
 
 import layer from '../data/img/layer.png';
 import grid from '../data/img/grid.png';
 
-const { TabPane } = Tabs;
+import { Menu, Dropdown, Button } from 'antd';
 
 export const FunctionalButtons = ({ map }) => {
-  const { value, value2, value3, value4, value5 } = useContext(AppContext);
+  const { value, value2, value3, value5 } = useContext(AppContext);
   const [btnBackgroundLayer, setBtnBackgroundLayer] = value;
   const [btnAgFeatureGrid, setBtnAgFeatureGrid] = value2;
   const [btnLegend, setBtnLegend] = value3;
-  const [btnInfo, setBtnInfo] = value4;
+
   const [isDrawerVisible, setIsDrawerVisible] = value5;
 
   const toggleDraggableBackgroundLayer = () => {
@@ -45,16 +44,6 @@ export const FunctionalButtons = ({ map }) => {
     }
   };
 
-  const toggleLayerInfo = () => {
-    if (btnInfo === false) {
-      setBtnInfo(!false);
-      console.log('Visible!');
-    } else {
-      setBtnInfo(false);
-      console.log('Not Visible!');
-    }
-  };
-
   const toggleDrawer = () => {
     if (isDrawerVisible === false) {
       setIsDrawerVisible(!false);
@@ -65,27 +54,64 @@ export const FunctionalButtons = ({ map }) => {
     }
   };
 
-  return (
-    <>
-      <div id='BtnWrapper'>
+  const menuOne = (
+    <Menu>
+      <Menu.Item>
         <button
           onClick={toggleDraggableBackgroundLayer}
           className='BtnFunctional'
-        >
-          <img src={grid} alt='layer' className='layerIcon' />
-        </button>
-        <button onClick={toggleAgFeatureGrid} className='BtnFunctional'>
-          <img src={layer} alt='layer' className='layerIcon' />
-        </button>
-        <button onClick={toggleLegend} className='BtnFunctional'>
-          3
-        </button>
-        <button onClick={toggleLayerInfo} className='BtnFunctional'>
-          4
-        </button>
-        <button onClick={toggleDrawer} className='BtnFunctional'>
-          5
-        </button>
+        ></button>
+      </Menu.Item>
+    </Menu>
+  );
+
+  const menuTwo = (
+    <Menu>
+      <Menu.Item>
+        <button
+          onClick={toggleAgFeatureGrid}
+          className='BtnFunctional'
+        ></button>
+      </Menu.Item>
+    </Menu>
+  );
+
+  const menuThree = (
+    <Menu>
+      <Menu.Item>
+        <button onClick={toggleLegend} className='BtnFunctional'></button>
+      </Menu.Item>
+    </Menu>
+  );
+
+  const menuFive = (
+    <Menu>
+      <Menu.Item>
+        <button onClick={toggleDrawer} className='BtnFunctional'></button>
+      </Menu.Item>
+    </Menu>
+  );
+
+  return (
+    <>
+      <div id='BtnWrapper'>
+        <Dropdown overlay={menuOne} placement='topCenter'>
+          <Button>
+            <img src={grid} alt='layer' className='layerIcon' />
+          </Button>
+        </Dropdown>
+        <Dropdown overlay={menuTwo} placement='topCenter'>
+          <Button>
+            <img src={layer} alt='layer' className='layerIcon' />
+          </Button>
+        </Dropdown>
+        <Dropdown overlay={menuThree} placement='topCenter'>
+          <Button>3</Button>
+        </Dropdown>
+
+        <Dropdown overlay={menuFive} placement='topCenter'>
+          <Button>5</Button>
+        </Dropdown>
       </div>
     </>
   );
