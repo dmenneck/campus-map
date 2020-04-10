@@ -1,118 +1,53 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { AppContext } from './AppContext';
 
-import layer from '../data/img/layer.png';
-import grid from '../data/img/grid.png';
+import { LayerTree } from '@terrestris/react-geo';
+import { LayerGroup } from './LayerGroup';
 
-import { Menu, Dropdown, Button } from 'antd';
+import SearchBuilding from './AgFeatureGrid';
+
+import { Button } from 'antd';
+
+import { Tabs, Select } from 'antd';
+const { TabPane } = Tabs;
 
 export const FunctionalButtons = ({ map }) => {
-  const { value, value2, value3, value5 } = useContext(AppContext);
-  const [btnBackgroundLayer, setBtnBackgroundLayer] = value;
-  const [btnAgFeatureGrid, setBtnAgFeatureGrid] = value2;
-  const [btnLegend, setBtnLegend] = value3;
-
+  const { value5, value1 } = useContext(AppContext);
   const [isDrawerVisible, setIsDrawerVisible] = value5;
 
-  const toggleDraggableBackgroundLayer = () => {
-    if (btnBackgroundLayer === false) {
-      setBtnBackgroundLayer(!false);
-      console.log('Visible!');
-    } else {
-      setBtnBackgroundLayer(false);
-      console.log('Not Visible!');
-    }
-  };
+  const [areFunctionalBtnsVisible, setFunctionalBtnsVisibility] = value1;
 
-  const toggleAgFeatureGrid = () => {
-    if (btnAgFeatureGrid === false) {
-      setBtnAgFeatureGrid(!false);
-      console.log('Visible!');
-    } else {
-      setBtnAgFeatureGrid(false);
-      console.log('Not Visible!');
-    }
-  };
-
-  const toggleLegend = () => {
-    if (btnLegend === false) {
-      setBtnLegend(!false);
-      console.log('Visible!');
-    } else {
-      setBtnLegend(false);
-      console.log('Not Visible!');
-    }
-  };
+  const [tabPosition, setTabPosition] = useState('bottom');
 
   const toggleDrawer = () => {
-    if (isDrawerVisible === false) {
-      setIsDrawerVisible(!false);
-      console.log('Visible!');
-    } else {
-      setIsDrawerVisible(false);
-      console.log('Not Visible!');
-    }
+    setIsDrawerVisible(true);
   };
 
-  const menuOne = (
-    <Menu>
-      <Menu.Item>
-        <button
-          onClick={toggleDraggableBackgroundLayer}
-          className='BtnFunctional'
-        ></button>
-      </Menu.Item>
-    </Menu>
-  );
+  if (areFunctionalBtnsVisible) {
+    return (
+      <div>
+        <div id='BtnWrapper'>
+          <Tabs defaultActiveKey='2' tabPosition={tabPosition}>
+            <TabPane tab={<span>Grundkarten</span>} key='1'>
+              <LayerTree map={map} layerGroup={LayerGroup} />
+            </TabPane>
+            <TabPane tab={<span>Layer</span>} key='2'>
+              <button className='dropdowns'></button>
+              <button className='dropdowns'></button>
+              <button className='dropdowns'></button>
+            </TabPane>
 
-  const menuTwo = (
-    <Menu>
-      <Menu.Item>
-        <button
-          onClick={toggleAgFeatureGrid}
-          className='BtnFunctional'
-        ></button>
-      </Menu.Item>
-    </Menu>
-  );
-
-  const menuThree = (
-    <Menu>
-      <Menu.Item>
-        <button onClick={toggleLegend} className='BtnFunctional'></button>
-      </Menu.Item>
-    </Menu>
-  );
-
-  const menuFive = (
-    <Menu>
-      <Menu.Item>
-        <button onClick={toggleDrawer} className='BtnFunctional'></button>
-      </Menu.Item>
-    </Menu>
-  );
-
-  return (
-    <>
-      <div id='BtnWrapper'>
-        <Dropdown overlay={menuOne} placement='topCenter'>
-          <Button>
-            <img src={grid} alt='layer' className='layerIcon' />
-          </Button>
-        </Dropdown>
-        <Dropdown overlay={menuTwo} placement='topCenter'>
-          <Button>
-            <img src={layer} alt='layer' className='layerIcon' />
-          </Button>
-        </Dropdown>
-        <Dropdown overlay={menuThree} placement='topCenter'>
-          <Button>3</Button>
-        </Dropdown>
-
-        <Dropdown overlay={menuFive} placement='topCenter'>
-          <Button>5</Button>
-        </Dropdown>
+            <TabPane tab={<span>Suche</span>} key='3'>
+              <SearchBuilding />
+            </TabPane>
+            <TabPane tab={<span>Infos</span>} key='4'>
+              <Button onClick={toggleDrawer} className='dropdowns'></Button>
+            </TabPane>
+          </Tabs>
+        </div>
       </div>
-    </>
-  );
+    );
+  } else {
+    return null;
+  }
 };

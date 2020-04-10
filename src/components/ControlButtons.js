@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AppContext } from './AppContext';
+import { ZoomSlider } from 'ol/control';
 
 import { ZoomToExtentButton, GeoLocationButton } from '@terrestris/react-geo';
 
-import haus from '../data/img/haus.png';
-import geoLocation from '../data/img/geoLocation.png';
+import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons';
 
 export const ControlButtons = ({ map }) => {
+  const { value1 } = useContext(AppContext);
+  const [areFunctionalBtnsVisible, setFunctionalBtnsVisibility] = value1;
   // An array of numbers representing an extent: [minx, miny, maxx, maxy].
 
   const extent1 = [608948, 6484461, 1253685, 6629060];
+
+  const changeVisibility = () => {
+    if (areFunctionalBtnsVisible) {
+      setFunctionalBtnsVisibility(!true);
+    } else {
+      setFunctionalBtnsVisibility(!false);
+    }
+  };
+
+  const zoomslider = new ZoomSlider();
+  map.addControl(zoomslider);
 
   return (
     <>
@@ -20,13 +34,7 @@ export const ControlButtons = ({ map }) => {
           duration: 3000,
           maxZoom: 10,
         }}
-      >
-        <img
-          src={haus}
-          alt='full extend'
-          style={{ width: '30px', heigth: 'auto' }}
-        ></img>
-      </ZoomToExtentButton>
+      ></ZoomToExtentButton>
 
       <GeoLocationButton
         onGeolocationChange={() => undefined}
@@ -34,13 +42,14 @@ export const ControlButtons = ({ map }) => {
         showMarker={true}
         follow={true}
         id='getlocationbtn'
-      >
-        <img
-          src={geoLocation}
-          alt='get Location'
-          style={{ width: '30px', heigth: 'auto' }}
-        ></img>
-      </GeoLocationButton>
+      ></GeoLocationButton>
+      <button className='openFnctButtons' onClick={changeVisibility}>
+        {areFunctionalBtnsVisible ? (
+          <FullscreenExitOutlined />
+        ) : (
+          <FullscreenOutlined />
+        )}
+      </button>
     </>
   );
 };

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^4.0.5",
     "@terrestris/react-geo": "^13.0.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -14,7 +15,6 @@
     "react": "^16.11.0",
     "react-burger-menu": "^2.6.13",
     "react-dom": "^16.11.0",
-    "react-draggable": "^4.2.0",
     "react-openlayers": "^0.2.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1"
