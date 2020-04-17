@@ -12,12 +12,15 @@ export const ContextProvider = (props) => {
     true
   );
   const [layerClicked, isLayerClicked] = useState(false);
+  const [theVectorLayer, setVectorLayer] = useState({});
 
   return (
     <AppContext.Provider
       value={{
         value1: [areFunctionalBtnsVisible, setFunctionalBtnsVisibility],
         value2: [layerClicked, isLayerClicked],
+        value3: [theVectorLayer, setVectorLayer],
+
         value5: [isDrawerVisible, setIsDrawerVisible],
         value6: [clickedBuildingsInformation, setclickedBuildingsInformation],
       }}

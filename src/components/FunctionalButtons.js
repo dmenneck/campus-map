@@ -7,7 +7,6 @@ import { LayerGroup } from './LayerGroup';
 import SearchBuilding from './AgFeatureGrid';
 
 import { Button } from 'antd';
-
 import { Tabs, Select } from 'antd';
 const { TabPane } = Tabs;
 

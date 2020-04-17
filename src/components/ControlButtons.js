@@ -9,7 +9,6 @@ import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons';
 export const ControlButtons = ({ map }) => {
   const { value1 } = useContext(AppContext);
   const [areFunctionalBtnsVisible, setFunctionalBtnsVisibility] = value1;
-  // An array of numbers representing an extent: [minx, miny, maxx, maxy].
 
   const extent1 = [608948, 6484461, 1253685, 6629060];
 
@@ -35,7 +34,6 @@ export const ControlButtons = ({ map }) => {
           maxZoom: 10,
         }}
       ></ZoomToExtentButton>
-
       <GeoLocationButton
         onGeolocationChange={() => undefined}
         map={map}

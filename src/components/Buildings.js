@@ -3,8 +3,9 @@ import React from 'react';
 import { AgFeatureGrid } from '@terrestris/react-geo';
 import OlFormatGeoJSON from 'ol/format/GeoJSON';
 
+// page: Gebäudeuntersicht
+
 const Buildings = () => {
-  //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
   return (
     <div>
       <h2 className='überschrift'>Gebäudeübersicht</h2>

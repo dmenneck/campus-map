@@ -1,5 +1,3 @@
-import React from 'react';
-
 import OlVector from 'ol/layer/Vector';
 import OlVectorSource from 'ol/source/Vector';
 import GeoJSON from 'ol/format/GeoJSON';
@@ -25,3 +23,8 @@ export const Buildings = new OlVector({
   }),
   minResolution: 0.4,
 });
+
+const source = Buildings.getSource();
+const features = source.getFeatures();
+
+console.log(features);

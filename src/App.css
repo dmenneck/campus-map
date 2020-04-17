@@ -278,4 +278,120 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
   z-index: 1 !important;
   bottom: 20px;
   left: 20px;
+  overflow-y: scroll;
+}
+
+.ant-tabs-tab {
+  padding: 14px !important;
+}
+
+.ant-card-head {
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+}
+
+.ant-card-body {
+  padding: 0 !important;
+}
+
+.ant-tabs-bar {
+  border-bottom: none !important;
+}
+
+.ant-tabs-nav-container-scrolling {
+  padding: 0 !important;
+}
+
+.ant-tabs-nav-wrap {
+  border-bottom: none !important;
+}
+
+.ant-tabs-tab-active {
+  color: white !important;
+}
+
+#buildingDataContainer .ant-tabs-ink-bar-animated {
+  background: none !important;
+}
+
+#cardMeta {
+  padding: 10px;
+}
+
+#contactForm {
+  width: 60vw;
+  margin: 0 auto 0 auto;
+}
+
+#cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  padding-bottom: 5px;
+}
+
+#siegelUni {
+  width: 100px;
+  height: auto;
+  padding: 10px;
+  display: inline;
+}
+
+#absolute {
+  position: absolute;
+  display: inline;
+}
+
+.buildingDataLink {
+  font-size: 16px;
+  padding: 5px;
+  display: block;
+  color: black;
+}
+
+.buildingDataLink:hover {
+  color: red;
+}
+
+#buildingDataLinkContainer {
+  padding: 10px;
+}
+
+#absolute {
+  position: absolute;
+  display: inline;
+  padding: 10px;
+}
+
+#tabTwoName {
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 500;
+  font-size: 18px;
+  white-space: nowrap;
+  margin-bottom: 10px;
+}
+
+#tabTwoAdress {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.buildingInformations {
+  padding: 0;
+  margin: 0;
+}
+
+.ant-tree li {
+  display: inline !important;
+}
+
+.ant-tree-checkbox-inner {
+  width: 60px !important;
+  height: 60px !important;
+
+  background: url('../src/data/img/suche.png') no-repeat !important;
+  background-size: 100% !important;
+}
+
+.ant-tree-title {
+  display: none !important;
 }
