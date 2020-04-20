@@ -6,7 +6,6 @@ import { Style, Fill, Stroke } from 'ol/style';
 import buildingsData from '../data/geoData/uniBuildings.geojson';
 
 // adding GeoJSON to the map (buildings)
-
 export const Buildings = new OlVector({
   source: new OlVectorSource({
     url: buildingsData,

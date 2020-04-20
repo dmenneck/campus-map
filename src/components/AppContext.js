@@ -20,7 +20,6 @@ export const ContextProvider = (props) => {
         value1: [areFunctionalBtnsVisible, setFunctionalBtnsVisibility],
         value2: [layerClicked, isLayerClicked],
         value3: [theVectorLayer, setVectorLayer],
-
         value5: [isDrawerVisible, setIsDrawerVisible],
         value6: [clickedBuildingsInformation, setclickedBuildingsInformation],
       }}

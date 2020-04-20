@@ -18,12 +18,12 @@ function ClickedBuilding({ map }) {
 
     const dataValue = map.forEachFeatureAtPixel(pixel, function (feature) {
       data = feature.values_;
-
+      console.log(data);
       setclickedBuildingsInformation(data);
       isLayerClicked(true);
     });
 
-    // check if layer (one of the buidling polygons) is clicked or not
+    // check wether layer (one of the buidling polygons) is clicked or not
     if (!dataValue && !data) {
       console.log('not clicked on a layer');
       isLayerClicked(false);

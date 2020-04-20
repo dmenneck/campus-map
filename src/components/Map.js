@@ -80,7 +80,7 @@ const Map = () => {
 
   map.addLayer(vectorLayer);
 
-  // try fetching
+  // try fetching -> TRY WITH USEEFFECT HOOK!!!
   // const url = 'https://api.nextbike.net/maps/nextbike-live.json?city=14';
 
   // const getFeatures = async () => {

@@ -66,8 +66,8 @@
 #zoomToExtBtn {
   position: absolute;
   z-index: 1;
-  right: 52px;
-  bottom: 134px;
+  right: 82px;
+  bottom: 6px;
   display: inline;
   background-color: rgba(200, 209, 219, 0.6) !important;
   height: 25px !important;
@@ -79,8 +79,8 @@
 #getlocationbtn {
   position: absolute;
   z-index: 1;
-  right: 52px;
-  bottom: 88px;
+  right: 82px;
+  bottom: 48px;
   display: inline;
   background-color: rgba(200, 209, 219, 0.6) !important;
   height: 24px !important;
@@ -195,7 +195,7 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 }
 
 #BtnWrapper {
-  position: absolute !important;
+  position: absolute;
   z-index: 1;
   display: inline;
   bottom: 10px;
@@ -257,8 +257,8 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 .openFnctButtons {
   position: absolute;
   z-index: 1;
-  right: 52px;
-  bottom: 180px;
+  right: 652px;
+  bottom: 30px;
   background-color: rgba(200, 209, 219, 0.6) !important;
   height: 25px;
   width: 25px;
@@ -304,6 +304,7 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 
 .ant-tabs-nav-wrap {
   border-bottom: none !important;
+  width: 428px !important;
 }
 
 .ant-tabs-tab-active {
@@ -387,11 +388,17 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 .ant-tree-checkbox-inner {
   width: 60px !important;
   height: 60px !important;
-
   background: url('../src/data/img/suche.png') no-repeat !important;
   background-size: 100% !important;
+  position: absolute !important;
+  left: -25px !important;
+  top: -10px !important;
 }
 
 .ant-tree-title {
   display: none !important;
+}
+
+.agFeatureGrid {
+  width: 45rem !important;
 }

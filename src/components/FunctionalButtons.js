@@ -1,25 +1,35 @@
+// Todos: add eventlistener on Suche TabPane to toggle AgFeatureGrids visibility
+
 import React, { useState, useContext } from 'react';
 import { AppContext } from './AppContext';
 
 import { LayerTree } from '@terrestris/react-geo';
 import { LayerGroup } from './LayerGroup';
-
-import SearchBuilding from './AgFeatureGrid';
+import SearchBuilding from './SearchBuilding';
+import { Buildings } from './Layers';
 
 import { Button } from 'antd';
-import { Tabs, Select } from 'antd';
+import { Tabs } from 'antd';
 const { TabPane } = Tabs;
 
 export const FunctionalButtons = ({ map }) => {
   const { value5, value1 } = useContext(AppContext);
-  const [isDrawerVisible, setIsDrawerVisible] = value5;
-
   const [areFunctionalBtnsVisible, setFunctionalBtnsVisibility] = value1;
+
+  const [isDrawerVisible, setIsDrawerVisible] = value5;
 
   const [tabPosition, setTabPosition] = useState('bottom');
 
   const toggleDrawer = () => {
     setIsDrawerVisible(true);
+  };
+
+  const toggleBuildingsLayerVisibility = () => {
+    if (Buildings.getVisible() === true) {
+      Buildings.setVisible(false);
+    } else {
+      Buildings.setVisible(true);
+    }
   };
 
   if (areFunctionalBtnsVisible) {
@@ -31,13 +41,17 @@ export const FunctionalButtons = ({ map }) => {
               <LayerTree map={map} layerGroup={LayerGroup} />
             </TabPane>
             <TabPane tab={<span>Layer</span>} key='2'>
-              <button className='dropdowns'></button>
-              <button className='dropdowns'></button>
+              <button
+                className='dropdowns'
+                onClick={toggleBuildingsLayerVisibility}
+              ></button>
+              <span>Universität</span>
+              <span>Klinik</span>
+              <span>Wohnheim</span>
               <button className='dropdowns'></button>
             </TabPane>
-
             <TabPane tab={<span>Suche</span>} key='3'>
-              <SearchBuilding />
+              <SearchBuilding map={map} />
             </TabPane>
             <TabPane tab={<span>Infos</span>} key='4'>
               <Button onClick={toggleDrawer} className='dropdowns'></Button>
