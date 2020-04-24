@@ -1,11 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AgFeatureGrid } from '@terrestris/react-geo';
 import { Buildings } from './Layers';
-import { AppContext } from './AppContext';
 
 const SearchBuilding = ({ map }) => {
-  const { value4 } = useContext(AppContext);
-
   const [features, setFeatures] = useState([]);
 
   // getFeatures after first render (after performing the DOM updates) and after every update (same as "mounting" and "updating")

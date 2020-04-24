@@ -8,20 +8,25 @@ export const ContextProvider = (props) => {
     clickedBuildingsInformation,
     setclickedBuildingsInformation,
   ] = useState([]);
-  const [areFunctionalBtnsVisible, setFunctionalBtnsVisibility] = useState(
-    true
-  );
+
   const [layerClicked, isLayerClicked] = useState(false);
   const [theVectorLayer, setVectorLayer] = useState({});
+  const [searchBuildingVisibility, setSearchBuildingVisibility] = useState(
+    false
+  );
+  const [searchBarVisibility, setSearchBarVisibility] = useState(true);
+  const [menuContainerVisibility, setMenuContainerVisibility] = useState(false);
 
   return (
     <AppContext.Provider
       value={{
-        value1: [areFunctionalBtnsVisible, setFunctionalBtnsVisibility],
         value2: [layerClicked, isLayerClicked],
         value3: [theVectorLayer, setVectorLayer],
+        value4: [searchBuildingVisibility, setSearchBuildingVisibility],
         value5: [isDrawerVisible, setIsDrawerVisible],
         value6: [clickedBuildingsInformation, setclickedBuildingsInformation],
+        value7: [searchBarVisibility, setSearchBarVisibility],
+        value8: [menuContainerVisibility, setMenuContainerVisibility],
       }}
     >
       {props.children}

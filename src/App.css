@@ -66,10 +66,10 @@
 #zoomToExtBtn {
   position: absolute;
   z-index: 1;
-  right: 82px;
-  bottom: 6px;
+  left: 20px;
+  top: 150px;
   display: inline;
-  background-color: rgba(200, 209, 219, 0.6) !important;
+  background-color: white !important;
   height: 25px !important;
   width: 25px !important;
   border: 1px solid #354d60 !important;
@@ -79,12 +79,12 @@
 #getlocationbtn {
   position: absolute;
   z-index: 1;
-  right: 82px;
-  bottom: 48px;
+  left: 60px;
+  top: 150px;
   display: inline;
-  background-color: rgba(200, 209, 219, 0.6) !important;
-  height: 24px !important;
-  width: 24px !important;
+  background-color: white !important;
+  height: 25px !important;
+  width: 25px !important;
   border: 1px solid #354d60 !important;
   border-radius: 0 !important;
 }
@@ -118,8 +118,8 @@
 
 .ol-zoom-in {
   position: absolute !important;
-  color: white !important;
-  background-color: rgba(200, 209, 219, 0.6) !important;
+  color: #354d60 !important;
+  background-color: white !important;
   width: 25px !important;
   right: 40px !important;
   bottom: 52px !important;
@@ -128,13 +128,17 @@
 
 .ol-zoom-out {
   position: absolute !important;
-  color: white !important;
-  background-color: rgba(200, 209, 219, 0.6) !important;
+  color: #354d60 !important;
+  background-color: white !important;
   height: 25px !important;
   width: 25px !important;
   right: 40px !important;
   bottom: 10px !important;
   border: 1px solid #354d60 !important;
+}
+
+.ol-zoomslider-thumb {
+  background-color: #354d60 !important;
 }
 
 .ol-attribution {
@@ -148,7 +152,7 @@
   left: auto !important;
   width: 30px;
   height: 25px;
-  background-color: rgba(200, 209, 219, 0.6) !important;
+  background-color: white !important;
   border: 1px solid rgba(0, 0, 0, 0.8) !important;
 }
 
@@ -160,14 +164,15 @@
 
 div.ol-custom-overviewmap,
 div.ol-custom-overviewmap.ol-uncollapsible {
-  bottom: auto;
-  left: auto;
-  right: 10px;
-  top: 10px;
+  bottom: 20px;
+  left: 15px;
+  right: auto;
+  top: auto;
 }
 
 div.ol-custom-overviewmap:not(.ol-collapsed) {
-  border: 1px solid black;
+  border: 2px solid #32475b;
+  width: 200px !important;
 }
 
 div.ol-custom-overviewmap:not(.ol-collapsed) button {
@@ -177,39 +182,20 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
   top: 1px;
 }
 
-#draggable {
-  position: absolute;
+#toggleMenuContainerBtn {
+  position: absolute !important;
   z-index: 1;
-  background-color: #e3e8eb;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  width: 20%;
-  border-radius: 5px;
-  height: 400px;
-}
-
-.draggableBackground {
-  padding: 5px;
-  border-radius: 5px;
-  background-color: #4a657d;
-  color: white;
+  right: 20px;
+  top: 80px;
 }
 
 #BtnWrapper {
   position: absolute;
   z-index: 1;
   display: inline;
-  bottom: 10px;
-  left: 45%;
+  bottom: 40%;
+  right: 10px;
   margin-left: -120px;
-}
-
-.dropdowns {
-  padding: 25px;
-  margin: 10px;
-  margin-right: 10px;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
 }
 
 #logoSchriftzug {
@@ -304,7 +290,7 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 
 .ant-tabs-nav-wrap {
   border-bottom: none !important;
-  width: 428px !important;
+  width: auto !important;
 }
 
 .ant-tabs-tab-active {
@@ -381,24 +367,162 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
   margin: 0;
 }
 
-.ant-tree li {
-  display: inline !important;
-}
-
 .ant-tree-checkbox-inner {
-  width: 60px !important;
-  height: 60px !important;
+  width: 50px !important;
+  height: 50px !important;
+  border: 1px solid black !important;
   background: url('../src/data/img/suche.png') no-repeat !important;
   background-size: 100% !important;
-  position: absolute !important;
-  left: -25px !important;
-  top: -10px !important;
+}
+
+.ant-tree {
+  line-height: 0 !important;
 }
 
 .ant-tree-title {
   display: none !important;
 }
 
+.ant-menu-item:first-child {
+  height: 80px !important;
+}
+
+.ant-menu-item {
+  padding-left: 10px !important;
+  height: auto !important;
+}
+
+.dropdowns {
+  display: inline-block;
+  padding: 25px;
+  margin: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.layerLegende {
+  display: block;
+}
+
+#layerContainer {
+  background-color: red;
+}
+
+#functionBtnsWrapper {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: repeat(2, 180px);
+  position: absolute;
+  top: 40%;
+  right: 20px;
+  z-index: 1;
+}
+
+.functionalButtons {
+  display: block;
+  padding: 10px;
+  width: 120px;
+}
+
+.tabBtn1,
+.tabBtn2,
+.tabBtn3,
+.tabBtn4 {
+  padding: 10px;
+}
+
+.tabBtn1 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.tabBtn2 {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.tabBtn3 {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.tabBtn4 {
+  grid-column: 2;
+  grid-row: 4;
+}
+
+#tabOneContent {
+  grid-column: 1;
+  grid-row: 1;
+  color: white;
+  position: absolute;
+  z-index: 1;
+  bottom: 20px;
+}
+
 .agFeatureGrid {
   width: 45rem !important;
+  position: absolute !important;
+  z-index: 1 !important;
+  bottom: 1px !important;
+  left: 50% !important;
+  transform: translate(-50%, -5%) !important;
+}
+
+#menu-Container {
+  border-right: 4px solid #32475b;
+  position: absolute;
+  z-index: 1;
+  right: 15px;
+  top: 20%;
+}
+
+.menu-container-title {
+  font-size: 18px;
+}
+
+#buildings-visibil-btn {
+  margin-top: 25px;
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  margin-right: 20px;
+}
+
+.ant-tree li span.ant-tree-switcher {
+  display: none !important;
+}
+
+.ant-menu-submenu-title {
+  border-bottom: 1px solid #e3e8ea !important;
+  padding-left: 10px !important;
+}
+
+#campus-Areas-Container {
+  position: absolute;
+  z-index: 1;
+  border-left: 4px solid #32475b;
+  left: 20%;
+  top: 40%;
+  width: 200px;
+  height: 300px;
+  background-color: white;
+}
+
+#bereiche-title {
+  font-size: 20px;
+  padding: 10px;
+  border-bottom: 1px solid #e3e8ea;
+}
+
+#hamburger-menu-container {
+  position: absolute;
+  z-index: 1;
+  top: 80px;
+  right: 20px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 50px;
 }

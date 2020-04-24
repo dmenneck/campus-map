@@ -20,12 +20,18 @@ import { LayerGroup } from './LayerGroup';
 
 import { Buildings } from './Layers';
 import { ControlButtons } from './ControlButtons';
-import { FunctionalButtons } from './FunctionalButtons';
 
 import { ContextProvider } from './AppContext';
+import { AppContext } from './AppContext';
 import DrawerComponent from './Drawer';
 import ClickedBuilding from './ClickedBuilding';
 import SearchComponent from './Search';
+import FetchNextBikeApi from './FetchNextBikeApi';
+import MenuContainer from './MenuContainer';
+import SearchBuilding from './SearchBuilding';
+import { SearchBuildingContainer } from './SearchBuildingContainer';
+import ToggleMenuContainerBtn from './ToggleMenuContainerBtn';
+import CampusAreas from './CampusAreas';
 
 import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
@@ -43,8 +49,6 @@ const costumOverviewMapControl = new OverviewMap({
       source: new OSM(),
     }),
   ],
-  collapseLabel: '\u00BB',
-  label: '\u00AB',
   collapsed: true,
 });
 
@@ -115,12 +119,16 @@ const Map = () => {
   return (
     <div className='App'>
       <ContextProvider>
+        <CampusAreas />
+        <ToggleMenuContainerBtn />
+        <SearchBuildingContainer map={map} />
+        <MenuContainer map={map} />
+        <FetchNextBikeApi map={map} />
         <ClickedBuilding map={map} />
         <DrawerComponent />
         <ControlButtons map={map} />
         <SearchComponent />
         <MapComponent map={map} />
-        <FunctionalButtons map={map} />
       </ContextProvider>
     </div>
   );
