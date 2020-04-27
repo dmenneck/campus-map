@@ -80,7 +80,7 @@ const ShowBuildingData = ({ map }) => {
             Gebäudenummer: {building_number}
           </p>
           <p className='buildingInformations'>
-            Barrierefreiheit: {barrier_free}
+            Barrierefreier Eingang: {barrier_free ? 'Ja' : 'Nein'}
           </p>
         </div>
       </>

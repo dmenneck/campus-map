@@ -10,19 +10,19 @@ import {
   SearchOutlined,
   InfoCircleOutlined,
 } from '@ant-design/icons';
-import { message } from 'antd';
+import buildingsLogo from '../data/img/buildings.png';
 
 const { SubMenu } = Menu;
 
 export default function MenuContainer({ map }) {
-  const { value4, value5, value7, value8 } = useContext(AppContext);
+  const { value4, value5, value7, value8, value9 } = useContext(AppContext);
   const [isDrawerVisible, setIsDrawerVisible] = value5;
   const [searchBuildingVisibility, setSearchBuildingVisibility] = value4;
   const [searchBarVisibility, setSearchBarVisibility] = value7;
   const [menuContainerVisibility, setMenuContainerVisibility] = value8;
+  const [campusAreasContainer, setCampusAreasContainer] = value9;
 
   const toggleBuildingsLayerVisibility = () => {
-    success();
     if (Buildings.getVisible() === true) {
       Buildings.setVisible(false);
     } else {
@@ -54,11 +54,12 @@ export default function MenuContainer({ map }) {
     }
   };
 
-  const success = () => {
-    message.success(
-      'This is a prompt message for success, and it will disappear in 10 seconds',
-      2
-    );
+  const toggleCampusAreas = () => {
+    if (campusAreasContainer) {
+      setCampusAreasContainer(false);
+    } else {
+      setCampusAreasContainer(true);
+    }
   };
 
   if (menuContainerVisibility) {
@@ -92,14 +93,26 @@ export default function MenuContainer({ map }) {
               <button
                 onClick={toggleBuildingsLayerVisibility}
                 id='buildings-visibil-btn'
+                style={{
+                  backgroundImage: `url(${buildingsLogo})`,
+                  backgroundSize: 'cover',
+                }}
               ></button>
               <button
                 onClick={toggleBuildingsLayerVisibility}
                 id='buildings-visibil-btn'
+                style={{
+                  backgroundImage: `url(${buildingsLogo})`,
+                  backgroundSize: 'cover',
+                }}
               ></button>
               <button
                 onClick={toggleBuildingsLayerVisibility}
                 id='buildings-visibil-btn'
+                style={{
+                  backgroundImage: `url(${buildingsLogo})`,
+                  backgroundSize: 'cover',
+                }}
               ></button>
             </Menu.Item>
           </SubMenu>
@@ -121,7 +134,9 @@ export default function MenuContainer({ map }) {
 
           <Menu.Item key='4'>
             <InfoCircleOutlined />
-            <span className='menu-container-title'>Bereiche</span>
+            <span onClick={toggleCampusAreas} className='menu-container-title'>
+              Bereiche
+            </span>
           </Menu.Item>
 
           <Menu.Item key='5'>

@@ -55,17 +55,19 @@ const costumOverviewMapControl = new OverviewMap({
 // create a new instance of OlMap in ES6 syntax
 
 const Map = () => {
+  const view = new OlView({
+    center: center,
+    zoom: 0.9,
+    maxResolution: 10,
+  });
+
   const map = new OlMap({
     layers: [LayerGroup, Buildings],
     controls: defaultControls().extend([
       new FullScreen(),
       costumOverviewMapControl,
     ]),
-    view: new OlView({
-      center: center,
-      zoom: 0.9,
-      maxResolution: 7,
-    }),
+    view: view,
   });
 
   // adding point to map
@@ -119,7 +121,7 @@ const Map = () => {
   return (
     <div className='App'>
       <ContextProvider>
-        <CampusAreas />
+        <CampusAreas view={view} />
         <ToggleMenuContainerBtn />
         <SearchBuildingContainer map={map} />
         <MenuContainer map={map} />
