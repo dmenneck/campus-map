@@ -74,6 +74,7 @@
   width: 25px !important;
   border: 1px solid #354d60 !important;
   border-radius: 0 !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 #getlocationbtn {
@@ -87,6 +88,7 @@
   width: 25px !important;
   border: 1px solid #354d60 !important;
   border-radius: 0 !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .ant-btn {
@@ -124,6 +126,7 @@
   right: 40px !important;
   bottom: 52px !important;
   border: 1px solid #354d60 !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .ol-zoom-out {
@@ -135,6 +138,7 @@
   right: 40px !important;
   bottom: 10px !important;
   border: 1px solid #354d60 !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .ol-zoomslider-thumb {
@@ -154,6 +158,7 @@
   height: 25px;
   background-color: white !important;
   border: 1px solid rgba(0, 0, 0, 0.8) !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .ol-zoomslider-thumb {
@@ -221,6 +226,7 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
   z-index: 1 !important;
   left: 20px;
   top: 80px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .ant-tabs-nav-wrap {
@@ -489,6 +495,7 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
   z-index: 1;
   right: 15px;
   top: 20%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .menu-container-title {
@@ -500,7 +507,7 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
   width: 50px;
   height: 50px;
   border: 1px solid black;
-  margin-right: 20px;
+  margin-right: 6px;
 }
 
 .ant-tree li span.ant-tree-switcher {
@@ -537,9 +544,51 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
   padding: 15px;
   background-color: white;
   border-radius: 50px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 #geolocation-btn-img {
   width: 20px;
   height: 20px;
+}
+
+.legendeGridOne {
+  display: grid;
+  grid-template-columns: 30px 150px;
+}
+
+.legendeGridTwo {
+  display: grid;
+  grid-template-columns: 30px 150px 30px 150px;
+}
+
+.legende-images {
+  width: 20px;
+  height: 20px;
+}
+
+.legende-text {
+  margin: 0;
+  padding: 0;
+}
+
+.legende-text-title {
+  display: inline;
+}
+
+#entrance-legend {
+  position: absolute;
+  z-index: 1;
+  left: 50% !important;
+  transform: translate(-50%, -5%) !important;
+  top: 80px;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 2%;
+}
+
+.entrance-legend-text {
+  display: inline;
+  padding: 5px;
 }

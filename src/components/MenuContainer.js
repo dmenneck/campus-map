@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Menu } from 'antd';
 import { LayerTree } from '@terrestris/react-geo';
 import { LayerGroup } from './LayerGroup';
-import { Buildings } from './Layers';
+import { buildings, parking } from './Layers';
 import { AppContext } from './AppContext';
 import {
   AppstoreOutlined,
@@ -11,22 +11,34 @@ import {
   InfoCircleOutlined,
 } from '@ant-design/icons';
 import buildingsLogo from '../data/img/buildings.png';
+import parkingLogo from '../data/img/parkenUni.png';
 
 const { SubMenu } = Menu;
 
 export default function MenuContainer({ map }) {
-  const { value4, value5, value7, value8, value9 } = useContext(AppContext);
+  const { value4, value5, value7, value8, value9, value10 } = useContext(
+    AppContext
+  );
   const [isDrawerVisible, setIsDrawerVisible] = value5;
   const [searchBuildingVisibility, setSearchBuildingVisibility] = value4;
   const [searchBarVisibility, setSearchBarVisibility] = value7;
   const [menuContainerVisibility, setMenuContainerVisibility] = value8;
   const [campusAreasContainer, setCampusAreasContainer] = value9;
+  const [legendeVisibility, setLegendeVisibilty] = value10;
 
   const toggleBuildingsLayerVisibility = () => {
-    if (Buildings.getVisible() === true) {
-      Buildings.setVisible(false);
+    if (buildings.getVisible() === true) {
+      buildings.setVisible(false);
     } else {
-      Buildings.setVisible(true);
+      buildings.setVisible(true);
+    }
+  };
+
+  const toggleParkingLayerVisibility = () => {
+    if (parking.getVisible() === true) {
+      parking.setVisible(false);
+    } else {
+      parking.setVisible(true);
     }
   };
 
@@ -60,6 +72,10 @@ export default function MenuContainer({ map }) {
     } else {
       setCampusAreasContainer(true);
     }
+  };
+
+  const toggleLegende = () => {
+    setLegendeVisibilty(true);
   };
 
   if (menuContainerVisibility) {
@@ -99,10 +115,10 @@ export default function MenuContainer({ map }) {
                 }}
               ></button>
               <button
-                onClick={toggleBuildingsLayerVisibility}
+                onClick={toggleParkingLayerVisibility}
                 id='buildings-visibil-btn'
                 style={{
-                  backgroundImage: `url(${buildingsLogo})`,
+                  backgroundImage: `url(${parkingLogo})`,
                   backgroundSize: 'cover',
                 }}
               ></button>
@@ -114,6 +130,9 @@ export default function MenuContainer({ map }) {
                   backgroundSize: 'cover',
                 }}
               ></button>
+              <button onClick={toggleLegende} id='buildings-visibil-btn'>
+                Hello
+              </button>
             </Menu.Item>
           </SubMenu>
 

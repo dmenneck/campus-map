@@ -17,6 +17,7 @@ export const ContextProvider = (props) => {
   const [searchBarVisibility, setSearchBarVisibility] = useState(true);
   const [menuContainerVisibility, setMenuContainerVisibility] = useState(false);
   const [campusAreasContainer, setCampusAreasContainer] = useState(false);
+  const [legendeVisibility, setLegendeVisibilty] = useState(false);
 
   return (
     <AppContext.Provider
@@ -29,6 +30,7 @@ export const ContextProvider = (props) => {
         value7: [searchBarVisibility, setSearchBarVisibility],
         value8: [menuContainerVisibility, setMenuContainerVisibility],
         value9: [campusAreasContainer, setCampusAreasContainer],
+        value10: [legendeVisibility, setLegendeVisibilty],
       }}
     >
       {props.children}

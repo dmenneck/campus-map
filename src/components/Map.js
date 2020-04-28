@@ -18,7 +18,7 @@ import OSM from 'ol/source/OSM';
 
 import { LayerGroup } from './LayerGroup';
 
-import { Buildings } from './Layers';
+import { buildings, parking } from './Layers';
 import { ControlButtons } from './ControlButtons';
 
 import { ContextProvider } from './AppContext';
@@ -32,6 +32,8 @@ import SearchBuilding from './SearchBuilding';
 import { SearchBuildingContainer } from './SearchBuildingContainer';
 import ToggleMenuContainerBtn from './ToggleMenuContainerBtn';
 import CampusAreas from './CampusAreas';
+import Legend from './Legend';
+import EntranceLegend from './EntranceLegende';
 
 import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
@@ -62,7 +64,7 @@ const Map = () => {
   });
 
   const map = new OlMap({
-    layers: [LayerGroup, Buildings],
+    layers: [LayerGroup, buildings, parking],
     controls: defaultControls().extend([
       new FullScreen(),
       costumOverviewMapControl,
@@ -121,6 +123,8 @@ const Map = () => {
   return (
     <div className='App'>
       <ContextProvider>
+        <EntranceLegend />
+        <Legend />
         <CampusAreas view={view} />
         <ToggleMenuContainerBtn />
         <SearchBuildingContainer map={map} />

@@ -4,9 +4,10 @@ import GeoJSON from 'ol/format/GeoJSON';
 import { Style, Fill, Stroke } from 'ol/style';
 
 import buildingsData from '../data/geoData/uniBuildings.geojson';
+import parkingData from '../data/geoData/parking.geojson';
 
-// adding GeoJSON to the map (buildings)
-export const Buildings = new OlVector({
+// create Buildings layer
+export const buildings = new OlVector({
   source: new OlVectorSource({
     url: buildingsData,
     format: new GeoJSON(),
@@ -23,7 +24,12 @@ export const Buildings = new OlVector({
   minResolution: 0.4,
 });
 
-const source = Buildings.getSource();
-const features = source.getFeatures();
+// create parking layer
+export const parking = new OlVector({
+  source: new OlVectorSource({
+    url: parkingData,
+    format: new GeoJSON(),
+  }),
 
-console.log(features);
+  minResolution: 0.4,
+});
