@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { AppContext } from './AppContext';
 import ShowBuildingData from './ShowBuildingData';
 
@@ -16,7 +16,7 @@ function ClickedBuilding({ map }) {
     var coordinate = browserEvent.coordinate;
     var pixel = map.getPixelFromCoordinate(coordinate);
 
-    const dataValue = map.forEachFeatureAtPixel(pixel, function (feature) {
+    const dataValues = map.forEachFeatureAtPixel(pixel, function (feature) {
       data = feature.values_;
       console.log(data);
       setclickedBuildingsInformation(data);
@@ -24,13 +24,16 @@ function ClickedBuilding({ map }) {
     });
 
     // check wether layer (one of the buidling polygons) is clicked or not
-    if (!dataValue && !data) {
+    if (!dataValues && !data) {
       console.log('not clicked on a layer');
       isLayerClicked(false);
     } else {
       console.log('clicked on a layer');
+      isLayerClicked(true);
     }
   }
+
+  console.log(data);
 
   map.on('click', OnMouseMove);
 

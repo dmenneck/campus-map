@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Menu } from 'antd';
 import { LayerTree } from '@terrestris/react-geo';
 import { LayerGroup } from './LayerGroup';
-import { buildings, parking } from './Layers';
+import { buildings, parking, familyCampus } from './Layers';
 import { AppContext } from './AppContext';
 import {
   AppstoreOutlined,
@@ -10,8 +10,11 @@ import {
   SearchOutlined,
   InfoCircleOutlined,
 } from '@ant-design/icons';
-import buildingsLogo from '../data/img/buildings.png';
+
+import buildingsLogo from '../data/img/buildings.png'; // import pic into word and go to "Grafik formatieren" -> "Bild" -> Sättigung = 10%, Transparenz = 60%
+import buildingsLogoOff from '../data/img/buildingsOff.png';
 import parkingLogo from '../data/img/parkenUni.png';
+import wickelraum from '../data/img/wickelraum.png';
 
 const { SubMenu } = Menu;
 
@@ -25,20 +28,37 @@ export default function MenuContainer({ map }) {
   const [menuContainerVisibility, setMenuContainerVisibility] = value8;
   const [campusAreasContainer, setCampusAreasContainer] = value9;
   const [legendeVisibility, setLegendeVisibilty] = value10;
+  const [buildingsVisibility, setBuildingsVisibility] = useState(true);
+  const [familyCampusVisibility, setFamilyCampusVisibility] = useState(false);
+  const [parkingVisibility, setParkingVisibility] = useState(false);
 
   const toggleBuildingsLayerVisibility = () => {
     if (buildings.getVisible() === true) {
       buildings.setVisible(false);
+      setBuildingsVisibility(false);
     } else {
       buildings.setVisible(true);
+      setBuildingsVisibility(true);
+    }
+  };
+
+  const toggleFamilyCampusLayerVisibility = () => {
+    if (familyCampus.getVisible() === true) {
+      familyCampus.setVisible(false);
+      setFamilyCampusVisibility(false);
+    } else {
+      familyCampus.setVisible(true);
+      setFamilyCampusVisibility(true);
     }
   };
 
   const toggleParkingLayerVisibility = () => {
     if (parking.getVisible() === true) {
       parking.setVisible(false);
+      setParkingVisibility(false);
     } else {
       parking.setVisible(true);
+      setParkingVisibility(true);
     }
   };
 
@@ -87,7 +107,9 @@ export default function MenuContainer({ map }) {
             title={
               <span>
                 <AppstoreOutlined />
-                <span className='menu-container-title'>Hintergrundkarten</span>
+                <span className='menu-container-title unselectable'>
+                  Hintergrundkarten
+                </span>
               </span>
             }
           >
@@ -101,38 +123,46 @@ export default function MenuContainer({ map }) {
             title={
               <span>
                 <BarsOutlined />
-                <span className='menu-container-title'>Layer</span>
+                <span className='menu-container-title unselectable'>Layer</span>
               </span>
             }
           >
             <Menu.Item key='2'>
               <button
                 onClick={toggleBuildingsLayerVisibility}
-                id='buildings-visibil-btn'
+                className='buildings-visibil-btn'
                 style={{
                   backgroundImage: `url(${buildingsLogo})`,
                   backgroundSize: 'cover',
+                  opacity: buildingsVisibility ? '1' : '0.4',
                 }}
               ></button>
               <button
                 onClick={toggleParkingLayerVisibility}
-                id='buildings-visibil-btn'
+                className='buildings-visibil-btn'
                 style={{
                   backgroundImage: `url(${parkingLogo})`,
                   backgroundSize: 'cover',
+                  opacity: parkingVisibility ? '1' : '0.4',
                 }}
               ></button>
               <button
-                onClick={toggleBuildingsLayerVisibility}
-                id='buildings-visibil-btn'
+                onClick={toggleFamilyCampusLayerVisibility}
+                className='buildings-visibil-btn'
                 style={{
-                  backgroundImage: `url(${buildingsLogo})`,
+                  backgroundImage: `url(${wickelraum})`,
+                  backgroundSize: 'cover',
+                  opacity: familyCampusVisibility ? '1' : '0.4',
+                }}
+              ></button>
+              <button
+                onClick={toggleLegende}
+                className='buildings-visibil-btn'
+                style={{
+                  backgroundImage: `url(${wickelraum})`,
                   backgroundSize: 'cover',
                 }}
               ></button>
-              <button onClick={toggleLegende} id='buildings-visibil-btn'>
-                Hello
-              </button>
             </Menu.Item>
           </SubMenu>
 
@@ -141,7 +171,7 @@ export default function MenuContainer({ map }) {
             title={
               <span>
                 <SearchOutlined />
-                <span className='menu-container-title'>Suche</span>
+                <span className='menu-container-title unselectable'>Suche</span>
               </span>
             }
           >
@@ -153,14 +183,20 @@ export default function MenuContainer({ map }) {
 
           <Menu.Item key='4'>
             <InfoCircleOutlined />
-            <span onClick={toggleCampusAreas} className='menu-container-title'>
+            <span
+              onClick={toggleCampusAreas}
+              className='menu-container-title unselectable'
+            >
               Bereiche
             </span>
           </Menu.Item>
 
           <Menu.Item key='5'>
             <InfoCircleOutlined />
-            <span onClick={toggleDrawer} className='menu-container-title'>
+            <span
+              onClick={toggleDrawer}
+              className='menu-container-title unselectable'
+            >
               Weitere Informationen
             </span>
           </Menu.Item>

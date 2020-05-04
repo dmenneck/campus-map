@@ -66,8 +66,8 @@
 #zoomToExtBtn {
   position: absolute;
   z-index: 1;
-  left: 20px;
-  top: 150px;
+  left: 540px;
+  top: 85px;
   display: inline;
   background-color: white !important;
   height: 25px !important;
@@ -80,8 +80,8 @@
 #getlocationbtn {
   position: absolute;
   z-index: 1;
-  left: 60px;
-  top: 150px;
+  left: 540px;
+  top: 120px;
   display: inline;
   background-color: white !important;
   height: 25px !important;
@@ -226,7 +226,6 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
   z-index: 1 !important;
   left: 20px;
   top: 80px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .ant-tabs-nav-wrap {
@@ -320,6 +319,9 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 
 #cardMeta {
   padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, 1fr);
 }
 
 #contactForm {
@@ -362,7 +364,7 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
   padding: 10px;
 }
 
-#absolute {
+#drawer-text-absolute {
   position: absolute;
   display: inline;
   padding: 10px;
@@ -371,13 +373,13 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 #tabTwoName {
   color: rgba(0, 0, 0, 0.85);
   font-weight: 500;
-  font-size: 18px;
-  white-space: nowrap;
-  margin-bottom: 10px;
+  font-size: 20px;
 }
 
 #tabTwoAdress {
   color: rgba(0, 0, 0, 0.45);
+  margin-top: 10px;
+  margin-bottom: 8px;
 }
 
 .buildingInformations {
@@ -491,6 +493,7 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 
 #menu-Container {
   border-right: 4px solid #32475b;
+
   position: absolute;
   z-index: 1;
   right: 15px;
@@ -502,12 +505,11 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
   font-size: 18px;
 }
 
-#buildings-visibil-btn {
-  margin-top: 25px;
+.buildings-visibil-btn {
   width: 50px;
   height: 50px;
   border: 1px solid black;
-  margin-right: 6px;
+  margin-right: 5px;
 }
 
 .ant-tree li span.ant-tree-switcher {
@@ -534,6 +536,8 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
   font-size: 20px;
   padding: 10px;
   border-bottom: 1px solid #e3e8ea;
+  color: white;
+  background-color: #32475b;
 }
 
 #hamburger-menu-container {
@@ -591,4 +595,135 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 .entrance-legend-text {
   display: inline;
   padding: 5px;
+}
+
+#filtered-names-container-max-height {
+  background-color: white;
+  width: 500px;
+  height: 218px;
+  overflow-y: auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.mapped-filtered-names {
+  font-size: 20px;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #e3e8ea;
+}
+
+.mapped-filtered-names:hover {
+  background-color: #e3e8eb;
+}
+
+#hide {
+  display: none;
+}
+
+.bereiche-item {
+  background-color: #e3e8eb;
+  padding: 12px;
+  margin: 0;
+}
+
+.bereiche-item:hover {
+  background-color: red;
+}
+
+#building-number {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#clicked-data-container {
+  position: absolute;
+  z-index: 1;
+  bottom: 2%;
+  left: 22px;
+  width: 385px;
+  height: 400px;
+  background-color: #c8d1db;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 2%;
+}
+
+#close-data-container-btn {
+  margin: 5px 10px 0px 10px;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  color: white;
+  background-color: #32475b;
+  border: 1px solid white;
+}
+
+#open-drawer-btn {
+  margin: 5px 10px 0px 10px;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background-color: #32475b;
+  color: white;
+}
+
+.data-container-img {
+  width: 340px;
+  height: 200px;
+  display: block;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  border-radius: 5%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.clicked-data-container-text {
+  width: 340px;
+  height: auto;
+  border-radius: 2%;
+  padding: 10px;
+  margin: 0 auto 0 auto;
+  background-color: #a5b6c7;
+}
+
+#pos-relative-for-drawer {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  border-radius: 2%;
+}
+
+.unselectable {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+#clicked-data-container-header {
+  width: 100%;
+  height: 45px;
+  background-color: #32475b;
+}
+
+.ant-drawer-header {
+  background-color: #32475b !important;
+}
+
+.ant-drawer-title {
+  color: white !important;
+}
+
+button:focus {
+  outline: none !important;
 }

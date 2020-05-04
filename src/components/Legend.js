@@ -53,6 +53,7 @@ const Legend = () => {
     setLegendeVisibilty(false);
   }
 
+  // show legend 4s after initial render
   useEffect(() => {
     const timer = setTimeout(() => {
       openNotification('bottomLeft');
@@ -60,9 +61,13 @@ const Legend = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  // show welcome text 1.5s after initial rennder
   useEffect(() => {
     const timer = setTimeout(() => {
-      message.info('Willkommen auf dem Lageplan der UzK');
+      message.info({
+        content: 'Willkommen auf dem Lageplan der UzK',
+        icon: '',
+      });
     }, 1500);
     return () => clearTimeout(timer);
   }, []);

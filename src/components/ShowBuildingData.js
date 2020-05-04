@@ -1,19 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from './AppContext';
+import Draggable from 'react-draggable';
 
-import { Card, Avatar } from 'antd';
-
-const { Meta } = Card;
+import { Card, Drawer } from 'antd';
+import { ArrowRightOutlined } from '@ant-design/icons';
 
 const ShowBuildingData = ({ map }) => {
   const { value6, value2 } = useContext(AppContext);
   const [clickedBuildingsInformation, setclickedBuildingsInformation] = value6;
   const [layerClicked, isLayerClicked] = value2;
-
-  const [key, setKey] = useState('tab1');
-
-  // write a function to get type "university" and change it to "Universität"
-  // ???
+  const [drawerVisibility, setDrawervisibility] = useState(false);
 
   // get attributes out of the clicked buildings informations stored in the state
   let name = clickedBuildingsInformation.name;
@@ -55,83 +51,91 @@ const ShowBuildingData = ({ map }) => {
       'https://upload.wikimedia.org/wikipedia/de/thumb/f/fe/SiegelUniKoeln.svg/1200px-SiegelUniKoeln.svg.png';
   }
 
-  const tabList = [
-    {
-      key: 'tab1',
-      tab: 'Gebäudeinformationen',
-    },
-    {
-      key: 'tab2',
-      tab: 'Einrichtungen',
-    },
-  ];
-
-  const contentList = {
-    tab1: (
-      <>
-        <div style={{ width: '100%', height: '225px' }}>
-          <img id='cardImage' alt='example' src={image ? image : noImage} />
-        </div>
-
-        <div id='cardMeta'>
-          <p className='buildingInformations'>Name: {name}</p>
-          <p className='buildingInformations'>{address}</p>
-          <p className='buildingInformations'>
-            Gebäudenummer: {building_number}
-          </p>
-          <p className='buildingInformations'>
-            Barrierefreier Eingang: {barrier_free ? 'Ja' : 'Nein'}
-          </p>
-        </div>
-      </>
-    ),
-    tab2: (
-      <>
-        <img
-          src='https://upload.wikimedia.org/wikipedia/de/thumb/f/fe/SiegelUniKoeln.svg/1200px-SiegelUniKoeln.svg.png'
-          alt='Siegel der Uni Koeln'
-          id='siegelUni'
-        />
-        <div id='absolute'>
-          <p id='tabTwoName'>{name}</p>
-          <p id='tabTwoAdress'>{address}</p>
-        </div>
-        <div id='buildingDataLinkContainer'>
-          {nameAndLink.map((item, index) => (
-            <a
-              href={item.link}
-              className='buildingDataLink'
-              key={index}
-              target='_blank'
-            >
-              {item.name}
-            </a>
-          ))}
-        </div>
-      </>
-    ),
+  const showDrawer = () => {
+    setDrawervisibility(true);
   };
 
-  const onTabChange = () => {
-    if (key === 'tab1') {
-      setKey('tab2');
-    } else {
-      setKey('tab1');
-    }
+  const onClose = () => {
+    setDrawervisibility(false);
+  };
+
+  const closeDataContainer = () => {
+    isLayerClicked(false);
   };
 
   if (layerClicked) {
     return (
-      <Card
-        style={{ width: 400, height: 400 }}
-        tabList={tabList}
-        id='buildingDataContainer'
-        onTabChange={(key) => {
-          onTabChange(key, 'key');
-        }}
-      >
-        {contentList[key]}
-      </Card>
+      <div>
+        <Draggable>
+          <div id='clicked-data-container'>
+            <div id='pos-relative-for-drawer'>
+              <div id='clicked-data-container-header'>
+                <button
+                  id='close-data-container-btn'
+                  onClick={closeDataContainer}
+                >
+                  x
+                </button>
+              </div>
+
+              <img
+                className='data-container-img'
+                alt=''
+                style={{
+                  backgroundImage: `url(${image ? image : noImage})`,
+                  backgroundSize: 'cover',
+                }}
+              />
+              <div className='clicked-data-container-text'>
+                <p className='buildingInformations' id='building-number'>
+                  Gebäude {building_number}:
+                </p>
+                <p className='buildingInformations'>{name}</p>
+                <p className='buildingInformations'>{address}</p>
+
+                <button onClick={showDrawer} id='open-drawer-btn'>
+                  <ArrowRightOutlined />
+                </button>
+
+                <Drawer
+                  title='Einrichtungen'
+                  placement='right'
+                  closable={true}
+                  onClose={onClose}
+                  visible={drawerVisibility}
+                  getContainer={false}
+                  style={{ position: 'absolute' }}
+                  width='100%'
+                >
+                  <>
+                    <img
+                      src='https://upload.wikimedia.org/wikipedia/de/thumb/f/fe/SiegelUniKoeln.svg/1200px-SiegelUniKoeln.svg.png'
+                      alt='Siegel der Uni Koeln'
+                      id='siegelUni'
+                    />
+                    <div id='drawer-text-absolute'>
+                      <p id='tabTwoAdress'>Gebäude {building_number}:</p>
+                      <p id='tabTwoName'>{name}</p>
+                    </div>
+                    <div id='buildingDataLinkContainer'>
+                      {nameAndLink.map((item, index) => (
+                        <a
+                          href={item.link}
+                          className='buildingDataLink'
+                          key={index}
+                          target='_blank'
+                        >
+                          {item.name}
+                        </a>
+                      ))}
+                    </div>
+                  </>
+                </Drawer>
+              </div>
+            </div>
+          </div>
+        </Draggable>
+      </div>
     );
   } else {
     return null;

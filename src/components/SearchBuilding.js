@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { AgFeatureGrid } from '@terrestris/react-geo';
+import OlStyle from 'ol/style/Style';
+import { Fill } from 'ol/style';
+
 import { buildings } from './Layers';
 
 const SearchBuilding = ({ map }) => {
@@ -47,6 +50,13 @@ const SearchBuilding = ({ map }) => {
         'type',
       ]}
       className='agFeatureGrid'
+      featureStyle={
+        new OlStyle({
+          fill: new Fill({
+            color: 'rgba(0,0,0,0)',
+          }),
+        })
+      }
     />
   );
 };

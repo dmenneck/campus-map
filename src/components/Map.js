@@ -18,17 +18,15 @@ import OSM from 'ol/source/OSM';
 
 import { LayerGroup } from './LayerGroup';
 
-import { buildings, parking } from './Layers';
+import { buildings, parking, entrances, familyCampus } from './Layers';
 import { ControlButtons } from './ControlButtons';
 
 import { ContextProvider } from './AppContext';
-import { AppContext } from './AppContext';
 import DrawerComponent from './Drawer';
 import ClickedBuilding from './ClickedBuilding';
 import SearchComponent from './Search';
 import FetchNextBikeApi from './FetchNextBikeApi';
 import MenuContainer from './MenuContainer';
-import SearchBuilding from './SearchBuilding';
 import { SearchBuildingContainer } from './SearchBuildingContainer';
 import ToggleMenuContainerBtn from './ToggleMenuContainerBtn';
 import CampusAreas from './CampusAreas';
@@ -39,6 +37,7 @@ import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
+import { getPointResolution } from 'ol/proj';
 
 // global variables
 const center = [771105.02, 6608382.01]; //Cologne
@@ -59,18 +58,23 @@ const costumOverviewMapControl = new OverviewMap({
 const Map = () => {
   const view = new OlView({
     center: center,
-    zoom: 0.9,
+    zoom: 1.8,
     maxResolution: 10,
   });
 
   const map = new OlMap({
-    layers: [LayerGroup, buildings, parking],
+    layers: [LayerGroup, buildings, parking, entrances, familyCampus],
     controls: defaultControls().extend([
       new FullScreen(),
       costumOverviewMapControl,
     ]),
     view: view,
   });
+
+  // unvisible by default (can be toggled in MenuContainer.js)
+  familyCampus.setVisible(false);
+  entrances.setVisible(false);
+  parking.setVisible(false);
 
   // adding point to map
   const iconFeature = new Feature({
@@ -125,7 +129,7 @@ const Map = () => {
       <ContextProvider>
         <EntranceLegend />
         <Legend />
-        <CampusAreas view={view} />
+        <CampusAreas map={map} />
         <ToggleMenuContainerBtn />
         <SearchBuildingContainer map={map} />
         <MenuContainer map={map} />
