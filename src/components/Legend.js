@@ -14,9 +14,10 @@ const Legend = () => {
 
   const openNotification = (placement) => {
     notification.open({
-      message: null,
       description: (
-        <div>
+        <div id='legende-container'>
+          <h5 className='legende-title'>Legende</h5>
+
           <p className='legende-text-title'>Parkplätze</p>
           <div className='legendeGridOne'>
             <img src={wickelraum} alt='' className='legende-images' />
@@ -45,6 +46,7 @@ const Legend = () => {
       ),
       placement,
       duration: 0,
+      closeIcon: <button id='close-Legende'>X</button>,
     });
   };
 

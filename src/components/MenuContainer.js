@@ -136,7 +136,10 @@ export default function MenuContainer({ map }) {
                   backgroundSize: 'cover',
                   opacity: buildingsVisibility ? '1' : '0.4',
                 }}
-              ></button>
+              >
+                buildings
+              </button>
+
               <button
                 onClick={toggleParkingLayerVisibility}
                 className='buildings-visibil-btn'
@@ -145,7 +148,9 @@ export default function MenuContainer({ map }) {
                   backgroundSize: 'cover',
                   opacity: parkingVisibility ? '1' : '0.4',
                 }}
-              ></button>
+              >
+                parking
+              </button>
               <button
                 onClick={toggleFamilyCampusLayerVisibility}
                 className='buildings-visibil-btn'
@@ -154,15 +159,12 @@ export default function MenuContainer({ map }) {
                   backgroundSize: 'cover',
                   opacity: familyCampusVisibility ? '1' : '0.4',
                 }}
-              ></button>
-              <button
-                onClick={toggleLegende}
-                className='buildings-visibil-btn'
-                style={{
-                  backgroundImage: `url(${wickelraum})`,
-                  backgroundSize: 'cover',
-                }}
-              ></button>
+              >
+                familyCampus
+              </button>
+              <button onClick={toggleLegende} className='buildings-visibil-btn'>
+                Legende
+              </button>
             </Menu.Item>
           </SubMenu>
 

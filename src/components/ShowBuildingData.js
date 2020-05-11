@@ -98,9 +98,8 @@ const ShowBuildingData = ({ map }) => {
                 </button>
 
                 <Drawer
-                  title='Einrichtungen'
+                  title='Einrichtungen '
                   placement='right'
-                  closable={true}
                   onClose={onClose}
                   visible={drawerVisibility}
                   getContainer={false}
@@ -108,14 +107,16 @@ const ShowBuildingData = ({ map }) => {
                   width='100%'
                 >
                   <>
-                    <img
-                      src='https://upload.wikimedia.org/wikipedia/de/thumb/f/fe/SiegelUniKoeln.svg/1200px-SiegelUniKoeln.svg.png'
-                      alt='Siegel der Uni Koeln'
-                      id='siegelUni'
-                    />
-                    <div id='drawer-text-absolute'>
-                      <p id='tabTwoAdress'>Gebäude {building_number}:</p>
-                      <p id='tabTwoName'>{name}</p>
+                    <div id='building-data-drawer-header'>
+                      <img
+                        src='https://upload.wikimedia.org/wikipedia/de/thumb/f/fe/SiegelUniKoeln.svg/1200px-SiegelUniKoeln.svg.png'
+                        alt='Siegel der Uni Koeln'
+                        id='siegelUni'
+                      />
+                      <div id='drawer-text'>
+                        <p id='tabTwoAdress'>Gebäude {building_number}:</p>
+                        <p id='tabTwoName'>{name}</p>
+                      </div>
                     </div>
                     <div id='buildingDataLinkContainer'>
                       {nameAndLink.map((item, index) => (

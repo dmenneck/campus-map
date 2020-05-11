@@ -344,6 +344,11 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
   display: inline;
 }
 
+#building-data-drawer-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
 #absolute {
   position: absolute;
   display: inline;
@@ -351,21 +356,22 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 
 .buildingDataLink {
   font-size: 16px;
-  padding: 5px;
+  padding: 10px;
   display: block;
   color: black;
+  border-bottom: 1px solid grey;
 }
 
 .buildingDataLink:hover {
-  color: red;
+  color: #32475b;
+  background-color: #7a93ab;
 }
 
 #buildingDataLinkContainer {
-  padding: 10px;
+  padding: 0 10px 10px 10px;
 }
 
-#drawer-text-absolute {
-  position: absolute;
+#drawer-text {
   display: inline;
   padding: 10px;
 }
@@ -493,7 +499,6 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 
 #menu-Container {
   border-right: 4px solid #32475b;
-
   position: absolute;
   z-index: 1;
   right: 15px;
@@ -663,8 +668,8 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 #open-drawer-btn {
   margin: 5px 10px 0px 10px;
   position: absolute;
-  right: 20px;
-  bottom: 20px;
+  right: 5px;
+  bottom: 10px;
   width: 50px;
   height: 50px;
   border-radius: 100%;
@@ -716,14 +721,68 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
   background-color: #32475b;
 }
 
-.ant-drawer-header {
-  background-color: #32475b !important;
-}
-
-.ant-drawer-title {
+.ant-drawer-content-wrapper .ant-drawer-title {
   color: white !important;
+  font-size: 24px !important;
 }
 
 button:focus {
   outline: none !important;
+}
+
+.ant-notification-notice-message {
+  display: none !important;
+}
+
+.ant-notification-notice {
+  background-color: #c8d1db !important;
+  color: white !important;
+  padding: 0 !important;
+}
+
+.ant-notification-notice-close {
+  top: 8px !important;
+  color: white !important;
+}
+
+#close-Legende {
+  position: absolute;
+  right: -8px;
+  width: 30px;
+
+  height: 30px;
+  bottom: -27px;
+  color: white;
+  background-color: #32475b;
+  border: 1px solid white;
+}
+
+.legende-title {
+  background-color: #32475b;
+  width: 100%;
+  color: white;
+  padding: 8px;
+}
+
+.ant-drawer-header {
+  background-color: #32475b !important;
+  padding: 10px !important;
+  border-radius: none !important;
+}
+
+.ant-drawer-close {
+  background-color: red !important;
+  background-image: url(./data/img/backgroundCloseBtn.png) !important;
+
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.anticon {
+  display: none !important;
+}
+
+.ant-drawer-body {
+  padding: 0 !important;
+  background-color: #c8d1db !important;
 }

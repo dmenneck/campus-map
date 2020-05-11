@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import OlMap from 'ol/Map';
 import OlView from 'ol/View';
@@ -18,7 +18,7 @@ import OSM from 'ol/source/OSM';
 
 import { LayerGroup } from './LayerGroup';
 
-import { buildings, parking, entrances, familyCampus } from './Layers';
+import { buildings, parking, familyCampus, entrances } from './Layers';
 import { ControlButtons } from './ControlButtons';
 
 import { ContextProvider } from './AppContext';
@@ -54,7 +54,6 @@ const costumOverviewMapControl = new OverviewMap({
 });
 
 // create a new instance of OlMap in ES6 syntax
-
 const Map = () => {
   const view = new OlView({
     center: center,
