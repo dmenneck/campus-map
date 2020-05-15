@@ -17,7 +17,6 @@ const Legend = () => {
       description: (
         <div id='legende-container'>
           <h5 className='legende-title'>Legende</h5>
-
           <p className='legende-text-title'>Parkplätze</p>
           <div className='legendeGridOne'>
             <img src={wickelraum} alt='' className='legende-images' />

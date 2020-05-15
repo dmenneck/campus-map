@@ -1,15 +1,21 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   box-sizing: border-box;
   color: #15222b;
   font-size: 16px;
 }
 
+/* --- hide all scrollbars --- */
+
+::-webkit-scrollbar {
+  display: none;
+}
+
 /* --- Navigation --- */
 #globalNav {
-  height: 68px;
+  height: 50px;
   box-shadow: 0 1px 0 0 #e0e0e0;
   position: relative;
   background-color: #32475b;
@@ -19,7 +25,7 @@
 #globalNavLogo {
   display: inline;
   position: absolute;
-  margin-top: 16px;
+  margin-top: 6px;
 }
 
 #globalNavLogo a {
@@ -29,10 +35,6 @@
   margin-left: 80px;
 }
 
-#globalNavLogo a:hover {
-  text-decoration: underline;
-}
-
 #globalNavLogo a span {
   color: white;
   font-size: 14px;
@@ -40,7 +42,7 @@
 }
 
 #uniKölnLogo {
-  width: 60px;
+  width: 40px;
   margin-left: 10px;
   margin-top: 4.5px;
   position: absolute;
@@ -50,7 +52,7 @@
   color: white;
   float: right;
   text-decoration: none;
-  padding: 22px 14px 19px 10px;
+  padding: 12px 14px 12px 10px;
   font-size: 17px;
 }
 
@@ -66,8 +68,8 @@
 #zoomToExtBtn {
   position: absolute;
   z-index: 1;
-  left: 540px;
-  top: 85px;
+  left: 12px;
+  top: 115px;
   display: inline;
   background-color: white !important;
   height: 25px !important;
@@ -80,8 +82,8 @@
 #getlocationbtn {
   position: absolute;
   z-index: 1;
-  left: 540px;
-  top: 120px;
+  left: 42px;
+  top: 115px;
   display: inline;
   background-color: white !important;
   height: 25px !important;
@@ -92,7 +94,7 @@
 }
 
 .ant-btn {
-  padding: 10px !important;
+  padding: 0 10px !important;
 }
 
 #zoomToExtBtn:hover,
@@ -224,13 +226,61 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 #search {
   position: absolute !important;
   z-index: 1 !important;
-  left: 20px;
-  top: 80px;
+  left: 10px;
+  top: 60px;
+  width: 400px;
 }
 
 .ant-tabs-nav-wrap {
   border-bottom: 4px solid #002c37 !important;
   background-color: #7a93ab !important;
+}
+
+.ant-input {
+  border: 1px solid transparent !important;
+  padding: 0px !important;
+  position: absolute !important;
+  top: 0 !important;
+  width: 92% !important;
+}
+
+.ant-input-search {
+  width: 292px !important;
+  height: 48px !important;
+  border-radius: 8px 8px 0 0;
+  padding: 10px !important;
+  border: 1px solid transparent !important;
+}
+
+.ant-input-affix-wrapper {
+  border: 1px solid transparent !important;
+}
+
+.reset-search-input {
+  background-color: #fff;
+  width: 35px;
+  height: 35px;
+  margin-right: 0px;
+  margin-left: 2px;
+  border: 1px solid transparent;
+}
+
+#searchbar-btns {
+  width: 85px;
+  position: absolute;
+  top: 4px;
+  display: inline-block;
+  padding: 2px;
+  border-left: 1px solid #32475b;
+}
+
+#search-container {
+  width: 392px !important;
+  height: 48px !important;
+  background-color: #fff;
+  border-radius: 8px 8px 8px 8px;
+  border-bottom: 1px solid #dadce0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 -1px 0px rgba(0, 0, 0, 0.02);
 }
 
 .ant-tabs-nav-wrap span {
@@ -391,13 +441,14 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 .buildingInformations {
   padding: 0;
   margin: 0;
+  font-size: 14px;
 }
 
 .ant-tree-checkbox-inner {
   width: 50px !important;
   height: 50px !important;
   border: 1px solid black !important;
-  background: url('../src/data/img/suche.png') no-repeat !important;
+  background: url("../src/data/img/suche.png") no-repeat !important;
   background-size: 100% !important;
 }
 
@@ -604,16 +655,17 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 
 #filtered-names-container-max-height {
   background-color: white;
-  width: 500px;
-  height: 218px;
+  width: 392px;
+  height: auto;
+  max-height: 218px;
   overflow-y: auto;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
 }
 
 .mapped-filtered-names {
-  font-size: 20px;
+  font-size: 16px;
   padding: 10px;
-  margin-bottom: 5px;
   border-bottom: 1px solid #e3e8ea;
 }
 
@@ -636,7 +688,7 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 }
 
 #building-number {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
 }
 
@@ -645,8 +697,8 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
   z-index: 1;
   bottom: 2%;
   left: 22px;
-  width: 385px;
-  height: 400px;
+  width: 285px;
+  height: 300px;
   background-color: #c8d1db;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 2%;
@@ -655,10 +707,10 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 #close-data-container-btn {
   margin: 5px 10px 0px 10px;
   position: absolute;
-  right: 4px;
-  top: 4px;
-  width: 30px;
-  height: 30px;
+  right: -4px;
+  top: 0px;
+  width: 25px;
+  height: 25px;
   border: none;
   color: white;
   background-color: #32475b;
@@ -666,20 +718,17 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 }
 
 #open-drawer-btn {
-  margin: 5px 10px 0px 10px;
-  position: absolute;
-  right: 5px;
-  bottom: 10px;
-  width: 50px;
-  height: 50px;
-  border-radius: 100%;
-  background-color: #32475b;
-  color: white;
+  margin: 15px 10px 5px 140px;
+}
+
+#open-drawer-btn span {
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .data-container-img {
-  width: 340px;
-  height: 200px;
+  width: 250px;
+  height: 150px;
   display: block;
   margin-top: 10px;
   margin-left: auto;
@@ -690,9 +739,8 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 }
 
 .clicked-data-container-text {
-  width: 340px;
-  height: auto;
   border-radius: 2%;
+  height: auto;
   padding: 10px;
   margin: 0 auto 0 auto;
   background-color: #a5b6c7;
@@ -701,6 +749,7 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 #pos-relative-for-drawer {
   overflow: hidden;
   position: relative;
+  overflow-y: auto;
   height: 100%;
   border-radius: 2%;
 }
@@ -717,8 +766,11 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 
 #clicked-data-container-header {
   width: 100%;
-  height: 45px;
+  height: 35px;
   background-color: #32475b;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 
 .ant-drawer-content-wrapper .ant-drawer-title {
@@ -748,10 +800,9 @@ button:focus {
 #close-Legende {
   position: absolute;
   right: -8px;
-  width: 30px;
-
-  height: 30px;
-  bottom: -27px;
+  width: 25px;
+  height: 25px;
+  bottom: -22px;
   color: white;
   background-color: #32475b;
   border: 1px solid white;
@@ -762,6 +813,7 @@ button:focus {
   width: 100%;
   color: white;
   padding: 8px;
+  height: 35px;
 }
 
 .ant-drawer-header {

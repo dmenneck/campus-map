@@ -1,7 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { Input } from 'antd';
-import { AppContext } from './AppContext';
-import { buildings } from './Layers';
+import React, { useContext, useState, useEffect } from "react";
+import { Input } from "antd";
+import { AppContext } from "./AppContext";
+import { buildings } from "./Layers";
+import Suche from "../data/img/suche.png";
+import UrlTile from "ol/source/UrlTile";
 
 const { Search } = Input;
 
@@ -9,8 +11,8 @@ const SearchComponent = () => {
   const { value7, value2 } = useContext(AppContext);
   const [searchBarVisibility, setSearchBarVisibility] = value7;
   const [features, setFeatures] = useState([]);
-  const [search, setSearch] = useState('');
-  const [clickedFeature, setClickedFeature] = useState('');
+  const [search, setSearch] = useState("");
+  const [clickedFeature, setClickedFeature] = useState("");
 
   // get Features async
   useEffect(() => {
@@ -41,22 +43,44 @@ const SearchComponent = () => {
     console.log(featureExtent);
   };
 
+  const resetInput = () => {
+    setSearch("");
+  };
+
   if (searchBarVisibility) {
     return (
-      <div id='search'>
-        <Search
-          id='searchBar'
-          placeholder='Suche nach Gebäuden, Räumen, ...'
-          onSearch={(value) => console.log(value)}
-          onChange={updateSearch}
-          style={{ width: 500, height: 60 }}
-        />
+      <div id="search">
+        <div id="search-container">
+          <Search
+            id="searchBar"
+            placeholder="Suche nach Gebäuden, Räumen, ..."
+            onChange={updateSearch}
+            style={{ width: 400, height: 50 }}
+            value={search}
+          />
+          <div id="searchbar-btns">
+            <button className="reset-search-input">
+              <img
+                src={Suche}
+                style={{
+                  width: 25,
+                  height: "auto",
+                  margin: 0,
+                  padding: 0,
+                }}
+              ></img>
+            </button>
+            <button className="reset-search-input" onClick={resetInput}>
+              X
+            </button>
+          </div>
+        </div>
 
-        <ul id={search ? 'filtered-names-container-max-height' : 'hide'}>
+        <ul id={search ? "filtered-names-container-max-height" : "hide"}>
           {filteredNames.map((name, index) => (
             <li
               key={index}
-              className='mapped-filtered-names unselectable'
+              className="mapped-filtered-names unselectable"
               onClick={filteredNamesGetFeatures}
             >
               {name}

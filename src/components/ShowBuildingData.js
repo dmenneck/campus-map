@@ -2,8 +2,7 @@ import React, { useContext, useState } from 'react';
 import { AppContext } from './AppContext';
 import Draggable from 'react-draggable';
 
-import { Card, Drawer } from 'antd';
-import { ArrowRightOutlined } from '@ant-design/icons';
+import { Card, Drawer, Button } from 'antd';
 
 const ShowBuildingData = ({ map }) => {
   const { value6, value2 } = useContext(AppContext);
@@ -93,9 +92,7 @@ const ShowBuildingData = ({ map }) => {
                 <p className='buildingInformations'>{name}</p>
                 <p className='buildingInformations'>{address}</p>
 
-                <button onClick={showDrawer} id='open-drawer-btn'>
-                  <ArrowRightOutlined />
-                </button>
+                <Button ghost onClick={showDrawer} id='open-drawer-btn'>Einrichtungen</Button>
 
                 <Drawer
                   title='Einrichtungen '
