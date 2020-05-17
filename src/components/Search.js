@@ -2,12 +2,12 @@ import React, { useContext, useState, useEffect } from "react";
 import { Input } from "antd";
 import { AppContext } from "./AppContext";
 import { buildings } from "./Layers";
+import { source } from "./Layers";
 import Suche from "../data/img/suche.png";
-import UrlTile from "ol/source/UrlTile";
 
 const { Search } = Input;
 
-const SearchComponent = () => {
+const SearchComponent = ({ map }) => {
   const { value7, value2 } = useContext(AppContext);
   const [searchBarVisibility, setSearchBarVisibility] = value7;
   const [features, setFeatures] = useState([]);
@@ -37,10 +37,11 @@ const SearchComponent = () => {
     let mappedFeatures = features.map((item) => {
       if (clickedBuilding === item.values_.name) {
         setClickedFeature(item.values_.geometry);
+
+        // get the clicked feature and set view based on the feature extent
+        map.getView().fit(item.getGeometry(), map.getSize());
       }
     });
-    let featureExtent = clickedFeature.extent_;
-    console.log(featureExtent);
   };
 
   const resetInput = () => {
@@ -63,7 +64,7 @@ const SearchComponent = () => {
               <img
                 src={Suche}
                 style={{
-                  width: 25,
+                  width: 16,
                   height: "auto",
                   margin: 0,
                   padding: 0,

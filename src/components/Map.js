@@ -1,50 +1,59 @@
-import React from 'react';
+import React from "react";
 
-import OlMap from 'ol/Map';
-import OlView from 'ol/View';
+import OlMap from "ol/Map";
+import OlView from "ol/View";
 import {
   defaults as defaultControls,
   FullScreen,
   OverviewMap,
-} from 'ol/control';
+} from "ol/control";
 
-import '../App.css';
-import 'ol/ol.css';
-import 'antd/dist/antd.css';
-import { MapComponent } from '@terrestris/react-geo';
+import "../App.css";
+import "ol/ol.css";
+import "antd/dist/antd.css";
+import { MapComponent } from "@terrestris/react-geo";
 
-import TileLayer from 'ol/layer/Tile';
-import OSM from 'ol/source/OSM';
+import TileLayer from "ol/layer/Tile";
+import OSM from "ol/source/OSM";
 
-import { LayerGroup } from './LayerGroup';
+import { LayerGroup } from "./LayerGroup";
 
-import { buildings, parking, familyCampus, entrances } from './Layers';
-import { ControlButtons } from './ControlButtons';
+import {
+  buildings,
+  parking,
+  familyCampus,
+  entrances,
+  etageOneRooms,
+  etageTwoRooms,
+  roomsGänge,
+} from "./Layers";
 
-import { ContextProvider } from './AppContext';
-import DrawerComponent from './Drawer';
-import ClickedBuilding from './ClickedBuilding';
-import SearchComponent from './Search';
-import FetchNextBikeApi from './FetchNextBikeApi';
-import MenuContainer from './MenuContainer';
-import { SearchBuildingContainer } from './SearchBuildingContainer';
-import ToggleMenuContainerBtn from './ToggleMenuContainerBtn';
-import CampusAreas from './CampusAreas';
-import Legend from './Legend';
-import EntranceLegend from './EntranceLegende';
+import { EntranceLayer } from "./Layers";
+import { ControlButtons } from "./ControlButtons";
 
-import Feature from 'ol/Feature';
-import Point from 'ol/geom/Point';
-import VectorLayer from 'ol/layer/Vector';
-import VectorSource from 'ol/source/Vector';
-import { getPointResolution } from 'ol/proj';
+import { ContextProvider } from "./AppContext";
+import DrawerComponent from "./Drawer";
+import ClickedBuilding from "./ClickedBuilding";
+import SearchComponent from "./Search";
+import FetchNextBikeApi from "./FetchNextBikeApi";
+import MenuContainer from "./MenuContainer";
+import { SearchBuildingContainer } from "./SearchBuildingContainer";
+import ToggleMenuContainerBtn from "./ToggleMenuContainerBtn";
+import CampusAreas from "./CampusAreas";
+import Legend from "./Legend";
+import EntranceLegende from "./EntranceLegende";
+
+import Feature from "ol/Feature";
+import Point from "ol/geom/Point";
+import VectorLayer from "ol/layer/Vector";
+import VectorSource from "ol/source/Vector";
 
 // global variables
 const center = [771105.02, 6608382.01]; //Cologne
 
 // create costum overviewmap
 const costumOverviewMapControl = new OverviewMap({
-  className: 'ol-overviewmap ol-custom-overviewmap',
+  className: "ol-overviewmap ol-custom-overviewmap",
   layers: [
     new TileLayer({
       source: new OSM(),
@@ -62,7 +71,16 @@ const Map = () => {
   });
 
   const map = new OlMap({
-    layers: [LayerGroup, buildings, parking, entrances, familyCampus],
+    layers: [
+      LayerGroup,
+      buildings,
+      parking,
+      entrances,
+      familyCampus,
+      etageOneRooms,
+      etageTwoRooms,
+      roomsGänge,
+    ],
     controls: defaultControls().extend([
       new FullScreen(),
       costumOverviewMapControl,
@@ -72,13 +90,12 @@ const Map = () => {
 
   // unvisible by default (can be toggled in MenuContainer.js)
   familyCampus.setVisible(false);
-  entrances.setVisible(false);
   parking.setVisible(false);
 
   // adding point to map
   const iconFeature = new Feature({
     geometry: new Point([771105.02, 6608382.01]),
-    name: 'Island',
+    name: "Island",
   });
 
   var vectorSource = new VectorSource({
@@ -123,10 +140,12 @@ const Map = () => {
   // map.addLayer(vectorLayer);
 
   // return function
+
   return (
-    <div className='App'>
+    <div className="App">
       <ContextProvider>
-        <EntranceLegend />
+        <EntranceLayer map={map} />
+        <EntranceLegende map={map} />
         <Legend />
         <CampusAreas map={map} />
         <ToggleMenuContainerBtn />
@@ -136,7 +155,7 @@ const Map = () => {
         <ClickedBuilding map={map} />
         <DrawerComponent />
         <ControlButtons map={map} />
-        <SearchComponent />
+        <SearchComponent map={map} />
         <MapComponent map={map} />
       </ContextProvider>
     </div>

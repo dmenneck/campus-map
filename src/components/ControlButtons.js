@@ -16,17 +16,21 @@ export const ControlButtons = ({ map }) => {
     message.loading("Ihre Position wird ermittelt...", 2);
   };
 
+  const extent = [
+    762864.8690265608,
+    6603865.927129606,
+    777214.4098265609,
+    6612765.642329605,
+  ];
+
+  const zoomToExtent = () => {
+    map.getView().fit(extent, map.getSize());
+  };
+
   return (
     <>
-      <ZoomToExtentButton
-        id="zoomToExtBtn"
-        map={map}
-        extent={extent1}
-        fitOptions={{
-          duration: 3000,
-          maxZoom: 10,
-        }}
-      ></ZoomToExtentButton>
+      <button id="zoomToExtBtn" onClick={zoomToExtent}></button>
+
       <div onClick={success}>
         <GeoLocationButton
           onGeolocationChange={() => undefined}

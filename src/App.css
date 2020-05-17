@@ -97,12 +97,6 @@
   padding: 0 10px !important;
 }
 
-#zoomToExtBtn:hover,
-#getlocationbtn:hover,
-.ol-control button:hover {
-  border: 2px solid #002c37 !important;
-}
-
 /* OL Controls */
 .ol-control {
   background-color: rgba(200, 209, 219, 0) !important;
@@ -169,24 +163,10 @@
   right: 0 !important;
 }
 
-div.ol-custom-overviewmap,
-div.ol-custom-overviewmap.ol-uncollapsible {
-  bottom: 20px;
-  left: 15px;
-  right: auto;
-  top: auto;
-}
-
-div.ol-custom-overviewmap:not(.ol-collapsed) {
-  border: 2px solid #32475b;
-  width: 200px !important;
-}
-
-div.ol-custom-overviewmap:not(.ol-collapsed) button {
-  bottom: auto;
-  left: auto;
-  right: 1px;
-  top: 1px;
+.ol-custom-overviewmap,
+.ol-costum-overviewmap.ol-uncollapsible {
+  bottom: 25px;
+  left: 25px;
 }
 
 #toggleMenuContainerBtn {
@@ -405,16 +385,16 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 }
 
 .buildingDataLink {
-  font-size: 16px;
+  font-size: 14px;
   padding: 10px;
   display: block;
   color: black;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid #e3e8ea;
 }
 
 .buildingDataLink:hover {
   color: #32475b;
-  background-color: #7a93ab;
+  background-color: #e3e8eb;
 }
 
 #buildingDataLinkContainer {
@@ -429,7 +409,7 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 #tabTwoName {
   color: rgba(0, 0, 0, 0.85);
   font-weight: 500;
-  font-size: 20px;
+  font-size: 16x;
 }
 
 #tabTwoAdress {
@@ -445,11 +425,15 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 }
 
 .ant-tree-checkbox-inner {
-  width: 50px !important;
-  height: 50px !important;
+  width: 40px !important;
+  height: 40px !important;
   border: 1px solid black !important;
   background: url("../src/data/img/suche.png") no-repeat !important;
   background-size: 100% !important;
+}
+
+.ant-tree-checkbox {
+  color: none !important;
 }
 
 .ant-tree {
@@ -461,12 +445,35 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 }
 
 .ant-menu-item:first-child {
+  height: 60px !important;
+}
+
+.ant-menu-item:nth-child(2) {
   height: 80px !important;
+}
+
+.ant-menu:not(.ant-menu-horizontal) {
+  background-color: #fff !important;
+}
+
+#menu-item-two {
+  background-color: #fff !important;
+  height: 220px !important;
+}
+
+#menu-item-four {
+  background-color: #e3e8ea;
+  margin: 0;
+  border-bottom: 1px solid #32475b;
+}
+
+#menu-item-five {
+  background-color: #e3e8ea;
+  margin: 0;
 }
 
 .ant-menu-item {
   padding-left: 10px !important;
-  height: auto !important;
 }
 
 .dropdowns {
@@ -562,8 +569,8 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 }
 
 .buildings-visibil-btn {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border: 1px solid black;
   margin-right: 5px;
 }
@@ -573,34 +580,57 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 }
 
 .ant-menu-submenu-title {
-  border-bottom: 1px solid #e3e8ea !important;
+  border-bottom: 1px solid #32475b !important;
   padding-left: 10px !important;
+  margin: 0 !important;
+  background-color: #e3e8ea !important;
+}
+
+.menu-search-btn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+  margin-right: 5px;
+  margin-top: 7px;
 }
 
 #campus-Areas-Container {
   position: absolute;
   z-index: 1;
-  border-left: 4px solid #32475b;
   left: 20%;
   top: 40%;
   width: 200px;
   height: 300px;
-  background-color: white;
+  background-color: #e3e8ea;
+  border-radius: 4px 4px 4px 4px;
+  overflow-y: scroll;
 }
 
 #bereiche-title {
-  font-size: 20px;
-  padding: 10px;
+  font-size: 18px;
   border-bottom: 1px solid #e3e8ea;
   color: white;
+  background-color: #32475b;
+  height: 35px;
+  border-radius: 4px 4px 0 0;
+}
+
+.campus-areas-spans {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid #e3e8ea;
+}
+
+.campus-areas-spans:hover {
   background-color: #32475b;
 }
 
 #hamburger-menu-container {
   position: absolute;
   z-index: 1;
-  top: 80px;
-  right: 20px;
+  top: 60px;
+  right: 10px;
   padding: 15px;
   background-color: white;
   border-radius: 50px;
@@ -610,6 +640,10 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 #geolocation-btn-img {
   width: 20px;
   height: 20px;
+}
+
+.ant-divider-inner-text {
+  font-size: 12px !important;
 }
 
 .legendeGridOne {
@@ -775,7 +809,11 @@ div.ol-custom-overviewmap:not(.ol-collapsed) button {
 
 .ant-drawer-content-wrapper .ant-drawer-title {
   color: white !important;
-  font-size: 24px !important;
+  font-size: 18px !important;
+}
+
+.ant-drawer-wrapper-body {
+  background-color: #c8d1db !important;
 }
 
 button:focus {
@@ -820,14 +858,18 @@ button:focus {
   background-color: #32475b !important;
   padding: 10px !important;
   border-radius: none !important;
+  height: 35px !important;
+  position: -webkit-sticky !important; /* Safari */
+  position: sticky !important;
+  top: 0 !important;
 }
 
 .ant-drawer-close {
   background-color: red !important;
-  background-image: url(./data/img/backgroundCloseBtn.png) !important;
-
-  width: 30px !important;
-  height: 30px !important;
+  border: 1px solid white !important;
+  margin: 5px 10px 0 10px !important;
+  width: 25px !important;
+  height: 25px !important;
 }
 
 .anticon {
