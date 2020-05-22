@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import Draggable from "react-draggable";
 import { AppContext } from "./AppContext";
+import { Divider } from "antd";
 
-const CampusAreas = ({ map }) => {
+export const CampusAreas = ({ map }) => {
   const { value9 } = useContext(AppContext);
   const [campusAreasContainer, setCampusAreasContainer] = value9;
 
@@ -71,32 +71,32 @@ const CampusAreas = ({ map }) => {
 
   if (campusAreasContainer) {
     return (
-      <Draggable>
-        <div id="campus-Areas-Container">
-          <div id="bereiche-title">
-            Bereiche
-            <button id="close-data-container-btn" onClick={removeContainer}>
-              x
-            </button>
-          </div>
-          <button onClick={getExtent}>get current extent</button>
-          <span onClick={zoomToHauptgebäude} className="campus-areas-spans">
-            Hauptgebäude (inkl. Wiso, Bib, ...)
-          </span>
-          <span onClick={zoomToMedizinkomplex} className="campus-areas-spans">
-            Medizinkomplex
-          </span>
-          <span onClick={zoomToPhysicAndChemie} className="campus-areas-spans">
-            Physik und Chemie
-          </span>
-          <span onClick={zoomToBioAndGeo} className="campus-areas-spans">
-            Biologie und Geowissenschaften
-          </span>
-          <span onClick={zoomToHumf} className="campus-areas-spans">
-            Humanwissenschften
-          </span>
+      <div id="campus-Areas-Container">
+        <div id="bereiche-title">
+          Beliebte Suchanfragen
+          <button id="close-data-container-btn" onClick={removeContainer}>
+            x
+          </button>
         </div>
-      </Draggable>
+        <ul>
+          {/*<li onClick={getExtent}>get current extent</li>*/}
+          <li onClick={zoomToHauptgebäude} className="campus-areas-spans">
+            Hauptgebäude (inkl. Wiso, Bib, ...)
+          </li>
+          <li onClick={zoomToMedizinkomplex} className="campus-areas-spans">
+            Medizinkomplex
+          </li>
+          <li onClick={zoomToPhysicAndChemie} className="campus-areas-spans">
+            Physik und Chemie
+          </li>
+          <li onClick={zoomToBioAndGeo} className="campus-areas-spans">
+            Biologie und Geowissenschaften
+          </li>
+          <li onClick={zoomToHumf} className="campus-areas-spans">
+            Humanwissenschften
+          </li>
+        </ul>
+      </div>
     );
   } else {
     return null;

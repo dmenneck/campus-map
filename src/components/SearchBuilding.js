@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { AgFeatureGrid } from '@terrestris/react-geo';
-import OlStyle from 'ol/style/Style';
-import { Fill } from 'ol/style';
+import React, { useState, useEffect } from "react";
+import { AgFeatureGrid } from "@terrestris/react-geo";
+import OlStyle from "ol/style/Style";
+import { Fill } from "ol/style";
 
-import { buildings } from './Layers';
+import { buildings } from "./Layers";
 
 const SearchBuilding = ({ map }) => {
   const [features, setFeatures] = useState([]);
@@ -19,41 +19,41 @@ const SearchBuilding = ({ map }) => {
       map={map}
       columnDefs={{
         name: {
-          headerName: 'Name',
+          headerName: "Name",
           sortable: true,
           filter: true,
           resiable: true,
         },
         barrier_free_entrance: {
-          headerName: 'Barrierefreiheit',
+          headerName: "Barrierefreiheit",
           sortable: true,
           filter: true,
           resiable: true,
         },
         address: {
-          headerName: 'Addresse',
+          headerName: "Addresse",
           sortable: true,
           filter: true,
           resiable: true,
         },
         building_number: {
-          headerName: 'Gebäudenr.',
+          headerName: "Gebäudenr.",
           sortable: true,
           filter: true,
           resiable: true,
         },
       }}
       attributeBlacklist={[
-        'facilities_name',
-        'facilities_hyperlink',
-        'image',
-        'type',
+        "facilities_name",
+        "facilities_hyperlink",
+        "image",
+        "type",
       ]}
-      className='agFeatureGrid'
+      className="agFeatureGrid"
       featureStyle={
         new OlStyle({
           fill: new Fill({
-            color: 'rgba(0,0,0,0)',
+            color: "rgba(0,0,0,0)",
           }),
         })
       }

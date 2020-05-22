@@ -1,9 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AppContext } from "./AppContext";
 import OlVector from "ol/layer/Vector";
 import OlVectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
 import { Style, Fill, Stroke } from "ol/style";
+import OlLayerTile from "ol/layer/Tile";
+import TileWMS from "ol/source/TileWMS";
+import OSMSource from "ol/source/OSM";
 
 import buildingsData from "../data/geoData/uniBuildings.geojson";
 import parkingData from "../data/geoData/parking.geojson";
@@ -22,25 +25,83 @@ import elternKindRaum from "../data/img/elternKindRaum.png";
 import kita from "../data/img/kita.png";
 import spielplatz from "../data/img/spielplatz.png";
 import unisex from "../data/img/unisex.png";
-import barrierfreeEntrance from "../data/img/barrierefreierEingang.jpeg";
-import bluedot from "../data/img/bluedot.PNG";
-import orangedot from "../data/img/orangedot.PNG";
+import bluedot from "../data/img/bluedot.png";
+import orangedot from "../data/img/orangedot.png";
 
 import OlStyleIcon from "ol/style/Icon";
-import { mappify } from "@terrestris/react-geo";
+
+// map tiles (nrwWms & osmTileLayer)
+export const nrwWms = new OlLayerTile({
+  source: new TileWMS({
+    url: "https://www.wms.nrw.de/geobasis/wms_nw_dop",
+    params: { LAYERS: "nw_dop_rgb" },
+  }),
+});
+
+export const osmTileLayer = new OlLayerTile({
+  name: "OSM",
+  visible: true,
+  source: new OSMSource(),
+});
+
+let entrancesStyle1 = "";
+let entrancesStyle2 = "";
 
 export const EntranceLayer = ({ map }) => {
-  const { value2 } = useContext(AppContext);
+  const { value6, value2 } = useContext(AppContext);
   const [layerClicked, isLayerClicked] = value2;
+  const [clickedBuildingsInformation, setclickedBuildingsInformation] = value6;
+
+  let num = clickedBuildingsInformation.building_number;
 
   if (layerClicked) {
     entrances.setVisible(true);
   } else {
     entrances.setVisible(false);
   }
+  console.log(num);
+
+  // entrance layer styles:
+
+  entrancesStyle1 = new Style({
+    image: new OlStyleIcon({
+      scale: 0.05,
+      src: bluedot,
+    }),
+  });
+
+  entrancesStyle2 = new Style({
+    image: new OlStyleIcon({
+      scale: 0.05,
+      src: orangedot,
+    }),
+  });
 
   return null;
 };
+
+// create entrances layer -> if clickedBuilding ID === entrances feature.get("id") -> return style
+export const entrances = new OlVector({
+  source: new OlVectorSource({
+    url: entrancesData,
+    format: new GeoJSON(),
+  }),
+  style: function (feature, resolution) {
+    const entranceType = feature.get("entr_type");
+
+    if (entranceType === "entrance") {
+      return entrancesStyle1;
+    } else {
+      return entrancesStyle2;
+    }
+  },
+});
+
+// Building layer style
+export const highlightStyle = new Style({
+  fill: new Fill({ color: "#e3e8eb" }),
+  stroke: new Stroke({ color: "rgba(73, 139, 170, 0.9)", width: 1 }),
+});
 
 // create Buildings layer
 export const source = new OlVectorSource({
@@ -59,37 +120,6 @@ export const buildings = new OlVector({
       color: "#4a657d",
     }),
   }),
-});
-
-// entrance layer styles:
-const entrancesStyle1 = new Style({
-  image: new OlStyleIcon({
-    scale: 0.1,
-    src: bluedot,
-  }),
-});
-
-const entrancesStyle2 = new Style({
-  image: new OlStyleIcon({
-    scale: 0.1,
-    src: orangedot,
-  }),
-});
-
-// create entrances layer -> if clickedBuilding ID === entrances feature.get("id") -> return style
-export const entrances = new OlVector({
-  source: new OlVectorSource({
-    url: entrancesData,
-    format: new GeoJSON(),
-  }),
-  style: function (feature, resolution) {
-    const entranceType = feature.get("entr_type");
-    if (entranceType === "entrance") {
-      return entrancesStyle1;
-    } else {
-      return entrancesStyle2;
-    }
-  },
 });
 
 export const etageOneRooms = new OlVector({

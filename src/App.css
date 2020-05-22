@@ -157,6 +157,20 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
+.react-geo-layertree-node {
+  display: inline !important;
+  position: absolute !important;
+  padding: 10px !important;
+}
+
+.react-geo-layertree-node:first-child {
+  margin-left: -12px !important;
+}
+
+.react-geo-layertree-node:nth-child(2) {
+  margin-left: 40px !important;
+}
+
 .ol-zoomslider-thumb {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   position: absolute !important;
@@ -225,7 +239,7 @@
 }
 
 .ant-input-search {
-  width: 292px !important;
+  width: 312px !important;
   height: 48px !important;
   border-radius: 8px 8px 0 0;
   padding: 10px !important;
@@ -241,12 +255,22 @@
   width: 35px;
   height: 35px;
   margin-right: 0px;
-  margin-left: 2px;
+  margin-left: 0px;
   border: 1px solid transparent;
 }
 
+#legende-container {
+  position: absolute;
+  z-index: 1;
+  bottom: 340px;
+  left: 20px;
+  border-radius: 8px 8px 8px 8px;
+  background-color: #fff;
+  width: 285px;
+}
+
 #searchbar-btns {
-  width: 85px;
+  width: 45px;
   position: absolute;
   top: 4px;
   display: inline-block;
@@ -255,7 +279,7 @@
 }
 
 #search-container {
-  width: 392px !important;
+  width: 352px !important;
   height: 48px !important;
   background-color: #fff;
   border-radius: 8px 8px 8px 8px;
@@ -425,15 +449,18 @@
 }
 
 .ant-tree-checkbox-inner {
-  width: 40px !important;
-  height: 40px !important;
+  width: 35px !important;
+  height: 35px !important;
   border: 1px solid black !important;
-  background: url("../src/data/img/suche.png") no-repeat !important;
-  background-size: 100% !important;
+  display: inline-block !important;
 }
 
-.ant-tree-checkbox {
-  color: none !important;
+.toggle-basemap-btns {
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+  margin-right: 5px;
+  margin-top: 10px;
 }
 
 .ant-tree {
@@ -446,6 +473,15 @@
 
 .ant-menu-item:first-child {
   height: 60px !important;
+  background-color: #fff !important;
+}
+
+.ant-menu:first-child {
+  border-radius: 8px 8px 8px 8px !important;
+}
+
+.ant-menu:last-child {
+  border-radius: 8px 8px 8px 8px !important;
 }
 
 .ant-menu-item:nth-child(2) {
@@ -470,6 +506,7 @@
 #menu-item-five {
   background-color: #e3e8ea;
   margin: 0;
+  border-radius: 0px 0px 8px 8px !important;
 }
 
 .ant-menu-item {
@@ -562,6 +599,7 @@
   right: 15px;
   top: 20%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 4px 4px 4px 4px;
 }
 
 .menu-container-title {
@@ -575,6 +613,57 @@
   margin-right: 5px;
 }
 
+#analysis-icon-img {
+  width: 20px;
+  height: auto;
+}
+
+#analysis-btn-one,
+#analysis-btn-two,
+#analysis-btn-three {
+  position: absolute;
+  z-index: 1;
+  border-radius: 50px;
+  padding: 7.5px;
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid black;
+  background-color: #c8d1db;
+}
+
+#analysis-btn-one {
+  top: 60px;
+  right: 160px;
+}
+
+#analysis-btn-two {
+  top: 106px;
+  right: 148px;
+  offset-path: path("M 5 -30 C 20 20, 20 20, 20 20");
+  animation: move 0.4s linear alternate;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+#analysis-btn-three {
+  top: 126px;
+  right: 104px;
+  offset-path: path("M -40 -50 C 20 20, 20 20, 20 20");
+  animation: move 0.4s linear alternate;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+@keyframes move {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
 .ant-tree li span.ant-tree-switcher {
   display: none !important;
 }
@@ -584,6 +673,19 @@
   padding-left: 10px !important;
   margin: 0 !important;
   background-color: #e3e8ea !important;
+}
+
+.ant-menu-submenu-inline {
+  background-color: #e3e8ea !important;
+}
+
+.ant-menu-submenu-title:first-child {
+  border-radius: 8px 8px 0px 0px !important;
+}
+
+.ant-menu-submenu:first-child {
+  background-color: #e3e8ea !important;
+  border-radius: 10px 10px 0 0;
 }
 
 .menu-search-btn {
@@ -597,21 +699,24 @@
 #campus-Areas-Container {
   position: absolute;
   z-index: 1;
-  left: 20%;
-  top: 40%;
-  width: 200px;
-  height: 300px;
-  background-color: #e3e8ea;
+  left: 20px;
+  bottom: 340px;
+  width: 285px;
+  height: 153px;
+  background-color: white;
   border-radius: 4px 4px 4px 4px;
   overflow-y: scroll;
 }
 
 #bereiche-title {
+  position: sticky !important;
+  top: 0;
   font-size: 18px;
-  border-bottom: 1px solid #e3e8ea;
-  color: white;
-  background-color: #32475b;
+  border-bottom: 1px solid #32475b;
+  color: black;
+  background-color: #e3e8ea;
   height: 35px;
+  padding: 5px;
   border-radius: 4px 4px 0 0;
 }
 
@@ -620,10 +725,17 @@
   width: 100%;
   padding: 10px;
   border-bottom: 1px solid #e3e8ea;
+  background-color: #fff !important;
+  font-size: 14px;
 }
 
 .campus-areas-spans:hover {
-  background-color: #32475b;
+  background-color: blue;
+  color: red;
+}
+
+.barrier-free-entrance-text {
+  margin-bottom: 5px;
 }
 
 #hamburger-menu-container {
@@ -632,6 +744,17 @@
   top: 60px;
   right: 10px;
   padding: 15px;
+  background-color: white;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+#open-analysis-btns {
+  position: absolute;
+  z-index: 1;
+  top: 60px;
+  right: 90px;
+  padding: 30px;
   background-color: white;
   border-radius: 50px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -648,12 +771,14 @@
 
 .legendeGridOne {
   display: grid;
-  grid-template-columns: 30px 150px;
+  grid-template-columns: 30px 250px;
+  padding: 5px;
 }
 
 .legendeGridTwo {
   display: grid;
-  grid-template-columns: 30px 150px 30px 150px;
+  grid-template-columns: 24px 120px 24px 110px;
+  padding: 5px;
 }
 
 .legende-images {
@@ -664,6 +789,13 @@
 .legende-text {
   margin: 0;
   padding: 0;
+}
+
+.legende-text-grid-two {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  padding: 2px;
 }
 
 .legende-text-title {
@@ -733,7 +865,7 @@
   left: 22px;
   width: 285px;
   height: 300px;
-  background-color: #c8d1db;
+  background-color: #fff;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 2%;
 }
@@ -753,6 +885,7 @@
 
 #open-drawer-btn {
   margin: 15px 10px 5px 140px;
+  border: 1px solid black;
 }
 
 #open-drawer-btn span {
@@ -775,9 +908,9 @@
 .clicked-data-container-text {
   border-radius: 2%;
   height: auto;
-  padding: 10px;
+  padding: 5px 10px 0 10px;
   margin: 0 auto 0 auto;
-  background-color: #a5b6c7;
+  background-color: #fff;
 }
 
 #pos-relative-for-drawer {
@@ -801,19 +934,20 @@
 #clicked-data-container-header {
   width: 100%;
   height: 35px;
-  background-color: #32475b;
+  background-color: #e3e8ea;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+  border-bottom: 1px solid #32475b;
 }
 
 .ant-drawer-content-wrapper .ant-drawer-title {
-  color: white !important;
+  color: black !important;
   font-size: 18px !important;
 }
 
 .ant-drawer-wrapper-body {
-  background-color: #c8d1db !important;
+  background-color: #fff !important;
 }
 
 button:focus {
@@ -847,15 +981,36 @@ button:focus {
 }
 
 .legende-title {
-  background-color: #32475b;
+  background-color: #e3e8ea;
   width: 100%;
-  color: white;
+  color: black;
   padding: 8px;
   height: 35px;
+  border-radius: 8px 8px 0 0;
+  border-bottom: 1px solid #32475b;
+  display: inline-block;
+}
+
+#parking-divider {
+  margin: 0;
+  padding-bottom: 5px;
+}
+
+#close-parking-legende-btn {
+  display: inline-block;
+  float: right;
+  padding: 0;
+  margin: 0;
+  width: 25px;
+  height: 25px;
+  background-color: #32475b;
+  border: 1px solid #fff;
+  color: #fff;
 }
 
 .ant-drawer-header {
-  background-color: #32475b !important;
+  background-color: #e3e8ea !important;
+  color: black !important;
   padding: 10px !important;
   border-radius: none !important;
   height: 35px !important;
@@ -865,11 +1020,11 @@ button:focus {
 }
 
 .ant-drawer-close {
-  background-color: red !important;
   border: 1px solid white !important;
   margin: 5px 10px 0 10px !important;
   width: 25px !important;
   height: 25px !important;
+  background-color: #32475b !important;
 }
 
 .anticon {
@@ -878,5 +1033,5 @@ button:focus {
 
 .ant-drawer-body {
   padding: 0 !important;
-  background-color: #c8d1db !important;
+  background-color: #fff !important;
 }

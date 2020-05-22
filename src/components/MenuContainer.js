@@ -1,8 +1,14 @@
 import React, { useContext, useState } from "react";
 import { Menu, Divider } from "antd";
 import { LayerTree } from "@terrestris/react-geo";
-import { LayerGroup } from "./LayerGroup";
-import { buildings, parking, familyCampus } from "./Layers";
+
+import {
+  buildings,
+  parking,
+  familyCampus,
+  nrwWms,
+  osmTileLayer,
+} from "./Layers";
 import { AppContext } from "./AppContext";
 import {
   AppstoreOutlined,
@@ -11,23 +17,37 @@ import {
   InfoCircleOutlined,
 } from "@ant-design/icons";
 
-import buildingsLogo from "../data/img/buildings.png"; // import pic into word and go to "Grafik formatieren" -> "Bild" -> Sättigung = 10%, Transparenz = 60%
-import buildingsLogoOff from "../data/img/buildingsOff.png";
+import buildingsLogo from "../data/img/buildings.png";
 import parkingLogo from "../data/img/parkenUni.png";
 import wickelraum from "../data/img/wickelraum.png";
+import osmsource from "../data/img/osmsource.PNG";
+import tilewms from "../data/img/tilewms.PNG";
 
 const { SubMenu } = Menu;
 
 export default function MenuContainer({ map }) {
-  const { value4, value5, value7, value8, value9, value10 } = useContext(
-    AppContext
-  );
+  const {
+    value4,
+    value5,
+    value7,
+    value8,
+    value9,
+    value10,
+    value11,
+    value12,
+  } = useContext(AppContext);
   const [isDrawerVisible, setIsDrawerVisible] = value5;
   const [searchBuildingVisibility, setSearchBuildingVisibility] = value4;
   const [searchBarVisibility, setSearchBarVisibility] = value7;
   const [menuContainerVisibility, setMenuContainerVisibility] = value8;
   const [campusAreasContainer, setCampusAreasContainer] = value9;
   const [legendeVisibility, setLegendeVisibilty] = value10;
+  const [parkingLegendeVisibility, setParkingLegendeVisibility] = value11;
+  const [
+    familyCampusLegendeVisibility,
+    setFamilyCampusLegendeVisibility,
+  ] = value12;
+
   const [buildingsVisibility, setBuildingsVisibility] = useState(true);
   const [familyCampusVisibility, setFamilyCampusVisibility] = useState(false);
   const [parkingVisibility, setParkingVisibility] = useState(false);
@@ -46,9 +66,13 @@ export default function MenuContainer({ map }) {
     if (familyCampus.getVisible() === true) {
       familyCampus.setVisible(false);
       setFamilyCampusVisibility(false);
+      setFamilyCampusLegendeVisibility(false);
     } else {
       familyCampus.setVisible(true);
       setFamilyCampusVisibility(true);
+      setFamilyCampusLegendeVisibility(true);
+      setCampusAreasContainer(false);
+      setParkingLegendeVisibility(false);
     }
   };
 
@@ -56,9 +80,13 @@ export default function MenuContainer({ map }) {
     if (parking.getVisible() === true) {
       parking.setVisible(false);
       setParkingVisibility(false);
+      setParkingLegendeVisibility(false);
     } else {
       parking.setVisible(true);
       setParkingVisibility(true);
+      setParkingLegendeVisibility(true);
+      setCampusAreasContainer(false);
+      setFamilyCampusLegendeVisibility(false);
     }
   };
 
@@ -91,11 +119,25 @@ export default function MenuContainer({ map }) {
       setCampusAreasContainer(false);
     } else {
       setCampusAreasContainer(true);
+      setFamilyCampusLegendeVisibility(false);
+      setParkingLegendeVisibility(false);
     }
   };
 
-  const toggleLegende = () => {
-    setLegendeVisibilty(true);
+  const toggleOsmTileVisibility = () => {
+    if (osmTileLayer.getVisible() === true) {
+      osmTileLayer.setVisible(false);
+    } else {
+      osmTileLayer.setVisible(true);
+    }
+  };
+
+  const toggleNrwWmsVisibility = () => {
+    if (nrwWms.getVisible() === true) {
+      nrwWms.setVisible(false);
+    } else {
+      nrwWms.setVisible(true);
+    }
   };
 
   if (menuContainerVisibility) {
@@ -114,7 +156,26 @@ export default function MenuContainer({ map }) {
             }
           >
             <Menu.Item key="1">
-              <LayerTree map={map} layerGroup={LayerGroup} />
+              <button
+                onClick={toggleOsmTileVisibility}
+                className="toggle-basemap-btns"
+                style={{
+                  backgroundImage: `url(${osmsource})`,
+                  backgroundSize: "cover",
+                  opacity: buildingsVisibility ? "1" : "0.4",
+                }}
+                title="Open Street Map"
+              ></button>
+              <button
+                onClick={toggleNrwWmsVisibility}
+                className="toggle-basemap-btns"
+                style={{
+                  backgroundImage: `url(${tilewms})`,
+                  backgroundSize: "cover",
+                  opacity: buildingsVisibility ? "1" : "0.4",
+                }}
+                title="Geobasis WMS"
+              ></button>
             </Menu.Item>
           </SubMenu>
 
@@ -128,7 +189,7 @@ export default function MenuContainer({ map }) {
             }
           >
             <Menu.Item key="2" id="menu-item-two">
-              <Divider orientation="left" plain className="unselectable">
+              <Divider orientation="left" plain="true" className="unselectable">
                 Campus Daten
               </Divider>
               <button
@@ -161,22 +222,15 @@ export default function MenuContainer({ map }) {
                 }}
                 title="Familien-Campus"
               ></button>
-              <button
-                onClick={toggleLegende}
-                className="buildings-visibil-btn"
-              ></button>
-              <Divider orientation="left" plain className="unselectable">
+
+              <Divider orientation="left" plain="true" className="unselectable">
                 Externe Daten
               </Divider>
               <button
-                onClick={toggleLegende}
                 className="buildings-visibil-btn"
                 title="KvB-Räder"
               ></button>
-              <button
-                onClick={toggleLegende}
-                className="buildings-visibil-btn"
-              ></button>
+              <button className="buildings-visibil-btn"></button>
             </Menu.Item>
           </SubMenu>
 

@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState } from "react";
 
 export const AppContext = createContext();
 
@@ -18,6 +18,14 @@ export const ContextProvider = (props) => {
   const [menuContainerVisibility, setMenuContainerVisibility] = useState(false);
   const [campusAreasContainer, setCampusAreasContainer] = useState(false);
   const [legendeVisibility, setLegendeVisibilty] = useState(false);
+  const [parkingLegendeVisibility, setParkingLegendeVisibility] = useState(
+    false
+  );
+  const [
+    familyCampusLegendeVisibility,
+    setFamilyCampusLegendeVisibility,
+  ] = useState(false);
+  const [analysisBtnsVisibility, setAnalysisBtnsVisibility] = useState(false);
 
   return (
     <AppContext.Provider
@@ -31,6 +39,12 @@ export const ContextProvider = (props) => {
         value8: [menuContainerVisibility, setMenuContainerVisibility],
         value9: [campusAreasContainer, setCampusAreasContainer],
         value10: [legendeVisibility, setLegendeVisibilty],
+        value11: [parkingLegendeVisibility, setParkingLegendeVisibility],
+        value12: [
+          familyCampusLegendeVisibility,
+          setFamilyCampusLegendeVisibility,
+        ],
+        value13: [analysisBtnsVisibility, setAnalysisBtnsVisibility],
       }}
     >
       {props.children}

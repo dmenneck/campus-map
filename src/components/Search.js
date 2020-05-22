@@ -4,6 +4,8 @@ import { AppContext } from "./AppContext";
 import { buildings } from "./Layers";
 import { source } from "./Layers";
 import Suche from "../data/img/suche.png";
+import Style from "ol/style/Style";
+import { Fill, Stroke } from "ol/style";
 
 const { Search } = Input;
 
@@ -13,6 +15,11 @@ const SearchComponent = ({ map }) => {
   const [features, setFeatures] = useState([]);
   const [search, setSearch] = useState("");
   const [clickedFeature, setClickedFeature] = useState("");
+
+  const clickedBuildingsStyle = new Style({
+    fill: new Fill({ color: "#a5b6c7" }),
+    stroke: new Stroke({ color: "rgba(73, 139, 170, 0.9)", width: 1 }),
+  });
 
   // get Features async
   useEffect(() => {
@@ -35,11 +42,14 @@ const SearchComponent = ({ map }) => {
     let clickedBuilding = e.target.innerHTML; // string
 
     let mappedFeatures = features.map((item) => {
-      if (clickedBuilding === item.values_.name) {
-        setClickedFeature(item.values_.geometry);
+      if (clickedBuilding === item.get("name")) {
+        setClickedFeature(item.getGeometry());
 
         // get the clicked feature and set view based on the feature extent
         map.getView().fit(item.getGeometry(), map.getSize());
+
+        item.setStyle(null);
+        item.setStyle(clickedBuildingsStyle);
       }
     });
   };
@@ -60,17 +70,6 @@ const SearchComponent = ({ map }) => {
             value={search}
           />
           <div id="searchbar-btns">
-            <button className="reset-search-input">
-              <img
-                src={Suche}
-                style={{
-                  width: 16,
-                  height: "auto",
-                  margin: 0,
-                  padding: 0,
-                }}
-              ></img>
-            </button>
             <button className="reset-search-input" onClick={resetInput}>
               X
             </button>

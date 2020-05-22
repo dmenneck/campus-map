@@ -1,6 +1,6 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { AppContext } from './AppContext';
-import ShowBuildingData from './ShowBuildingData';
+import React, { useState, useContext, useEffect } from "react";
+import { AppContext } from "./AppContext";
+import ShowBuildingData from "./ShowBuildingData";
 
 // when user clicks on a building, the state changes
 
@@ -10,32 +10,31 @@ function ClickedBuilding({ map }) {
   const [layerClicked, isLayerClicked] = value2;
 
   // get attributes from building layer
-  let data = '';
+  let data = "";
 
-  function OnMouseMove(browserEvent) {
-    var coordinate = browserEvent.coordinate;
+  function OnMouseMove(e) {
+    var coordinate = e.coordinate;
     var pixel = map.getPixelFromCoordinate(coordinate);
 
     const dataValues = map.forEachFeatureAtPixel(pixel, function (feature) {
-      data = feature.values_;
-      console.log(data);
+      data = feature.getProperties();
+
       setclickedBuildingsInformation(data);
       isLayerClicked(true);
+      e.preventDefault();
     });
 
     // check wether layer (one of the buidling polygons) is clicked or not
     if (!dataValues && !data) {
-      console.log('not clicked on a layer');
+      console.log("not clicked on a layer");
       isLayerClicked(false);
     } else {
-      console.log('clicked on a layer');
+      console.log("clicked on a layer");
       isLayerClicked(true);
     }
   }
 
-  console.log(data);
-
-  map.on('click', OnMouseMove);
+  map.on("click", OnMouseMove);
 
   return (
     <div>

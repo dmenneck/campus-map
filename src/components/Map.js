@@ -7,6 +7,11 @@ import {
   FullScreen,
   OverviewMap,
 } from "ol/control";
+import OlVector from "ol/layer/Vector";
+import OlVectorSource from "ol/source/Vector";
+import GeoJSON from "ol/format/GeoJSON";
+import { Style, Fill, Stroke } from "ol/style";
+import Select from "ol/interaction/Select";
 
 import "../App.css";
 import "ol/ol.css";
@@ -16,16 +21,17 @@ import { MapComponent } from "@terrestris/react-geo";
 import TileLayer from "ol/layer/Tile";
 import OSM from "ol/source/OSM";
 
-import { LayerGroup } from "./LayerGroup";
-
 import {
-  buildings,
+  osmTileLayer,
+  nrwWms,
   parking,
   familyCampus,
   entrances,
   etageOneRooms,
   etageTwoRooms,
   roomsGänge,
+  buildings,
+  highlightStyle,
 } from "./Layers";
 
 import { EntranceLayer } from "./Layers";
@@ -42,6 +48,7 @@ import ToggleMenuContainerBtn from "./ToggleMenuContainerBtn";
 import CampusAreas from "./CampusAreas";
 import Legend from "./Legend";
 import EntranceLegende from "./EntranceLegende";
+import AnalysisFunctionsContainer from "./AnalysisFunctionsContainer";
 
 import Feature from "ol/Feature";
 import Point from "ol/geom/Point";
@@ -72,7 +79,8 @@ const Map = () => {
 
   const map = new OlMap({
     layers: [
-      LayerGroup,
+      nrwWms,
+      osmTileLayer,
       buildings,
       parking,
       entrances,
@@ -88,9 +96,43 @@ const Map = () => {
     view: view,
   });
 
-  // unvisible by default (can be toggled in MenuContainer.js)
+  // change style of clicked feature -> still WIP
+  const clickedFeatureStyle = new Style({
+    fill: new Fill({ color: "red)" }),
+    stroke: new Stroke({ color: "rgba(73, 139, 170, 0.9)", width: 1 }),
+  });
+
+  map.on("click", function (e) {
+    const pixel = map.getEventPixel(e.originalEvent);
+    map.forEachFeatureAtPixel(pixel, function (feature) {
+      feature.setStyle(
+        new Style({
+          stroke: new Stroke({ color: "black", width: 2 }),
+          fill: new Fill({ color: "#253746" }),
+        })
+      );
+    });
+  });
+
+  // change style of hovered feature
+  let selected = null;
+  map.on("pointermove", function (e) {
+    if (selected !== null) {
+      selected.setStyle(undefined);
+      selected = null;
+    }
+
+    map.forEachFeatureAtPixel(e.pixel, function (f) {
+      selected = f;
+      f.setStyle(highlightStyle);
+      return true;
+    });
+  });
+
+  // invisible by default (can be toggled in MenuContainer.js)
   familyCampus.setVisible(false);
   parking.setVisible(false);
+  nrwWms.setVisible(false);
 
   // adding point to map
   const iconFeature = new Feature({
@@ -144,6 +186,7 @@ const Map = () => {
   return (
     <div className="App">
       <ContextProvider>
+        <AnalysisFunctionsContainer map={map} />
         <EntranceLayer map={map} />
         <EntranceLegende map={map} />
         <Legend />
