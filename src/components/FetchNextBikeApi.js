@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from "react";
 
-import Feature from 'ol/Feature';
-import Point from 'ol/geom/Point';
-import VectorLayer from 'ol/layer/Vector';
-import VectorSource from 'ol/source/Vector';
+import Feature from "ol/Feature";
+import Point from "ol/geom/Point";
+import VectorLayer from "ol/layer/Vector";
+import VectorSource from "ol/source/Vector";
 
 const FetchNextBike = ({ map }) => {
-  const [bikeData, setBikeData] = useState([]);
-  const url = 'https://api.nextbike.net/maps/nextbike-live.json?city=14';
+  const url = "https://api.nextbike.net/maps/nextbike-live.json?city=14";
 
   useEffect(() => {
     const getFeatures = async () => {
@@ -35,6 +34,8 @@ const FetchNextBike = ({ map }) => {
     getFeatures().then((features) => {
       source.addFeatures(features);
     });
+
+    console.log(bikeLayer);
 
     map.addLayer(bikeLayer);
   }, []);

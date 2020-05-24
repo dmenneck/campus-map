@@ -59,10 +59,8 @@ export const EntranceLayer = ({ map }) => {
   } else {
     entrances.setVisible(false);
   }
-  console.log(num);
 
   // entrance layer styles:
-
   entrancesStyle1 = new Style({
     image: new OlStyleIcon({
       scale: 0.05,
@@ -114,7 +112,7 @@ export const buildings = new OlVector({
   style: new Style({
     stroke: new Stroke({
       color: "black",
-      width: 1.2,
+      width: 1.8,
     }),
     fill: new Fill({
       color: "#4a657d",
@@ -136,7 +134,7 @@ export const etageOneRooms = new OlVector({
       width: 1.2,
     }),
   }),
-  maxResolution: 0.3999999,
+  maxResolution: 0.2999999,
 });
 
 export const etageTwoRooms = new OlVector({
@@ -153,7 +151,7 @@ export const etageTwoRooms = new OlVector({
       width: 1.2,
     }),
   }),
-  maxResolution: 0.3999999,
+  maxResolution: 0.2999999,
 });
 
 export const roomsGänge = new OlVector({
@@ -170,7 +168,7 @@ export const roomsGänge = new OlVector({
       width: 5,
     }),
   }),
-  maxResolution: 0.3999999,
+  maxResolution: 0.2999999,
 });
 
 // parking styles

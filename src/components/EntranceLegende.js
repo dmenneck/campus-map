@@ -11,9 +11,9 @@ const EntranceLegende = ({ map }) => {
     return (
       <div id="entrance-legend">
         <img src={bluedot} style={{ width: "20px", height: "auto" }}></img>
-        <p className="entrance-legend-text">Eingänge</p>
+        <p className="entrance-legend-text unselectable">Eingänge</p>
         <img src={orangedot} style={{ width: "20px", height: "auto" }}></img>
-        <p className="entrance-legend-text">rollstuhlgerecht</p>
+        <p className="entrance-legend-text unselectable">rollstuhlgerecht</p>
       </div>
     );
   } else {

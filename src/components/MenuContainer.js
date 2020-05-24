@@ -22,6 +22,9 @@ import parkingLogo from "../data/img/parkenUni.png";
 import wickelraum from "../data/img/wickelraum.png";
 import osmsource from "../data/img/osmsource.PNG";
 import tilewms from "../data/img/tilewms.PNG";
+import tableIcon from "../data/img/tableIcon.png";
+import searchIcon from "../data/img/suche.png";
+import bicycleIcon from "../data/img/bicycleIcon.jpg";
 
 const { SubMenu } = Menu;
 
@@ -51,6 +54,10 @@ export default function MenuContainer({ map }) {
   const [buildingsVisibility, setBuildingsVisibility] = useState(true);
   const [familyCampusVisibility, setFamilyCampusVisibility] = useState(false);
   const [parkingVisibility, setParkingVisibility] = useState(false);
+  const [osmTileVisibility, setOsmTileVisibility] = useState(false);
+  const [nrwWmsVisibility, setNrwWmsVisibility] = useState(true);
+  const [gridBtnOpacity, setGridBtnOpacity] = useState(false);
+  const [searchbarBtnOpacity, setSearchbarBtnOpacity] = useState(true);
 
   const toggleBuildingsLayerVisibility = () => {
     if (buildings.getVisible() === true) {
@@ -93,8 +100,10 @@ export default function MenuContainer({ map }) {
   const toggleSearchBuildingsVisibility = () => {
     if (searchBuildingVisibility) {
       setSearchBuildingVisibility(false);
+      setGridBtnOpacity(false);
     } else {
       setSearchBuildingVisibility(true);
+      setGridBtnOpacity(true);
     }
   };
 
@@ -109,8 +118,10 @@ export default function MenuContainer({ map }) {
   const toggleSearchbar = () => {
     if (searchBarVisibility) {
       setSearchBarVisibility(false);
+      setSearchbarBtnOpacity(false);
     } else {
       setSearchBarVisibility(true);
+      setSearchbarBtnOpacity(true);
     }
   };
 
@@ -127,16 +138,20 @@ export default function MenuContainer({ map }) {
   const toggleOsmTileVisibility = () => {
     if (osmTileLayer.getVisible() === true) {
       osmTileLayer.setVisible(false);
+      setOsmTileVisibility(false);
     } else {
       osmTileLayer.setVisible(true);
+      setOsmTileVisibility(true);
     }
   };
 
   const toggleNrwWmsVisibility = () => {
     if (nrwWms.getVisible() === true) {
       nrwWms.setVisible(false);
+      setNrwWmsVisibility(false);
     } else {
       nrwWms.setVisible(true);
+      setNrwWmsVisibility(true);
     }
   };
 
@@ -162,7 +177,7 @@ export default function MenuContainer({ map }) {
                 style={{
                   backgroundImage: `url(${osmsource})`,
                   backgroundSize: "cover",
-                  opacity: buildingsVisibility ? "1" : "0.4",
+                  opacity: osmTileVisibility ? "1" : "0.2",
                 }}
                 title="Open Street Map"
               ></button>
@@ -172,7 +187,7 @@ export default function MenuContainer({ map }) {
                 style={{
                   backgroundImage: `url(${tilewms})`,
                   backgroundSize: "cover",
-                  opacity: buildingsVisibility ? "1" : "0.4",
+                  opacity: nrwWmsVisibility ? "1" : "0.4",
                 }}
                 title="Geobasis WMS"
               ></button>
@@ -198,7 +213,7 @@ export default function MenuContainer({ map }) {
                 style={{
                   backgroundImage: `url(${buildingsLogo})`,
                   backgroundSize: "cover",
-                  opacity: buildingsVisibility ? "1" : "0.4",
+                  opacity: buildingsVisibility ? "1" : "0.2",
                 }}
                 title="Gebäude"
               ></button>
@@ -208,7 +223,7 @@ export default function MenuContainer({ map }) {
                 style={{
                   backgroundImage: `url(${parkingLogo})`,
                   backgroundSize: "cover",
-                  opacity: parkingVisibility ? "1" : "0.4",
+                  opacity: parkingVisibility ? "1" : "0.2",
                 }}
                 title="Parken"
               ></button>
@@ -218,7 +233,7 @@ export default function MenuContainer({ map }) {
                 style={{
                   backgroundImage: `url(${wickelraum})`,
                   backgroundSize: "cover",
-                  opacity: familyCampusVisibility ? "1" : "0.4",
+                  opacity: familyCampusVisibility ? "1" : "0.2",
                 }}
                 title="Familien-Campus"
               ></button>
@@ -229,8 +244,21 @@ export default function MenuContainer({ map }) {
               <button
                 className="buildings-visibil-btn"
                 title="KvB-Räder"
+                style={{
+                  backgroundImage: `url(${bicycleIcon})`,
+                  backgroundSize: "cover",
+                  opacity: familyCampusVisibility ? "1" : "0.2",
+                }}
               ></button>
-              <button className="buildings-visibil-btn"></button>
+              <button
+                className="buildings-visibil-btn"
+                title="KvB-Räder"
+                style={{
+                  backgroundImage: `url(${bicycleIcon})`,
+                  backgroundSize: "cover",
+                  opacity: familyCampusVisibility ? "1" : "0.2",
+                }}
+              ></button>
             </Menu.Item>
           </SubMenu>
 
@@ -247,10 +275,20 @@ export default function MenuContainer({ map }) {
               <button
                 onClick={toggleSearchBuildingsVisibility}
                 className="unselectable menu-search-btn"
+                style={{
+                  backgroundImage: `url(${tableIcon})`,
+                  backgroundSize: "cover",
+                  opacity: gridBtnOpacity ? "1" : "0.2",
+                }}
               ></button>
               <button
                 onClick={toggleSearchbar}
                 className="unselectable menu-search-btn"
+                style={{
+                  backgroundImage: `url(${searchIcon})`,
+                  backgroundSize: "cover",
+                  opacity: searchbarBtnOpacity ? "1" : "0.2",
+                }}
               ></button>
             </Menu.Item>
           </SubMenu>

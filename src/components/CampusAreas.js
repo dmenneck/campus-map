@@ -80,19 +80,31 @@ export const CampusAreas = ({ map }) => {
         </div>
         <ul>
           {/*<li onClick={getExtent}>get current extent</li>*/}
-          <li onClick={zoomToHauptgebäude} className="campus-areas-spans">
+          <li
+            onClick={zoomToHauptgebäude}
+            className="campus-areas-spans unselectable"
+          >
             Hauptgebäude (inkl. Wiso, Bib, ...)
           </li>
-          <li onClick={zoomToMedizinkomplex} className="campus-areas-spans">
+          <li
+            onClick={zoomToMedizinkomplex}
+            className="campus-areas-spans unselectable"
+          >
             Medizinkomplex
           </li>
-          <li onClick={zoomToPhysicAndChemie} className="campus-areas-spans">
+          <li
+            onClick={zoomToPhysicAndChemie}
+            className="campus-areas-spans unselectable"
+          >
             Physik und Chemie
           </li>
-          <li onClick={zoomToBioAndGeo} className="campus-areas-spans">
+          <li
+            onClick={zoomToBioAndGeo}
+            className="campus-areas-spans unselectable"
+          >
             Biologie und Geowissenschaften
           </li>
-          <li onClick={zoomToHumf} className="campus-areas-spans">
+          <li onClick={zoomToHumf} className="campus-areas-spans unselectable">
             Humanwissenschften
           </li>
         </ul>

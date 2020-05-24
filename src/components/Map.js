@@ -16,7 +16,7 @@ import Select from "ol/interaction/Select";
 import "../App.css";
 import "ol/ol.css";
 import "antd/dist/antd.css";
-import { MapComponent } from "@terrestris/react-geo";
+import { MapComponent, MeasureButton } from "@terrestris/react-geo";
 
 import TileLayer from "ol/layer/Tile";
 import OSM from "ol/source/OSM";
@@ -132,7 +132,8 @@ const Map = () => {
   // invisible by default (can be toggled in MenuContainer.js)
   familyCampus.setVisible(false);
   parking.setVisible(false);
-  nrwWms.setVisible(false);
+  nrwWms.setVisible(true);
+  osmTileLayer.setVisible(false);
 
   // adding point to map
   const iconFeature = new Feature({
@@ -150,42 +151,43 @@ const Map = () => {
 
   map.addLayer(vectorLayer);
 
-  // try fetching -> TRY WITH USEEFFECT HOOK!!!
-  // const url = 'https://api.nextbike.net/maps/nextbike-live.json?city=14';
-
-  // const getFeatures = async () => {
-  //   let response = await fetch(url);
-  //   let data = await response.json();
-  //   let places = data.countries[0].cities[0].places;
-
-  //   const features = places
-  //     .map((element) => [element.lng, element.lat])
-  //     .map((lonLat) => {
-  //       return new Feature({
-  //         geometry: new Point(lonLat),
-  //       });
-  //     });
-
-  //   return features;
-  // };
-
-  // const vectorSource = new VectorSource();
-
-  // const vectorLayer = new VectorLayer({
-  //   source: vectorSource,
-  // });
-
-  // getFeatures().then((features) => {
-  //   vectorSource.addFeatures(features);
-  // });
-
-  // map.addLayer(vectorLayer);
-
-  // return function
+  console.log(map.getLayers());
 
   return (
     <div className="App">
       <ContextProvider>
+        {/* tried to keep the MeasureButtons in a seperate Component, but there they didn't functioned as expected. However, after debugging i came to the conclusion to just keep them here */}
+        <MeasureButton
+          name="line"
+          map={map}
+          measureType="line"
+          id="analysis-btn-one"
+          className="hide"
+        >
+          1
+        </MeasureButton>
+
+        <MeasureButton
+          name="poly"
+          map={map}
+          measureType="polygon"
+          id="analysis-btn-two"
+          className="hide"
+        >
+          2
+        </MeasureButton>
+
+        <MeasureButton
+          name="multi"
+          map={map}
+          measureType="line"
+          multipleDrawing
+          id="analysis-btn-three"
+          className="hide"
+        >
+          3
+        </MeasureButton>
+
         <AnalysisFunctionsContainer map={map} />
         <EntranceLayer map={map} />
         <EntranceLegende map={map} />

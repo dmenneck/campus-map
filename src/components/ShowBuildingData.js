@@ -98,13 +98,10 @@ const ShowBuildingData = ({ map }) => {
               }}
             />
             <div className="clicked-data-container-text">
-              <Divider orientation="left" plain="true" className="unselectable">
-                Gebäudedaten
-              </Divider>
-              <p className="buildingInformations" id="building-number">
-                Gebäude {building_number}:
+              <p id="building-number">Gebäude {building_number}:</p>
+              <p className="buildingInformations buildingInformationsName">
+                {name}
               </p>
-              <p className="buildingInformations">{name}</p>
               <p className="buildingInformations">{address}</p>
               <p className="buildingInformations barrier-free-entrance-text">
                 Barrierefreier Eingang: {barrier_free_entrance}
@@ -121,7 +118,7 @@ const ShowBuildingData = ({ map }) => {
               </Button>
 
               <Drawer
-                title="Einrichtungen "
+                title="Einrichtungen"
                 placement="right"
                 onClose={onClose}
                 visible={drawerVisibility}

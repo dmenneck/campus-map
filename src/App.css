@@ -443,9 +443,15 @@
 }
 
 .buildingInformations {
-  padding: 0;
+  padding: 4px;
   margin: 0;
   font-size: 14px;
+  border-bottom: 1px solid #e3e8ea;
+}
+
+.buildingInformationsName {
+  padding-top: 0;
+  color: red;
 }
 
 .ant-tree-checkbox-inner {
@@ -721,7 +727,7 @@
 }
 
 .campus-areas-spans {
-  display: block;
+  display: inline-block;
   width: 100%;
   padding: 10px;
   border-bottom: 1px solid #e3e8ea;
@@ -730,8 +736,7 @@
 }
 
 .campus-areas-spans:hover {
-  background-color: blue;
-  color: red;
+  background-color: #e3e8ea !important;
 }
 
 .barrier-free-entrance-text {
@@ -747,6 +752,10 @@
   background-color: white;
   border-radius: 50px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.hide {
+  display: none !important;
 }
 
 #open-analysis-btns {
@@ -1009,14 +1018,15 @@ button:focus {
 }
 
 .ant-drawer-header {
+  position: absolute !important;
+  position: sticky !important;
+  top: 0 !important;
   background-color: #e3e8ea !important;
+  border-bottom: 1px solid #32475b !important;
   color: black !important;
   padding: 10px !important;
   border-radius: none !important;
   height: 35px !important;
-  position: -webkit-sticky !important; /* Safari */
-  position: sticky !important;
-  top: 0 !important;
 }
 
 .ant-drawer-close {
@@ -1034,4 +1044,5 @@ button:focus {
 .ant-drawer-body {
   padding: 0 !important;
   background-color: #fff !important;
+  height: 120vh;
 }

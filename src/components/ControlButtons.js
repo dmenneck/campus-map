@@ -5,6 +5,7 @@ import { ZoomToExtentButton, GeoLocationButton } from "@terrestris/react-geo";
 import { message } from "antd";
 
 import geolocation from "../data/img/geoLocation.png";
+import home from "../data/img/haus.png";
 
 export const ControlButtons = ({ map }) => {
   const extent1 = [608948, 6484461, 1253685, 6629060];
@@ -29,7 +30,14 @@ export const ControlButtons = ({ map }) => {
 
   return (
     <>
-      <button id="zoomToExtBtn" onClick={zoomToExtent}></button>
+      <button
+        id="zoomToExtBtn"
+        onClick={zoomToExtent}
+        style={{
+          backgroundImage: `url(${home})`,
+          backgroundSize: "cover",
+        }}
+      ></button>
 
       <div onClick={success}>
         <GeoLocationButton
