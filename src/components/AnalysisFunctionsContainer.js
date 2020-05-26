@@ -13,8 +13,13 @@ const AnalysisFunctionsContainer = ({ map }) => {
     let btnTwo = document.getElementById("analysis-btn-two");
     let btnThree = document.getElementById("analysis-btn-three");
 
+    let btnsContainer = document.getElementById("measure-btn-container");
+
     if (analysisBtnsVisibility) {
+      btnsContainer.classList.remove("measure-btn-container");
+
       setAnalysisBtnsVisibility(false);
+
       btnOne.classList.add("hide");
       btnTwo.classList.add("hide");
       btnThree.classList.add("hide");

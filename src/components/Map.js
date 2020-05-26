@@ -55,6 +55,10 @@ import Point from "ol/geom/Point";
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
 
+import distanceBtnOne from "../data/img/distanceBtnOne.PNG";
+import distanceBtnTwo from "../data/img/distanceBtnTwo.PNG";
+import distanceBtnThree from "../data/img/distanceBtnThree.PNG";
+
 // global variables
 const center = [771105.02, 6608382.01]; //Cologne
 
@@ -74,7 +78,7 @@ const Map = () => {
   const view = new OlView({
     center: center,
     zoom: 1.8,
-    maxResolution: 10,
+    maxResolution: 14,
   });
 
   const map = new OlMap({
@@ -95,6 +99,9 @@ const Map = () => {
     ]),
     view: view,
   });
+
+  // check projection -> EPSG:3857
+  // console.log(view.getProjection());
 
   // change style of clicked feature -> still WIP
   const clickedFeatureStyle = new Style({
@@ -122,9 +129,9 @@ const Map = () => {
       selected = null;
     }
 
-    map.forEachFeatureAtPixel(e.pixel, function (f) {
-      selected = f;
-      f.setStyle(highlightStyle);
+    map.forEachFeatureAtPixel(e.pixel, function (feature) {
+      selected = feature;
+      feature.setStyle(highlightStyle);
       return true;
     });
   });
@@ -132,61 +139,51 @@ const Map = () => {
   // invisible by default (can be toggled in MenuContainer.js)
   familyCampus.setVisible(false);
   parking.setVisible(false);
-  nrwWms.setVisible(true);
-  osmTileLayer.setVisible(false);
-
-  // adding point to map
-  const iconFeature = new Feature({
-    geometry: new Point([771105.02, 6608382.01]),
-    name: "Island",
-  });
-
-  var vectorSource = new VectorSource({
-    features: [iconFeature],
-  });
-
-  var vectorLayer = new VectorLayer({
-    source: vectorSource,
-  });
-
-  map.addLayer(vectorLayer);
-
-  console.log(map.getLayers());
+  nrwWms.setVisible(false);
+  osmTileLayer.setVisible(true);
 
   return (
     <div className="App">
       <ContextProvider>
         {/* tried to keep the MeasureButtons in a seperate Component, but there they didn't functioned as expected. However, after debugging i came to the conclusion to just keep them here */}
-        <MeasureButton
-          name="line"
-          map={map}
-          measureType="line"
-          id="analysis-btn-one"
-          className="hide"
-        >
-          1
-        </MeasureButton>
+        <div id="measure-btn-container" className="measure-btn-container">
+          <MeasureButton
+            name="line"
+            map={map}
+            measureType="line"
+            id="analysis-btn-one"
+            style={{
+              backgroundImage: `url(${distanceBtnOne})`,
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+            }}
+          ></MeasureButton>
 
-        <MeasureButton
-          name="poly"
-          map={map}
-          measureType="polygon"
-          id="analysis-btn-two"
-          className="hide"
-        >
-          2
-        </MeasureButton>
+          <MeasureButton
+            name="poly"
+            map={map}
+            measureType="polygon"
+            id="analysis-btn-two"
+            style={{
+              backgroundImage: `url(${distanceBtnTwo})`,
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+            }}
+          ></MeasureButton>
 
-        <MeasureButton
-          name="multi"
-          map={map}
-          measureType="line"
-          multipleDrawing
-          id="analysis-btn-three"
-          className="hide"
-        >
-          3
-        </MeasureButton>
+          <MeasureButton
+            name="multi"
+            map={map}
+            measureType="line"
+            multipleDrawing
+            id="analysis-btn-three"
+            style={{
+              backgroundImage: `url(${distanceBtnThree})`,
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+            }}
+          ></MeasureButton>
+        </div>
 
         <AnalysisFunctionsContainer map={map} />
         <EntranceLayer map={map} />
@@ -195,8 +192,9 @@ const Map = () => {
         <CampusAreas map={map} />
         <ToggleMenuContainerBtn />
         <SearchBuildingContainer map={map} />
-        <MenuContainer map={map} />
         <FetchNextBikeApi map={map} />
+        <MenuContainer map={map} />
+
         <ClickedBuilding map={map} />
         <DrawerComponent />
         <ControlButtons map={map} />

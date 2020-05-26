@@ -6,7 +6,6 @@ Todos:
 
 - GIS DATA -> check type Wohnhaus !!
 - mobile version kinda like google maps mobile
-- fetch nextbike api
 
 ## Geodata
 

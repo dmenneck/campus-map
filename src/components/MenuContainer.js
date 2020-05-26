@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Menu, Divider } from "antd";
 import { LayerTree } from "@terrestris/react-geo";
 
@@ -9,6 +9,7 @@ import {
   nrwWms,
   osmTileLayer,
 } from "./Layers";
+
 import { AppContext } from "./AppContext";
 import {
   AppstoreOutlined,
@@ -24,7 +25,7 @@ import osmsource from "../data/img/osmsource.PNG";
 import tilewms from "../data/img/tilewms.PNG";
 import tableIcon from "../data/img/tableIcon.png";
 import searchIcon from "../data/img/suche.png";
-import bicycleIcon from "../data/img/bicycleIcon.jpg";
+import bicycleIcon from "../data/img/bicycleIcon.png";
 
 const { SubMenu } = Menu;
 
@@ -58,6 +59,8 @@ export default function MenuContainer({ map }) {
   const [nrwWmsVisibility, setNrwWmsVisibility] = useState(true);
   const [gridBtnOpacity, setGridBtnOpacity] = useState(false);
   const [searchbarBtnOpacity, setSearchbarBtnOpacity] = useState(true);
+  const [bikeLayer, setBikeLayer] = useState("");
+  const [bikeLayerVisibility, setBikeLayerVisibility] = useState(false);
 
   const toggleBuildingsLayerVisibility = () => {
     if (buildings.getVisible() === true) {
@@ -155,6 +158,24 @@ export default function MenuContainer({ map }) {
     }
   };
 
+  useEffect(() => {
+    // get the bikeLayer
+    const bikeLayerFromMap = map.getLayers().array_[11];
+
+    // use
+    setBikeLayer(bikeLayerFromMap);
+  }, []);
+
+  const toggleBikeLayerVisiblity = () => {
+    if (bikeLayerVisibility) {
+      setBikeLayerVisibility(false);
+      bikeLayer.setVisible(false);
+    } else {
+      setBikeLayerVisibility(true);
+      bikeLayer.setVisible(true);
+    }
+  };
+
   if (menuContainerVisibility) {
     return (
       <div>
@@ -247,17 +268,9 @@ export default function MenuContainer({ map }) {
                 style={{
                   backgroundImage: `url(${bicycleIcon})`,
                   backgroundSize: "cover",
-                  opacity: familyCampusVisibility ? "1" : "0.2",
+                  opacity: bikeLayerVisibility ? "1" : "0.2",
                 }}
-              ></button>
-              <button
-                className="buildings-visibil-btn"
-                title="KvB-Räder"
-                style={{
-                  backgroundImage: `url(${bicycleIcon})`,
-                  backgroundSize: "cover",
-                  opacity: familyCampusVisibility ? "1" : "0.2",
-                }}
+                onClick={toggleBikeLayerVisiblity}
               ></button>
             </Menu.Item>
           </SubMenu>

@@ -7,6 +7,7 @@ import { Style, Fill, Stroke } from "ol/style";
 import OlLayerTile from "ol/layer/Tile";
 import TileWMS from "ol/source/TileWMS";
 import OSMSource from "ol/source/OSM";
+import OlStyleIcon from "ol/style/Icon";
 
 import buildingsData from "../data/geoData/uniBuildings.geojson";
 import parkingData from "../data/geoData/parking.geojson";
@@ -27,8 +28,6 @@ import spielplatz from "../data/img/spielplatz.png";
 import unisex from "../data/img/unisex.png";
 import bluedot from "../data/img/bluedot.png";
 import orangedot from "../data/img/orangedot.png";
-
-import OlStyleIcon from "ol/style/Icon";
 
 // map tiles (nrwWms & osmTileLayer)
 export const nrwWms = new OlLayerTile({
