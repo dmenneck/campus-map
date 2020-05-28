@@ -7,10 +7,28 @@
   font-size: 16px;
 }
 
-/* --- hide all scrollbars --- */
+body {
+  overflow-y: hidden;
+}
 
+/* https://stackoverflow.com/questions/15325322/multiple-custom-scrollbars */
 ::-webkit-scrollbar {
-  display: none;
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #4a657d;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  border-radius: 5px;
+  background-color: #7a93ab;
 }
 
 /* --- Navigation --- */
@@ -873,7 +891,7 @@
   margin-bottom: 5px;
 }
 
-#clicked-data-container {
+.clicked-data-container {
   position: absolute;
   z-index: 1;
   bottom: 2%;
@@ -928,7 +946,7 @@
   background-color: #fff;
 }
 
-#pos-relative-for-drawer {
+.pos-relative-for-drawer {
   overflow: hidden;
   position: relative;
   overflow-y: auto;
@@ -1050,5 +1068,9 @@ button:focus {
 .ant-drawer-body {
   padding: 0 !important;
   background-color: #fff !important;
-  height: 120vh;
+  height: auto;
+}
+
+#stop-scrolling {
+  overflow-y: hidden;
 }

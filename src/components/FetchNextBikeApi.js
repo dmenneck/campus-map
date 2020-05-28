@@ -7,7 +7,7 @@ import VectorSource from "ol/source/Vector";
 import { Style } from "ol/style";
 import OlStyleIcon from "ol/style/Icon";
 
-import kvbIcon from "../data/img/kvb.png";
+import kvbIcon from "../data/img/bike.png";
 
 const FetchNextBike = ({ map }) => {
   const url = "https://api.nextbike.net/maps/nextbike-live.json?city=14";
@@ -17,7 +17,7 @@ const FetchNextBike = ({ map }) => {
 
   const bikeStyle = new Style({
     image: new OlStyleIcon({
-      scale: 0.15,
+      scale: 0.3,
       src: kvbIcon,
     }),
   });

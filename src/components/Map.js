@@ -12,6 +12,7 @@ import OlVectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
 import { Style, Fill, Stroke } from "ol/style";
 import Select from "ol/interaction/Select";
+import { pointerMove } from "ol/events/condition";
 
 import "../App.css";
 import "ol/ol.css";
@@ -103,40 +104,35 @@ const Map = () => {
   // check projection -> EPSG:3857
   // console.log(view.getProjection());
 
-  // change style of clicked feature -> still WIP
-  const clickedFeatureStyle = new Style({
-    fill: new Fill({ color: "red)" }),
-    stroke: new Stroke({ color: "rgba(73, 139, 170, 0.9)", width: 1 }),
+  // change style of clicked feature
+  // select interaction working on "singleclick"
+  const selectSingleClick = new Select({
+    style: new Style({
+      stroke: new Stroke({ color: "black", width: 2 }),
+      fill: new Fill({ color: "#253746" }),
+    }),
   });
 
-  map.on("click", function (e) {
-    const pixel = map.getEventPixel(e.originalEvent);
-    map.forEachFeatureAtPixel(pixel, function (feature) {
-      feature.setStyle(
-        new Style({
-          stroke: new Stroke({ color: "black", width: 2 }),
-          fill: new Fill({ color: "#253746" }),
-        })
-      );
-    });
-  });
+  const addClickInteraction = () => {
+    map.addInteraction(selectSingleClick);
+  };
+
+  addClickInteraction();
 
   // change style of hovered feature
-  let selected = null;
-  map.on("pointermove", function (e) {
-    if (selected !== null) {
-      selected.setStyle(undefined);
-      selected = null;
-    }
-
-    map.forEachFeatureAtPixel(e.pixel, function (feature) {
-      selected = feature;
-      feature.setStyle(highlightStyle);
-      return true;
-    });
+  // select interaction working on "pointermove"
+  const selectPointerMove = new Select({
+    condition: pointerMove,
+    style: highlightStyle,
   });
 
-  // invisible by default (can be toggled in MenuContainer.js)
+  const addHoverInteraction = () => {
+    map.addInteraction(selectPointerMove);
+  };
+
+  addHoverInteraction();
+
+  //invisible by default (can be toggled in MenuContainer.js)
   familyCampus.setVisible(false);
   parking.setVisible(false);
   nrwWms.setVisible(false);

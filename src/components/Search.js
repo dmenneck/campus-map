@@ -11,17 +11,18 @@ const { Search } = Input;
 
 const SearchComponent = ({ map }) => {
   const { value7, value2 } = useContext(AppContext);
+  const [layerClicked, isLayerClicked] = value2;
   const [searchBarVisibility, setSearchBarVisibility] = value7;
   const [features, setFeatures] = useState([]);
   const [search, setSearch] = useState("");
   const [clickedFeature, setClickedFeature] = useState("");
 
   const clickedBuildingsStyle = new Style({
-    fill: new Fill({ color: "#a5b6c7" }),
-    stroke: new Stroke({ color: "rgba(73, 139, 170, 0.9)", width: 1 }),
+    stroke: new Stroke({ color: "#af111d", width: 6 }),
+    fill: new Fill({ color: "#4a657d" }),
   });
 
-  // get Features async
+  // get features async
   useEffect(() => {
     setTimeout(() => {
       setFeatures(buildings.getSource().getFeatures());
@@ -48,8 +49,16 @@ const SearchComponent = ({ map }) => {
         // get the clicked feature and set view based on the feature extent
         map.getView().fit(item.getGeometry(), map.getSize());
 
+        console.log(item);
+
+        // clear style of previous clicked building
         item.setStyle(null);
+        // setStyle of currently clicked building
         item.setStyle(clickedBuildingsStyle);
+        // clear style after 3s
+        setTimeout(() => {
+          item.setStyle(null);
+        }, 1500);
       }
     });
   };

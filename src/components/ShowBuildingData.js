@@ -75,11 +75,20 @@ const ShowBuildingData = ({ map }) => {
     isLayerClicked(false);
   };
 
+  if (drawerVisibility) {
+    console.log("open");
+  } else {
+    console.log("closed");
+  }
+
   if (layerClicked) {
     return (
       <div>
-        <div id="clicked-data-container">
-          <div id="pos-relative-for-drawer">
+        <div className="clicked-data-container">
+          <div
+            className="pos-relative-for-drawer"
+            id={drawerVisibility ? "stop-scrolling" : null}
+          >
             <div id="clicked-data-container-header">
               <button
                 id="close-data-container-btn"
