@@ -26,10 +26,8 @@ function ClickedBuilding({ map }) {
 
     // check wether layer (one of the buidling polygons) is clicked or not
     if (!dataValues && !data) {
-      console.log("not clicked on a layer");
       isLayerClicked(false);
     } else {
-      console.log("clicked on a layer");
       isLayerClicked(true);
     }
   }

@@ -35,7 +35,9 @@ export const ControlButtons = ({ map }) => {
         onClick={zoomToExtent}
         style={{
           backgroundImage: `url(${home})`,
-          backgroundSize: "cover",
+          backgroundSize: "80%",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
         }}
       ></button>
 
@@ -48,9 +50,9 @@ export const ControlButtons = ({ map }) => {
           id="getlocationbtn"
           style={{
             backgroundImage: `url(${geolocation})`,
-            backgroundSize: "cover",
-            width: "50px",
-            height: "auto",
+            backgroundSize: "75%",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
           }}
         ></GeoLocationButton>
       </div>

@@ -25,7 +25,7 @@ const Legend = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       message.info({
-        content: "Willkommen auf dem Lageplan der UzK",
+        content: "Willkommen auf dem Lageplan der UzK!",
         icon: "",
       });
     }, 1500);

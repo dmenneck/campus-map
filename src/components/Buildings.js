@@ -1,20 +1,21 @@
-import React from 'react';
-
-import { AgFeatureGrid } from '@terrestris/react-geo';
-import OlFormatGeoJSON from 'ol/format/GeoJSON';
-
-// page: Gebäudeuntersicht
+import React from "react";
+import BuildingsTable from "./BuildingsTable";
 
 const Buildings = () => {
   return (
-    <div>
-      <h2 className='überschrift'>Gebäudeübersicht</h2>
-      <h3 className='description'>
-        Klicken Sie auf die gewünschte Zeile, um das ausgewählte Gebäude auf dem
-        Lapeplan anzuzeigen
-      </h3>
+    <div id="buildings-table-container">
+      <div id="buildings-header">
+        <span>Gebäudeübersicht</span>
+        <br></br>
+        <span>
+          Klicken Sie auf die gewünschte Zeile, um das ausgewählte Gebäude auf
+          dem Lapeplan anzuzeigen
+        </span>
+      </div>
 
-      <div id='container-table'></div>
+      <div>
+        <BuildingsTable />
+      </div>
     </div>
   );
 };

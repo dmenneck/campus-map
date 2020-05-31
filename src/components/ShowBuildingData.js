@@ -14,6 +14,7 @@ const ShowBuildingData = ({ map }) => {
   let barrier_free = clickedBuildingsInformation.barrier_free_entrance;
   let address = clickedBuildingsInformation.address;
   let building_number = clickedBuildingsInformation.building_number;
+  let type = clickedBuildingsInformation.type;
   let image = clickedBuildingsInformation.image;
 
   let barrier_free_entrance = "";
@@ -50,6 +51,16 @@ const ShowBuildingData = ({ map }) => {
     });
   }
 
+  // convert type to german
+  let typeText = "";
+  if (type === "university") {
+    typeText = "Universität";
+  } else if (type === "clinic") {
+    typeText = "Klinik";
+  } else {
+    typeText = "not sure, check pls";
+  }
+
   // check if feature has facilities and render the open drawer button (Einrichtungen) based on true/false
   let hasFacilities = false;
   if (facilitiesName === "-") {
@@ -75,12 +86,6 @@ const ShowBuildingData = ({ map }) => {
     isLayerClicked(false);
   };
 
-  if (drawerVisibility) {
-    console.log("open");
-  } else {
-    console.log("closed");
-  }
-
   if (layerClicked) {
     return (
       <div>
@@ -90,6 +95,7 @@ const ShowBuildingData = ({ map }) => {
             id={drawerVisibility ? "stop-scrolling" : null}
           >
             <div id="clicked-data-container-header">
+              <p id="building-number">Gebäude {building_number}</p>
               <button
                 id="close-data-container-btn"
                 onClick={closeDataContainer}
@@ -107,11 +113,12 @@ const ShowBuildingData = ({ map }) => {
               }}
             />
             <div className="clicked-data-container-text">
-              <p id="building-number">Gebäude {building_number}:</p>
+              <p className="buildingType">{typeText}</p>
               <p className="buildingInformations buildingInformationsName">
                 {name}
               </p>
-              <p className="buildingInformations">{address}</p>
+
+              <p className="buildingInformations building-address">{address}</p>
               <p className="buildingInformations barrier-free-entrance-text">
                 Barrierefreier Eingang: {barrier_free_entrance}
               </p>

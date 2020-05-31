@@ -7,9 +7,6 @@ import {
   FullScreen,
   OverviewMap,
 } from "ol/control";
-import OlVector from "ol/layer/Vector";
-import OlVectorSource from "ol/source/Vector";
-import GeoJSON from "ol/format/GeoJSON";
 import { Style, Fill, Stroke } from "ol/style";
 import Select from "ol/interaction/Select";
 import { pointerMove } from "ol/events/condition";
@@ -50,15 +47,7 @@ import CampusAreas from "./CampusAreas";
 import Legend from "./Legend";
 import EntranceLegende from "./EntranceLegende";
 import AnalysisFunctionsContainer from "./AnalysisFunctionsContainer";
-
-import Feature from "ol/Feature";
-import Point from "ol/geom/Point";
-import VectorLayer from "ol/layer/Vector";
-import VectorSource from "ol/source/Vector";
-
-import distanceBtnOne from "../data/img/distanceBtnOne.PNG";
-import distanceBtnTwo from "../data/img/distanceBtnTwo.PNG";
-import distanceBtnThree from "../data/img/distanceBtnThree.PNG";
+import BuildingsTable from "./BuildingsTable";
 
 // global variables
 const center = [771105.02, 6608382.01]; //Cologne
@@ -138,6 +127,9 @@ const Map = () => {
   nrwWms.setVisible(false);
   osmTileLayer.setVisible(true);
 
+  // block scrolling
+  document.body.classList.add("stop-scrolling");
+
   return (
     <div className="App">
       <ContextProvider>
@@ -148,11 +140,6 @@ const Map = () => {
             map={map}
             measureType="line"
             id="analysis-btn-one"
-            style={{
-              backgroundImage: `url(${distanceBtnOne})`,
-              backgroundSize: "contain",
-              backgroundRepeat: "no-repeat",
-            }}
           ></MeasureButton>
 
           <MeasureButton
@@ -160,11 +147,6 @@ const Map = () => {
             map={map}
             measureType="polygon"
             id="analysis-btn-two"
-            style={{
-              backgroundImage: `url(${distanceBtnTwo})`,
-              backgroundSize: "contain",
-              backgroundRepeat: "no-repeat",
-            }}
           ></MeasureButton>
 
           <MeasureButton
@@ -173,11 +155,6 @@ const Map = () => {
             measureType="line"
             multipleDrawing
             id="analysis-btn-three"
-            style={{
-              backgroundImage: `url(${distanceBtnThree})`,
-              backgroundSize: "contain",
-              backgroundRepeat: "no-repeat",
-            }}
           ></MeasureButton>
         </div>
 

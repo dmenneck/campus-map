@@ -119,6 +119,9 @@ export const buildings = new OlVector({
   }),
 });
 
+// create bioGeoAre
+
+//
 export const etageOneRooms = new OlVector({
   source: new OlVectorSource({
     url: etageOneRoomsData,

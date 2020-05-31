@@ -55,8 +55,8 @@ export default function MenuContainer({ map }) {
   const [buildingsVisibility, setBuildingsVisibility] = useState(true);
   const [familyCampusVisibility, setFamilyCampusVisibility] = useState(false);
   const [parkingVisibility, setParkingVisibility] = useState(false);
-  const [osmTileVisibility, setOsmTileVisibility] = useState(false);
-  const [nrwWmsVisibility, setNrwWmsVisibility] = useState(true);
+  const [osmTileVisibility, setOsmTileVisibility] = useState(true);
+  const [nrwWmsVisibility, setNrwWmsVisibility] = useState(false);
   const [gridBtnOpacity, setGridBtnOpacity] = useState(false);
   const [searchbarBtnOpacity, setSearchbarBtnOpacity] = useState(true);
   const [bikeLayer, setBikeLayer] = useState("");

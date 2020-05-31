@@ -15,34 +15,22 @@ const AnalysisFunctionsContainer = ({ map }) => {
 
     let btnsContainer = document.getElementById("measure-btn-container");
 
+    btnsContainer.classList.remove("measure-btn-container");
+
     if (analysisBtnsVisibility) {
-      btnsContainer.classList.remove("measure-btn-container");
-
-      setAnalysisBtnsVisibility(false);
-
       btnOne.classList.add("hide");
       btnTwo.classList.add("hide");
       btnThree.classList.add("hide");
+      setAnalysisBtnsVisibility(false);
     } else {
-      setAnalysisBtnsVisibility(true);
       btnOne.classList.remove("hide");
       btnTwo.classList.remove("hide");
       btnThree.classList.remove("hide");
+      setAnalysisBtnsVisibility(true);
     }
   };
 
-  return (
-    <div>
-      <div
-        id="open-analysis-btns"
-        style={{
-          backgroundImage: `url(${ruler})`,
-          backgroundSize: "contain",
-        }}
-        onClick={toggleAnalysisBtns}
-      ></div>
-    </div>
-  );
+  return <div id="open-analysis-btns" onClick={toggleAnalysisBtns}></div>;
 };
 
 export default AnalysisFunctionsContainer;

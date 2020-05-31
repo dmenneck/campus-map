@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 function Informations() {
-  return <div>hello</div>;
+  return <div>WIP</div>;
 }
 
 export default Informations;

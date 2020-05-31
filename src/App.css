@@ -7,10 +7,6 @@
   font-size: 16px;
 }
 
-body {
-  overflow-y: hidden;
-}
-
 /* https://stackoverflow.com/questions/15325322/multiple-custom-scrollbars */
 ::-webkit-scrollbar {
   width: 8px;
@@ -468,12 +464,19 @@ body {
   padding: 4px;
   margin: 0;
   font-size: 14px;
-  border-bottom: 1px solid #e3e8ea;
+}
+
+.building-address {
+  font-size: 16px;
+  padding-left: 0;
+  border-bottom: 0.5px solid #354d60;
 }
 
 .buildingInformationsName {
-  padding-top: 0;
+  border-bottom: none;
+  padding: 0px;
   font-size: 20px;
+  font-weight: bold;
 }
 
 .ant-tree-checkbox-inner {
@@ -658,11 +661,56 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border: 1px solid black;
   background-color: #c8d1db;
+
+  background-image: url(../src/data/img/ruler.png);
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* skeleton css*/
+
+.u-full-width {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e1e1e1;
+}
+th:first-child,
+td:first-child {
+  padding-left: 0;
+}
+th:last-child,
+td:last-child {
+  padding-right: 0;
 }
 
 #analysis-btn-one {
   top: 60px;
   right: 160px;
+}
+
+tbody tr:hover {
+  background-color: red;
+}
+
+#buildings-table-container {
+  overflow: auto;
+  width: 80%;
+
+  margin: 0 auto 0 auto;
+}
+
+#buildings-header {
+  font-size: 26px;
+  padding: 20px 0;
+  width: 80%;
+  margin: 0 auto 0 auto;
 }
 
 #analysis-btn-two {
@@ -672,6 +720,7 @@ body {
   animation: move 0.4s linear alternate;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
+  transform: rotate(-70deg);
 }
 
 #analysis-btn-three {
@@ -681,6 +730,7 @@ body {
   animation: move 0.4s linear alternate;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
+  transform: rotate(-50deg);
 }
 
 @keyframes move {
@@ -763,6 +813,8 @@ body {
 
 .barrier-free-entrance-text {
   margin-bottom: 5px;
+  font-size: 14px;
+  padding-left: 0;
 }
 
 #hamburger-menu-container {
@@ -789,6 +841,10 @@ body {
   background-color: white;
   border-radius: 50px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-image: url(../src/data/img/ruler.png);
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #geolocation-btn-img {
@@ -887,8 +943,13 @@ body {
 #building-number {
   font-size: 18px;
   font-weight: bold;
+  padding: 5px;
+}
+
+.buildingType {
+  font-size: 14px;
   padding: 0;
-  margin-bottom: 5px;
+  margin: 0;
 }
 
 .clicked-data-container {
@@ -917,7 +978,7 @@ body {
 }
 
 #open-drawer-btn {
-  margin: 15px 10px 5px 140px;
+  margin: 5px 10px 5px 140px;
   border: 1px solid black;
 }
 
@@ -1058,7 +1119,8 @@ button:focus {
   margin: 5px 10px 0 10px !important;
   width: 25px !important;
   height: 25px !important;
-  background-color: #32475b !important;
+  background-image: url(../src/data/img/closeIcon.PNG) !important;
+  background-size: contain !important;
 }
 
 .anticon {
@@ -1073,4 +1135,18 @@ button:focus {
 
 #stop-scrolling {
   overflow-y: hidden;
+}
+
+#little-map {
+  position: absolute;
+  top: 0;
+  position: sticky;
+  width: 100%;
+  height: 350px;
+  border: 1px solid black;
+}
+
+#buildings-table {
+  height: 200px;
+  overflow-y: auto;
 }
