@@ -7,6 +7,10 @@
   font-size: 16px;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 /* https://stackoverflow.com/questions/15325322/multiple-custom-scrollbars */
 ::-webkit-scrollbar {
   width: 8px;
@@ -336,6 +340,20 @@
   background-color: rgba(74, 101, 125) !important;
 }
 
+#feature-grid-container .ag-header {
+  background-color: red !important;
+}
+
+#feature-grid-container .agFeatureGrid {
+  width: 80% !important;
+  margin: 0 auto 0 auto !important;
+}
+
+#feature-grid-container .ag-row {
+  text-align: left !important;
+  border-bottom: 1px solid #e1e1e1 !important;
+}
+
 #buildingDataContainer {
   position: absolute !important;
   z-index: 1 !important;
@@ -623,14 +641,23 @@
   transform: translate(-50%, -5%) !important;
 }
 
-#menu-Container {
+#menu-container {
   border-right: 4px solid #32475b;
   position: absolute;
   z-index: 1;
-  right: 15px;
+  /* rigth: 15px*/
+  right: -365px;
   top: 20%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 4px 4px 4px 4px;
+
+  animation: change 0.4s linear forwards;
+}
+
+@keyframes change {
+  100% {
+    transform: translateX(-380px);
+  }
 }
 
 .menu-container-title {
@@ -661,11 +688,6 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border: 1px solid black;
   background-color: #c8d1db;
-
-  background-image: url(../src/data/img/ruler.png);
-  background-size: 70%;
-  background-repeat: no-repeat;
-  background-position: center;
 }
 
 /* skeleton css*/
@@ -693,6 +715,11 @@ td:last-child {
 #analysis-btn-one {
   top: 60px;
   right: 160px;
+
+  background-image: url(../src/data/img/measureIconOne.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 tbody tr:hover {
@@ -716,11 +743,17 @@ tbody tr:hover {
 #analysis-btn-two {
   top: 106px;
   right: 148px;
+
+  background-image: url(../src/data/img/measureIconTwo.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+
   offset-path: path("M 5 -30 C 20 20, 20 20, 20 20");
   animation: move 0.4s linear alternate;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
-  transform: rotate(-70deg);
+  transform: rotate(-72deg);
 }
 
 #analysis-btn-three {
@@ -1137,11 +1170,13 @@ button:focus {
   overflow-y: hidden;
 }
 
+.stop-scrolling {
+  overflow-y: hidden;
+}
+
 #little-map {
-  position: absolute;
-  top: 0;
-  position: sticky;
-  width: 100%;
+  position: fixed;
+  width: 80%;
   height: 350px;
   border: 1px solid black;
 }

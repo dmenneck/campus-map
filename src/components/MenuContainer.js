@@ -178,8 +178,8 @@ export default function MenuContainer({ map }) {
 
   if (menuContainerVisibility) {
     return (
-      <div>
-        <Menu style={{ width: 256 }} mode="inline" id="menu-Container">
+      <div id="menu-container" className="menu">
+        <Menu style={{ width: 256 }} mode="inline" id="menu">
           <SubMenu
             key="sub1"
             title={
