@@ -3,7 +3,7 @@ import { AppContext } from "./AppContext";
 
 import { Card, Drawer, Button, Divider } from "antd";
 
-const ShowBuildingData = ({ map }) => {
+const ShowBuildingData = () => {
   const { value6, value2 } = useContext(AppContext);
   const [clickedBuildingsInformation, setclickedBuildingsInformation] = value6;
   const [layerClicked, isLayerClicked] = value2;
@@ -57,8 +57,10 @@ const ShowBuildingData = ({ map }) => {
     typeText = "Universität";
   } else if (type === "clinic") {
     typeText = "Klinik";
+  } else if (type === "sharedFlat") {
+    typeText = "Wohngemeinschaft";
   } else {
-    typeText = "not sure, check pls";
+    typeText = "";
   }
 
   // check if feature has facilities and render the open drawer button (Einrichtungen) based on true/false

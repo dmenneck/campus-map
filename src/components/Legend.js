@@ -23,6 +23,10 @@ const Legend = () => {
 
   // show welcome text 1.5s after initial render
   useEffect(() => {
+    message.config({
+      top: 100,
+    });
+
     const timer = setTimeout(() => {
       message.info({
         content: "Willkommen auf dem Lageplan der UzK!",

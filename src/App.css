@@ -38,6 +38,7 @@ body {
   position: relative;
   background-color: #32475b;
   border-bottom: 0.5px solid #354d60;
+  z-index: 0;
 }
 
 #globalNavLogo {
@@ -78,9 +79,27 @@ body {
   background-color: #253746;
 }
 
+#mobile-nav {
+  z-index: 1;
+  height: 50px;
+  width: 100vw;
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  box-shadow: 0 1px 0 0 #e0e0e0;
+  background-color: #32475b;
+  border-top: 0.5px solid #354d60;
+  display: none;
+}
+
 /* --- MAP --- */
 #map {
-  height: 95vh;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 
 #zoomToExtBtn {
@@ -645,7 +664,6 @@ body {
   border-right: 4px solid #32475b;
   position: absolute;
   z-index: 1;
-  /* rigth: 15px*/
   right: -365px;
   top: 20%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -705,11 +723,11 @@ td {
 }
 th:first-child,
 td:first-child {
-  padding-left: 0;
+  padding-left: 10px;
 }
 th:last-child,
 td:last-child {
-  padding-right: 0;
+  padding-right: 10px;
 }
 
 #analysis-btn-one {
@@ -723,20 +741,40 @@ td:last-child {
 }
 
 tbody tr:hover {
-  background-color: red;
+  background-color: #c8d1db;
 }
 
 #buildings-table-container {
-  overflow: auto;
-  width: 80%;
+  overflow-y: auto;
+  width: 70%;
+  height: 40vh;
 
   margin: 0 auto 0 auto;
+}
+
+.sticky {
+  background-color: #7a93ab;
+
+  position: sticky;
+  top: 0;
+}
+
+#buildings-header-title {
+  font-size: 30px;
+}
+
+.hide-test {
+  display: none;
+}
+
+#thead {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 #buildings-header {
   font-size: 26px;
   padding: 20px 0;
-  width: 80%;
+  width: 70%;
   margin: 0 auto 0 auto;
 }
 
@@ -927,7 +965,7 @@ tbody tr:hover {
   z-index: 1;
   left: 50% !important;
   transform: translate(-50%, -5%) !important;
-  top: 80px;
+  top: 70px;
   padding: 10px;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -941,7 +979,7 @@ tbody tr:hover {
 
 #filtered-names-container-max-height {
   background-color: white;
-  width: 392px;
+  width: 352px;
   height: auto;
   max-height: 218px;
   overflow-y: auto;
@@ -1175,13 +1213,141 @@ button:focus {
 }
 
 #little-map {
-  position: fixed;
-  width: 80%;
-  height: 350px;
+  width: 70%;
+  margin: 0 auto 0 auto;
+  height: 280px;
   border: 1px solid black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 #buildings-table {
   height: 200px;
   overflow-y: auto;
+}
+
+#mobile-nav-btn {
+  display: none;
+  color: white;
+  position: absolute;
+  right: 1px;
+}
+
+/* smaller than mobile */
+@media (max-width: 400px) {
+  .ant-input-search {
+    width: 86% !important;
+  }
+
+  #search-container {
+    width: 95% !important;
+    margin: 0 auto 0 auto !important;
+    margin: 0 !important;
+  }
+}
+
+/* smaller than phablet */
+@media (max-width: 550px) {
+  #map {
+    position: absolute;
+    height: calc(100% - 50px);
+    top: 0;
+    bottom: 50px;
+  }
+
+  body {
+    overflow: hidden;
+    position: fixed;
+  }
+
+  #mobile-nav {
+    display: block;
+  }
+
+  #globalNav {
+    display: none;
+  }
+
+  #search {
+    top: 10px !important;
+    width: 100%;
+  }
+
+  #menu-container {
+    top: 10%;
+  }
+
+  #zoomToExtBtn {
+    top: 60px;
+  }
+
+  #getlocationbtn {
+    top: 60px;
+  }
+
+  #hamburger-menu-container {
+    position: absolute;
+    z-index: 1;
+    top: calc(100% - 65px);
+    bottom: 5px;
+    right: 10px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  #open-analysis-btns {
+    position: absolute;
+    z-index: 1;
+    top: calc(100% - 65px);
+    right: 90px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-image: url(../src/data/img/ruler.png);
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .ol-zoom,
+  .ol-zoomslider {
+    display: none !important;
+  }
+}
+
+/* smaller than tablet */
+@media (max-width: 750px) {
+  #mobile-nav-btn {
+    display: block;
+  }
+
+  .navlinks {
+    display: none;
+  }
+
+  #entrance-legend {
+    display: none;
+  }
+
+  .agFeatureGrid {
+    width: 95vw !important;
+    bottom: 55px !important;
+  }
+}
+
+/* smaller than desktop */
+@media (max-width: 1000px) {
+  #entrance-legend {
+    position: absolute;
+    z-index: 1;
+    left: 62% !important;
+    top: 70px;
+    padding: 10px;
+  }
+}
+
+/* smaller than Desktop HD */
+@media (max-width: 1200px) {
 }

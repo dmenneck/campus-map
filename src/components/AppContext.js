@@ -26,6 +26,8 @@ export const ContextProvider = (props) => {
     setFamilyCampusLegendeVisibility,
   ] = useState(false);
   const [analysisBtnsVisibility, setAnalysisBtnsVisibility] = useState(false);
+  const [search, setSearch] = useState("");
+  const [burgerOpen, setBurgerOpen] = useState(false);
 
   return (
     <AppContext.Provider
@@ -45,6 +47,8 @@ export const ContextProvider = (props) => {
           setFamilyCampusLegendeVisibility,
         ],
         value13: [analysisBtnsVisibility, setAnalysisBtnsVisibility],
+        value14: [search, setSearch],
+        value15: [burgerOpen, setBurgerOpen],
       }}
     >
       {props.children}

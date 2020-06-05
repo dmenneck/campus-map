@@ -1,23 +1,24 @@
-import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import Navigation from './components/Navigation';
-import Buildings from './components/Buildings';
-import Informations from './components/Informations';
-import Map from './components/Map';
-import Contact from './components/Contact';
+import Navigation from "./components/Navigation";
 
-import './App.css';
+import Buildings from "./components/Buildings";
+import Informations from "./components/Informations";
+import Map from "./components/Map";
+import Contact from "./components/Contact";
+
+import "./App.css";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Navigation />
       <Switch>
-        <Route render={() => <Contact />} path='/Contact' />
-        <Route render={() => <Informations />} path='/Informations' />
-        <Route render={() => <Buildings />} path='/Buildings' />
-        <Route render={() => <Map />} path='/' />
+        <Route render={() => <Contact />} path="/Contact" />
+        <Route render={() => <Informations />} path="/Informations" />
+        <Route render={() => <Buildings />} path="/Buildings" />
+        <Route render={() => <Map />} path="/" />
       </Switch>
     </BrowserRouter>
   );

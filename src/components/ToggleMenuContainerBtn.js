@@ -3,9 +3,9 @@ import { AppContext } from "./AppContext";
 import HamburgerMenu from "react-hamburger-menu";
 
 const ToggleMenuContainerBtn = () => {
-  const { value8 } = useContext(AppContext);
+  const { value8, value15 } = useContext(AppContext);
   const [menuContainerVisibility, setMenuContainerVisibility] = value8;
-  const [burgerOpen, setBurgerOpen] = useState(false);
+  const [burgerOpen, setBurgerOpen] = value15;
 
   const toggleMenuContainer = () => {
     if (menuContainerVisibility) {

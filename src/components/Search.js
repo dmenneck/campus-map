@@ -10,11 +10,12 @@ import { Fill, Stroke } from "ol/style";
 const { Search } = Input;
 
 const SearchComponent = ({ map }) => {
-  const { value7, value2 } = useContext(AppContext);
+  const { value7, value2, value14 } = useContext(AppContext);
   const [layerClicked, isLayerClicked] = value2;
   const [searchBarVisibility, setSearchBarVisibility] = value7;
+  const [search, setSearch] = value14;
+
   const [features, setFeatures] = useState([]);
-  const [search, setSearch] = useState("");
   const [clickedFeature, setClickedFeature] = useState("");
 
   const clickedBuildingsStyle = new Style({

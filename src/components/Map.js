@@ -47,7 +47,6 @@ import CampusAreas from "./CampusAreas";
 import Legend from "./Legend";
 import EntranceLegende from "./EntranceLegende";
 import AnalysisFunctionsContainer from "./AnalysisFunctionsContainer";
-import BuildingsTable from "./BuildingsTable";
 
 // global variables
 const center = [771105.02, 6608382.01]; //Cologne

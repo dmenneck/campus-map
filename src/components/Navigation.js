@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import MobileNav from "./MobileNav";
 
 import UniKölnLogo from "../data/img/uniKölnLogo.png";
 
@@ -16,13 +17,25 @@ const Navigation = () => {
             Campus Map <span>Universität zu Köln</span>
           </a>
         </div>
-        <NavLink to="./Contact">Kontakt</NavLink>
-        <NavLink to="./Informations">Infos</NavLink>
-        <NavLink to="./Buildings" onClick={removeStopScrollingClass}>
+
+        <NavLink to="./Contact" className="navlinks">
+          Kontakt
+        </NavLink>
+        <NavLink to="./Informations" className="navlinks">
+          Infos
+        </NavLink>
+        <NavLink
+          to="./Buildings"
+          onClick={removeStopScrollingClass}
+          className="navlinks"
+        >
           Gebäudeübersicht
         </NavLink>
-        <NavLink to="./Map">Lageplan</NavLink>
+        <NavLink to="./Map" className="navlinks">
+          Lageplan
+        </NavLink>
       </div>
+      <MobileNav />
     </div>
   );
 };

@@ -51,7 +51,7 @@ export const EntranceLayer = ({ map }) => {
   const [layerClicked, isLayerClicked] = value2;
   const [clickedBuildingsInformation, setclickedBuildingsInformation] = value6;
 
-  let num = clickedBuildingsInformation.building_number;
+  let featureNum = clickedBuildingsInformation.building_number;
 
   if (layerClicked) {
     entrances.setVisible(true);
@@ -77,22 +77,31 @@ export const EntranceLayer = ({ map }) => {
   return null;
 };
 
+const entranceStyleFunction = (feature, resolution) => {
+  const entranceType = feature.get("entr_type");
+  const build_num = feature.get("build_num");
+
+  if (entranceType === "entrance") {
+    return entrancesStyle1;
+  } else {
+    return entrancesStyle2;
+  }
+};
+
 // create entrances layer -> if clickedBuilding ID === entrances feature.get("id") -> return style
 export const entrances = new OlVector({
   source: new OlVectorSource({
     url: entrancesData,
     format: new GeoJSON(),
   }),
-  style: function (feature, resolution) {
-    const entranceType = feature.get("entr_type");
-
-    if (entranceType === "entrance") {
-      return entrancesStyle1;
-    } else {
-      return entrancesStyle2;
-    }
-  },
+  style: entranceStyleFunction,
 });
+
+//if (entranceType === "entrance") {
+// return entrancesStyle1;
+//} else {
+//  return entrancesStyle2;
+//}
 
 // Building layer style
 export const highlightStyle = new Style({

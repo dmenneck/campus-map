@@ -48,6 +48,7 @@ const SearchBuilding = ({ map }) => {
         "facilities_hyperlink",
         "image",
         "type",
+        "barrier_free_entrance",
       ]}
       className="agFeatureGrid"
       featureStyle={
