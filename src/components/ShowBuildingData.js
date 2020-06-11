@@ -105,6 +105,10 @@ const ShowBuildingData = () => {
                 x
               </button>
             </div>
+            <div>
+              <button>Hello</button>
+              <p>Etage 1</p>
+            </div>
 
             <img
               className="data-container-img"

@@ -9,6 +9,8 @@ export const ContextProvider = (props) => {
     setclickedBuildingsInformation,
   ] = useState([]);
 
+  const [clickedBuildingFeature, setClickedBuildingFeature] = useState([]);
+
   const [layerClicked, isLayerClicked] = useState(false);
   const [theVectorLayer, setVectorLayer] = useState({});
   const [searchBuildingVisibility, setSearchBuildingVisibility] = useState(
@@ -28,6 +30,7 @@ export const ContextProvider = (props) => {
   const [analysisBtnsVisibility, setAnalysisBtnsVisibility] = useState(false);
   const [search, setSearch] = useState("");
   const [burgerOpen, setBurgerOpen] = useState(false);
+  const [entrancesLegend, setEntrancesLegend] = useState(false);
 
   return (
     <AppContext.Provider
@@ -49,6 +52,8 @@ export const ContextProvider = (props) => {
         value13: [analysisBtnsVisibility, setAnalysisBtnsVisibility],
         value14: [search, setSearch],
         value15: [burgerOpen, setBurgerOpen],
+        value16: [clickedBuildingFeature, setClickedBuildingFeature],
+        value17: [entrancesLegend, setEntrancesLegend],
       }}
     >
       {props.children}

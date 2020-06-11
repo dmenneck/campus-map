@@ -47,6 +47,8 @@ import CampusAreas from "./CampusAreas";
 import Legend from "./Legend";
 import EntranceLegende from "./EntranceLegende";
 import AnalysisFunctionsContainer from "./AnalysisFunctionsContainer";
+import ToggleDrawerBtnMobile from "./ToggleDrawerBtnMobile";
+import GeolocationMobile from "./GeolocationMobile";
 
 // global variables
 const center = [771105.02, 6608382.01]; //Cologne
@@ -157,6 +159,8 @@ const Map = () => {
           ></MeasureButton>
         </div>
 
+        <GeolocationMobile map={map} />
+        <ToggleDrawerBtnMobile />
         <AnalysisFunctionsContainer map={map} />
         <EntranceLayer map={map} />
         <EntranceLegende map={map} />

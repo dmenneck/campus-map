@@ -89,19 +89,16 @@ const entranceStyleFunction = (feature, resolution) => {
 };
 
 // create entrances layer -> if clickedBuilding ID === entrances feature.get("id") -> return style
+export const entrances_source = new OlVectorSource();
+//{
+//  url: entrancesData,
+//  format: new GeoJSON(),
+//}
+
 export const entrances = new OlVector({
-  source: new OlVectorSource({
-    url: entrancesData,
-    format: new GeoJSON(),
-  }),
+  source: entrances_source,
   style: entranceStyleFunction,
 });
-
-//if (entranceType === "entrance") {
-// return entrancesStyle1;
-//} else {
-//  return entrancesStyle2;
-//}
 
 // Building layer style
 export const highlightStyle = new Style({

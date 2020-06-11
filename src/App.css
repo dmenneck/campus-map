@@ -93,7 +93,6 @@ body {
   display: none;
 }
 
-/* --- MAP --- */
 #map {
   position: absolute;
   top: 50px;
@@ -111,6 +110,7 @@ body {
   background-color: white !important;
   height: 25px !important;
   width: 25px !important;
+  border: white;
   border: 1px solid #354d60 !important;
   border-radius: 8px !important;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -157,7 +157,7 @@ body {
   background-color: white !important;
   width: 25px !important;
   right: 40px !important;
-  bottom: 52px !important;
+  bottom: 42px !important;
   border: 1px solid #354d60 !important;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
@@ -241,12 +241,13 @@ body {
 }
 
 #logoSchriftzug {
-  width: 90%;
+  width: 100%;
   padding: 10px;
   height: auto;
   position: absolute;
   bottom: 10px;
   left: 0;
+  border-top: 1px solid black;
 }
 
 #Name {
@@ -1113,6 +1114,7 @@ tbody tr:hover {
 
 .ant-drawer-wrapper-body {
   background-color: #fff !important;
+  width: 100% !important;
 }
 
 button:focus {
@@ -1182,7 +1184,7 @@ button:focus {
   color: black !important;
   padding: 10px !important;
   border-radius: none !important;
-  height: 35px !important;
+  height: 40px !important;
 }
 
 .ant-drawer-close {
@@ -1232,6 +1234,43 @@ button:focus {
   right: 1px;
 }
 
+#open-information-drawer-mobile {
+  position: absolute;
+  z-index: 1;
+  display: none;
+  width: 60px;
+  height: 60px;
+  top: calc(100% - 65px);
+  right: 190px;
+  border: white;
+  background-color: white;
+  border-radius: 50px;
+  font-size: 30px;
+}
+
+.locate {
+  top: 6em;
+  left: 0.5em;
+}
+
+#drawer-grid-container {
+  display: grid;
+  padding: 4%;
+  hyphens: auto;
+  text-align: justify;
+}
+
+.drawer-header-text {
+  font-size: 20px;
+  border-bottom: 1px solid black;
+}
+
+.social-media-icons {
+  width: 50px;
+  height: auto;
+  display: inline;
+}
+
 /* smaller than mobile */
 @media (max-width: 400px) {
   .ant-input-search {
@@ -1273,15 +1312,23 @@ button:focus {
   }
 
   #menu-container {
-    top: 10%;
+    top: 15%;
+    width: 80vw;
+    right: -360px;
+    margin: 0 auto 0 auto;
   }
 
   #zoomToExtBtn {
-    top: 60px;
+    top: calc(100% - 65px);
+    bottom: 5px;
+    right: 90px;
+    padding: 30px;
+    border-radius: 50px !important;
+    border: none !important;
   }
 
   #getlocationbtn {
-    top: 60px;
+    display: none;
   }
 
   #hamburger-menu-container {
@@ -1314,6 +1361,33 @@ button:focus {
   .ol-zoom,
   .ol-zoomslider {
     display: none !important;
+  }
+
+  .clicked-data-container {
+    width: 100%;
+    left: 0;
+    bottom: 70px;
+  }
+
+  .data-container-img {
+    display: inline;
+    margin: 8px;
+  }
+
+  #menu {
+    width: 100% !important;
+  }
+
+  .ol-overviewmap {
+    display: none !important;
+  }
+
+  #open-information-drawer-mobile {
+    display: block;
+  }
+
+  #menu-item-five {
+    display: none;
   }
 }
 
