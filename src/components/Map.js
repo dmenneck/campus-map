@@ -1,23 +1,23 @@
-import React from "react";
+import React from 'react';
 
-import OlMap from "ol/Map";
-import OlView from "ol/View";
+import OlMap from 'ol/Map';
+import OlView from 'ol/View';
 import {
   defaults as defaultControls,
   FullScreen,
   OverviewMap,
-} from "ol/control";
-import { Style, Fill, Stroke } from "ol/style";
-import Select from "ol/interaction/Select";
-import { pointerMove } from "ol/events/condition";
+} from 'ol/control';
+import { Style, Fill, Stroke } from 'ol/style';
+import Select from 'ol/interaction/Select';
+import { pointerMove } from 'ol/events/condition';
 
-import "../App.css";
-import "ol/ol.css";
-import "antd/dist/antd.css";
-import { MapComponent, MeasureButton } from "@terrestris/react-geo";
+import '../App.css';
+import 'ol/ol.css';
+import 'antd/dist/antd.css';
+import { MapComponent, MeasureButton } from '@terrestris/react-geo';
 
-import TileLayer from "ol/layer/Tile";
-import OSM from "ol/source/OSM";
+import TileLayer from 'ol/layer/Tile';
+import OSM from 'ol/source/OSM';
 
 import {
   osmTileLayer,
@@ -26,36 +26,36 @@ import {
   familyCampus,
   entrances,
   etageOneRooms,
-  etageTwoRooms,
   roomsGänge,
   buildings,
   highlightStyle,
-} from "./Layers";
+} from './Layers';
 
-import { EntranceLayer } from "./Layers";
-import { ControlButtons } from "./ControlButtons";
+import { EntranceLayer } from './Layers';
+import { ControlButtons } from './ControlButtons';
 
-import { ContextProvider } from "./AppContext";
-import DrawerComponent from "./Drawer";
-import ClickedBuilding from "./ClickedBuilding";
-import SearchComponent from "./Search";
-import FetchNextBikeApi from "./FetchNextBikeApi";
-import MenuContainer from "./MenuContainer";
-import { SearchBuildingContainer } from "./SearchBuildingContainer";
-import ToggleMenuContainerBtn from "./ToggleMenuContainerBtn";
-import CampusAreas from "./CampusAreas";
-import Legend from "./Legend";
-import EntranceLegende from "./EntranceLegende";
-import AnalysisFunctionsContainer from "./AnalysisFunctionsContainer";
-import ToggleDrawerBtnMobile from "./ToggleDrawerBtnMobile";
-import GeolocationMobile from "./GeolocationMobile";
+import { ContextProvider } from './AppContext';
+import DrawerComponent from './Drawer';
+import ClickedBuilding from './ClickedBuilding';
+import SearchComponent from './Search';
+import FetchNextBikeApi from './FetchNextBikeApi';
+import MenuContainer from './MenuContainer';
+import { SearchBuildingContainer } from './SearchBuildingContainer';
+import ToggleMenuContainerBtn from './ToggleMenuContainerBtn';
+import CampusAreas from './CampusAreas';
+import Legend from './Legend';
+import EntranceLegende from './EntranceLegende';
+import AnalysisFunctionsContainer from './AnalysisFunctionsContainer';
+import ToggleDrawerBtnMobile from './ToggleDrawerBtnMobile';
+import GeolocationMobile from './GeolocationMobile';
+import RoomLayers from './RoomLayers';
 
 // global variables
 const center = [771105.02, 6608382.01]; //Cologne
 
 // create costum overviewmap
 const costumOverviewMapControl = new OverviewMap({
-  className: "ol-overviewmap ol-custom-overviewmap",
+  className: 'ol-overviewmap ol-custom-overviewmap',
   layers: [
     new TileLayer({
       source: new OSM(),
@@ -81,7 +81,6 @@ const Map = () => {
       entrances,
       familyCampus,
       etageOneRooms,
-      etageTwoRooms,
       roomsGänge,
     ],
     controls: defaultControls().extend([
@@ -98,8 +97,8 @@ const Map = () => {
   // select interaction working on "singleclick"
   const selectSingleClick = new Select({
     style: new Style({
-      stroke: new Stroke({ color: "black", width: 2 }),
-      fill: new Fill({ color: "#253746" }),
+      stroke: new Stroke({ color: 'black', width: 2 }),
+      fill: new Fill({ color: '#253746' }),
     }),
   });
 
@@ -129,33 +128,59 @@ const Map = () => {
   osmTileLayer.setVisible(true);
 
   // block scrolling
-  document.body.classList.add("stop-scrolling");
+  document.body.classList.add('stop-scrolling');
 
   return (
-    <div className="App">
+    <div className='App'>
       <ContextProvider>
         {/* tried to keep the MeasureButtons in a seperate Component, but there they didn't functioned as expected. However, after debugging i came to the conclusion to just keep them here */}
-        <div id="measure-btn-container" className="measure-btn-container">
+        <div id='measure-btn-container' className='measure-btn-container'>
           <MeasureButton
-            name="line"
+            name='line'
             map={map}
-            measureType="line"
-            id="analysis-btn-one"
+            measureType='line'
+            id='analysis-btn-one'
           ></MeasureButton>
 
           <MeasureButton
-            name="poly"
+            name='poly'
             map={map}
-            measureType="polygon"
-            id="analysis-btn-two"
+            measureType='polygon'
+            id='analysis-btn-two'
           ></MeasureButton>
 
           <MeasureButton
-            name="multi"
+            name='multi'
             map={map}
-            measureType="line"
+            measureType='line'
             multipleDrawing
-            id="analysis-btn-three"
+            id='analysis-btn-three'
+          ></MeasureButton>
+        </div>
+
+        <div
+          id='mobile-measure-btn-container'
+          className='measure-btn-container'
+        >
+          <MeasureButton
+            name='line'
+            map={map}
+            measureType='line'
+            id='mobile-measure-btn-one'
+          ></MeasureButton>
+
+          <MeasureButton
+            name='poly'
+            map={map}
+            id='mobile-measure-btn-two'
+          ></MeasureButton>
+
+          <MeasureButton
+            name='multi'
+            map={map}
+            measureType='line'
+            multipleDrawing
+            id='mobile-measure-btn-three'
           ></MeasureButton>
         </div>
 
@@ -176,6 +201,7 @@ const Map = () => {
         <ControlButtons map={map} />
         <SearchComponent map={map} />
         <MapComponent map={map} />
+        <RoomLayers map={map} />
       </ContextProvider>
     </div>
   );

@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   box-sizing: border-box;
   color: #15222b;
   font-size: 16px;
@@ -507,7 +507,6 @@ body {
 .building-address {
   font-size: 16px;
   padding-left: 0;
-  border-bottom: 0.5px solid #354d60;
 }
 
 .buildingInformationsName {
@@ -788,7 +787,7 @@ tbody tr:hover {
   background-repeat: no-repeat;
   background-position: center;
 
-  offset-path: path("M 5 -30 C 20 20, 20 20, 20 20");
+  offset-path: path('M 5 -30 C 20 20, 20 20, 20 20');
   animation: move 0.4s linear alternate;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
@@ -798,7 +797,7 @@ tbody tr:hover {
 #analysis-btn-three {
   top: 126px;
   right: 104px;
-  offset-path: path("M -40 -50 C 20 20, 20 20, 20 20");
+  offset-path: path('M -40 -50 C 20 20, 20 20, 20 20');
   animation: move 0.4s linear alternate;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
@@ -1271,6 +1270,40 @@ button:focus {
   display: inline;
 }
 
+#mobile-measure-btn-one {
+  bottom: 60px !important;
+  right: 140px;
+}
+
+#mobile-measure-btn-two {
+  bottom: 80px !important;
+  right: 100px;
+}
+
+#mobile-measure-btn-three {
+  bottom: 60px !important;
+  right: 60px;
+}
+
+#mobile-measure-btn-one,
+#mobile-measure-btn-two,
+#mobile-measure-btn-three {
+  position: absolute;
+  z-index: 1;
+
+  border-radius: 50px;
+  padding: 7.5px;
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid black;
+  background-color: #c8d1db;
+}
+
+#mobile-measure-btn-container {
+  display: none;
+}
+
 /* smaller than mobile */
 @media (max-width: 400px) {
   .ant-input-search {
@@ -1387,6 +1420,14 @@ button:focus {
   }
 
   #menu-item-five {
+    display: none;
+  }
+
+  #mobile-measure-btn-container {
+    display: block;
+  }
+
+  #measure-btn-container {
     display: none;
   }
 }

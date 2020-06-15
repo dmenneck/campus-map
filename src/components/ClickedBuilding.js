@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import { AppContext } from "./AppContext";
-import ShowBuildingData from "./ShowBuildingData";
-import { entrances } from "./Layers";
-import entrancesData from "../data/geoData/entrances.geojson";
-import GeoJSON from "ol/format/GeoJSON";
+import React, { useContext } from 'react';
+import { AppContext } from './AppContext';
+import ShowBuildingData from './ShowBuildingData';
+import { entrances } from './Layers';
+import entrancesData from '../data/geoData/entrances.geojson';
+import GeoJSON from 'ol/format/GeoJSON';
 
 function ClickedBuilding({ map }) {
   const {
@@ -23,7 +23,7 @@ function ClickedBuilding({ map }) {
   const [burgerOpen, setBurgerOpen] = value15;
   const [entrancesLegend, setEntrancesLegend] = value17;
 
-  let data = "";
+  let data = '';
   async function test() {
     const response = await fetch(entrancesData);
     const json = await response.json();
@@ -31,7 +31,7 @@ function ClickedBuilding({ map }) {
   }
 
   // get attributes from building layer
-  let properties = "";
+  let properties = '';
 
   function OnMouseMove(e) {
     var coordinate = e.coordinate;
@@ -44,9 +44,7 @@ function ClickedBuilding({ map }) {
 
       const data_features = data.features;
 
-      let building_number = feature.get("building_number");
-
-      const entrances_features = entrances.getSource().getFeatures();
+      let building_number = feature.get('building_number');
 
       if (data_features === undefined) {
         //console.log("undefined");
@@ -67,7 +65,7 @@ function ClickedBuilding({ map }) {
 
         // only show entrances legend if there is an feature to show
         if (olFeatures.length === 0) {
-          console.log("no feature");
+          //console.log('no feature');
           setEntrancesLegend(false);
         } else {
           setEntrancesLegend(true);
@@ -85,7 +83,7 @@ function ClickedBuilding({ map }) {
     });
 
     setSearchBuildingVisibility(false);
-    setSearch("");
+    setSearch('');
     setBurgerOpen(false);
     setMenuContainerVisibility(false);
 
@@ -97,7 +95,7 @@ function ClickedBuilding({ map }) {
     }
   }
 
-  map.on("click", OnMouseMove);
+  map.on('click', OnMouseMove);
 
   return (
     <div>

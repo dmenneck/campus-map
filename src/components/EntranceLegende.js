@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import { AppContext } from "./AppContext";
-import bluedot from "../data/img/bluedot.png";
-import orangedot from "../data/img/orangedot.png";
+import React, { useContext } from 'react';
+import { AppContext } from './AppContext';
+import bluedot from '../data/img/bluedot.PNG';
+import orangedot from '../data/img/orangedot.PNG';
 
 const EntranceLegende = ({ map }) => {
   const { value2, value17 } = useContext(AppContext);
@@ -9,16 +9,16 @@ const EntranceLegende = ({ map }) => {
   const [entrancesLegend, setEntrancesLegend] = value17;
 
   if (!layerClicked) {
-    console.log("clicked");
+    console.log('clicked');
   }
 
   if (layerClicked && entrancesLegend) {
     return (
-      <div id="entrance-legend">
-        <img src={bluedot} style={{ width: "20px", height: "auto" }}></img>
-        <p className="entrance-legend-text unselectable">Eingänge</p>
-        <img src={orangedot} style={{ width: "20px", height: "auto" }}></img>
-        <p className="entrance-legend-text unselectable">rollstuhlgerecht</p>
+      <div id='entrance-legend'>
+        <img src={bluedot} style={{ width: '20px', height: 'auto' }}></img>
+        <p className='entrance-legend-text unselectable'>Eingänge</p>
+        <img src={orangedot} style={{ width: '20px', height: 'auto' }}></img>
+        <p className='entrance-legend-text unselectable'>rollstuhlgerecht</p>
       </div>
     );
   } else {
