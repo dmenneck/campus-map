@@ -5,6 +5,7 @@ import { ZoomToExtentButton, GeoLocationButton } from "@terrestris/react-geo";
 import { message } from "antd";
 
 import geolocation from "../data/img/geoLocation.png";
+
 import home from "../data/img/haus.png";
 
 export const ControlButtons = ({ map }) => {

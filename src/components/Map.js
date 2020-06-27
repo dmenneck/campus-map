@@ -1,23 +1,23 @@
-import React from 'react';
+import React from "react";
 
-import OlMap from 'ol/Map';
-import OlView from 'ol/View';
+import OlMap from "ol/Map";
+import OlView from "ol/View";
 import {
   defaults as defaultControls,
   FullScreen,
   OverviewMap,
-} from 'ol/control';
-import { Style, Fill, Stroke } from 'ol/style';
-import Select from 'ol/interaction/Select';
-import { pointerMove } from 'ol/events/condition';
+} from "ol/control";
+import { Style, Fill, Stroke } from "ol/style";
+import Select from "ol/interaction/Select";
+import { pointerMove } from "ol/events/condition";
 
-import '../App.css';
-import 'ol/ol.css';
-import 'antd/dist/antd.css';
-import { MapComponent, MeasureButton } from '@terrestris/react-geo';
+import "../App.css";
+import "ol/ol.css";
+import "antd/dist/antd.css";
+import { MapComponent, MeasureButton } from "@terrestris/react-geo";
 
-import TileLayer from 'ol/layer/Tile';
-import OSM from 'ol/source/OSM';
+import TileLayer from "ol/layer/Tile";
+import OSM from "ol/source/OSM";
 
 import {
   osmTileLayer,
@@ -26,36 +26,40 @@ import {
   familyCampus,
   entrances,
   etageOneRooms,
-  roomsGänge,
+  etageTwoRooms,
+  etageThreeRooms,
   buildings,
   highlightStyle,
-} from './Layers';
+} from "./Layers";
 
-import { EntranceLayer } from './Layers';
-import { ControlButtons } from './ControlButtons';
+import { EntranceLayer } from "./Layers";
+import { ControlButtons } from "./ControlButtons";
 
-import { ContextProvider } from './AppContext';
-import DrawerComponent from './Drawer';
-import ClickedBuilding from './ClickedBuilding';
-import SearchComponent from './Search';
-import FetchNextBikeApi from './FetchNextBikeApi';
-import MenuContainer from './MenuContainer';
-import { SearchBuildingContainer } from './SearchBuildingContainer';
-import ToggleMenuContainerBtn from './ToggleMenuContainerBtn';
-import CampusAreas from './CampusAreas';
-import Legend from './Legend';
-import EntranceLegende from './EntranceLegende';
-import AnalysisFunctionsContainer from './AnalysisFunctionsContainer';
-import ToggleDrawerBtnMobile from './ToggleDrawerBtnMobile';
-import GeolocationMobile from './GeolocationMobile';
-import RoomLayers from './RoomLayers';
+import { ContextProvider } from "./AppContext";
+import DrawerComponent from "./Drawer";
+import ClickedBuilding from "./ClickedBuilding";
+import SearchComponent from "./Search";
+import FetchNextBikeApi from "./FetchNextBikeApi";
+import MenuContainer from "./MenuContainer";
+import { SearchBuildingContainer } from "./SearchBuildingContainer";
+import ToggleMenuContainerBtn from "./ToggleMenuContainerBtn";
+import CampusAreas from "./CampusAreas";
+import Legend from "./Legend";
+import EntranceLegende from "./EntranceLegende";
+import AnalysisFunctionsContainer from "./AnalysisFunctionsContainer";
+import ToggleDrawerBtnMobile from "./ToggleDrawerBtnMobile";
+import GeolocationMobile from "./GeolocationMobile";
+import HoveredFeatures from "./HoveredFeatures";
+import RoomLayerOne from "./RoomLayerOne";
+import RoomLayerTwo from "./RoomLayerTwo";
+import RoomLayerThree from "./RoomLayerThree";
 
 // global variables
 const center = [771105.02, 6608382.01]; //Cologne
 
 // create costum overviewmap
 const costumOverviewMapControl = new OverviewMap({
-  className: 'ol-overviewmap ol-custom-overviewmap',
+  className: "ol-overviewmap ol-custom-overviewmap",
   layers: [
     new TileLayer({
       source: new OSM(),
@@ -81,7 +85,8 @@ const Map = () => {
       entrances,
       familyCampus,
       etageOneRooms,
-      roomsGänge,
+      etageTwoRooms,
+      etageThreeRooms,
     ],
     controls: defaultControls().extend([
       new FullScreen(),
@@ -95,18 +100,27 @@ const Map = () => {
 
   // change style of clicked feature
   // select interaction working on "singleclick"
+
+  const room_layer = map.getLayers().getArray()[6];
+  let room_layer_visible = room_layer.getVisible();
+
+  const buildings_active_style = new Style({
+    stroke: new Stroke({ color: "black", width: 1 }),
+    // opacity low
+    fill: new Fill({ color: "rgba(255,255,0,0)" }),
+  });
+
+  // #253746
+
   const selectSingleClick = new Select({
-    style: new Style({
-      stroke: new Stroke({ color: 'black', width: 2 }),
-      fill: new Fill({ color: '#253746' }),
-    }),
+    style: buildings_active_style,
   });
 
   const addClickInteraction = () => {
     map.addInteraction(selectSingleClick);
   };
 
-  addClickInteraction();
+  // addClickInteraction();
 
   // change style of hovered feature
   // select interaction working on "pointermove"
@@ -127,60 +141,65 @@ const Map = () => {
   nrwWms.setVisible(false);
   osmTileLayer.setVisible(true);
 
+  //invisible by default (can be toggled in Rooms.js)
+  etageOneRooms.setVisible(false);
+  etageTwoRooms.setVisible(false);
+  etageThreeRooms.setVisible(false);
+
   // block scrolling
-  document.body.classList.add('stop-scrolling');
+  document.body.classList.add("stop-scrolling");
 
   return (
-    <div className='App'>
+    <div className="App">
       <ContextProvider>
         {/* tried to keep the MeasureButtons in a seperate Component, but there they didn't functioned as expected. However, after debugging i came to the conclusion to just keep them here */}
-        <div id='measure-btn-container' className='measure-btn-container'>
+        <div id="measure-btn-container" className="measure-btn-container">
           <MeasureButton
-            name='line'
+            name="line"
             map={map}
-            measureType='line'
-            id='analysis-btn-one'
+            measureType="line"
+            id="analysis-btn-one"
           ></MeasureButton>
 
           <MeasureButton
-            name='poly'
+            name="poly"
             map={map}
-            measureType='polygon'
-            id='analysis-btn-two'
+            measureType="polygon"
+            id="analysis-btn-two"
           ></MeasureButton>
 
           <MeasureButton
-            name='multi'
+            name="multi"
             map={map}
-            measureType='line'
+            measureType="line"
             multipleDrawing
-            id='analysis-btn-three'
+            id="analysis-btn-three"
           ></MeasureButton>
         </div>
 
         <div
-          id='mobile-measure-btn-container'
-          className='measure-btn-container'
+          id="mobile-measure-btn-container"
+          className="measure-btn-container"
         >
           <MeasureButton
-            name='line'
+            name="line"
             map={map}
-            measureType='line'
-            id='mobile-measure-btn-one'
+            measureType="line"
+            id="mobile-measure-btn-one"
           ></MeasureButton>
 
           <MeasureButton
-            name='poly'
+            name="poly"
             map={map}
-            id='mobile-measure-btn-two'
+            id="mobile-measure-btn-two"
           ></MeasureButton>
 
           <MeasureButton
-            name='multi'
+            name="multi"
             map={map}
-            measureType='line'
+            measureType="line"
             multipleDrawing
-            id='mobile-measure-btn-three'
+            id="mobile-measure-btn-three"
           ></MeasureButton>
         </div>
 
@@ -201,7 +220,10 @@ const Map = () => {
         <ControlButtons map={map} />
         <SearchComponent map={map} />
         <MapComponent map={map} />
-        <RoomLayers map={map} />
+        <RoomLayerOne map={map} />
+        <RoomLayerTwo map={map} />
+        <RoomLayerThree map={map} />
+        <HoveredFeatures map={map} />
       </ContextProvider>
     </div>
   );

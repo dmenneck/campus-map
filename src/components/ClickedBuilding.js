@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
-import { AppContext } from './AppContext';
-import ShowBuildingData from './ShowBuildingData';
-import { entrances } from './Layers';
-import entrancesData from '../data/geoData/entrances.geojson';
-import GeoJSON from 'ol/format/GeoJSON';
+import React, { useContext } from "react";
+import { AppContext } from "./AppContext";
+import ShowBuildingData from "./ShowBuildingData";
+import { entrances } from "./Layers";
+import entrancesData from "../data/geoData/entrances.geojson";
+import GeoJSON from "ol/format/GeoJSON";
 
 function ClickedBuilding({ map }) {
   const {
@@ -14,6 +14,7 @@ function ClickedBuilding({ map }) {
     value8,
     value15,
     value17,
+    value19,
   } = useContext(AppContext);
   const [menuContainerVisibility, setMenuContainerVisibility] = value8;
   const [clickedBuildingsInformation, setclickedBuildingsInformation] = value6;
@@ -22,8 +23,9 @@ function ClickedBuilding({ map }) {
   const [search, setSearch] = value14;
   const [burgerOpen, setBurgerOpen] = value15;
   const [entrancesLegend, setEntrancesLegend] = value17;
+  const [btnClicked, setBtnClicked] = value19;
 
-  let data = '';
+  let data = "";
   async function test() {
     const response = await fetch(entrancesData);
     const json = await response.json();
@@ -31,7 +33,7 @@ function ClickedBuilding({ map }) {
   }
 
   // get attributes from building layer
-  let properties = '';
+  let properties = "";
 
   function OnMouseMove(e) {
     var coordinate = e.coordinate;
@@ -44,7 +46,7 @@ function ClickedBuilding({ map }) {
 
       const data_features = data.features;
 
-      let building_number = feature.get('building_number');
+      let building_number = feature.get("building_number");
 
       if (data_features === undefined) {
         //console.log("undefined");
@@ -83,9 +85,19 @@ function ClickedBuilding({ map }) {
     });
 
     setSearchBuildingVisibility(false);
-    setSearch('');
+    setSearch("");
     setBurgerOpen(false);
     setMenuContainerVisibility(false);
+
+    setBtnClicked(false);
+
+    // on click on map (outside of a feature) setVisible of the current visible layer to false
+    const rooms_one_layer = map.getLayers().getArray()[6];
+    const rooms_two_layer = map.getLayers().getArray()[7];
+    const rooms_three_layer = map.getLayers().getArray()[8];
+    rooms_one_layer.setVisible(false);
+    rooms_two_layer.setVisible(false);
+    rooms_three_layer.setVisible(false);
 
     // check wether layer (one of the buidling polygons) is clicked or not
     if (!dataValues && !properties) {
@@ -95,7 +107,7 @@ function ClickedBuilding({ map }) {
     }
   }
 
-  map.on('click', OnMouseMove);
+  map.on("click", OnMouseMove);
 
   return (
     <div>

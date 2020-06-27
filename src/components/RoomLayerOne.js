@@ -1,37 +1,37 @@
-import React, { useContext } from 'react';
-import { AppContext } from './AppContext';
-import roomsOne from '../data/geoData/roomsOne.geojson';
-import GeoJSON from 'ol/format/GeoJSON';
+import React, { useContext, useEffect } from "react";
+import { AppContext } from "./AppContext";
+import roomsOne from "../data/geoData/roomsOne.geojson";
+import roomsTwo from "../data/geoData/roomsTwo.geojson";
+import roomsThree from "../data/geoData/roomsThree.geojson";
 
-let data = '';
-async function fetchData() {
+import GeoJSON from "ol/format/GeoJSON";
+
+let dataOne = "";
+async function fetchDataOne() {
   const response = await fetch(roomsOne);
   const json = await response.json();
-  data = json;
+  dataOne = json;
 }
 
-const RoomLayers = ({ map }) => {
-  const { value6 } = useContext(AppContext);
+fetchDataOne();
+
+const RoomLayerOne = ({ map }) => {
+  const { value6, value18 } = useContext(AppContext);
   const [clickedBuildingsInformation, setclickedBuildingsInformation] = value6;
 
-  fetchData();
+  const dataOne_features = dataOne.features;
 
-  const data_features = data.features;
   const building_number = clickedBuildingsInformation.building_number;
 
-  if (data_features === undefined) {
-    console.log('undefined');
+  if (dataOne_features === undefined) {
+    // nothing happens
   } else {
-    const roomFeatureToAdd = data_features.filter(
+    let roomFeatureToAdd = dataOne_features.filter(
       (item) => item.properties.build_num === building_number
     );
 
     // get source of entrance layer
     const room_layer_source = map.getLayers().getArray()[6].getSource();
-
-    // get layer and set z index to render over buildings layer
-    const room_layer = map.getLayers().getArray()[6];
-    room_layer.setZIndex(1001);
 
     // transform object to GeoJSON
     const format = new GeoJSON();
@@ -48,4 +48,4 @@ const RoomLayers = ({ map }) => {
   return <div></div>;
 };
 
-export default RoomLayers;
+export default RoomLayerOne;

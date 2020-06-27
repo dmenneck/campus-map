@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   box-sizing: border-box;
   color: #15222b;
   font-size: 16px;
@@ -132,6 +132,14 @@ body {
 
 .ant-btn {
   padding: 0 10px !important;
+}
+
+.ant-btn:focus {
+  border-color: #7a93ab !important;
+}
+
+.ant-btn:hover {
+  border-color: #7a93ab !important;
 }
 
 /* OL Controls */
@@ -787,7 +795,7 @@ tbody tr:hover {
   background-repeat: no-repeat;
   background-position: center;
 
-  offset-path: path('M 5 -30 C 20 20, 20 20, 20 20');
+  offset-path: path("M 5 -30 C 20 20, 20 20, 20 20");
   animation: move 0.4s linear alternate;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
@@ -797,7 +805,7 @@ tbody tr:hover {
 #analysis-btn-three {
   top: 126px;
   right: 104px;
-  offset-path: path('M -40 -50 C 20 20, 20 20, 20 20');
+  offset-path: path("M -40 -50 C 20 20, 20 20, 20 20");
   animation: move 0.4s linear alternate;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
@@ -883,9 +891,9 @@ tbody tr:hover {
 }
 
 .barrier-free-entrance-text {
-  margin-bottom: 5px;
-  font-size: 14px;
-  padding-left: 0;
+  font-size: 18px;
+  padding-left: 0px;
+  text-align: center;
 }
 
 #hamburger-menu-container {
@@ -1290,7 +1298,6 @@ button:focus {
 #mobile-measure-btn-three {
   position: absolute;
   z-index: 1;
-
   border-radius: 50px;
   padding: 7.5px;
   width: 40px;
@@ -1302,6 +1309,168 @@ button:focus {
 
 #mobile-measure-btn-container {
   display: none;
+}
+
+#toggle-rooms-btn-container {
+  margin-bottom: 6px;
+}
+
+.toggle-rooms-btn {
+  color: white;
+  margin-right: 5px;
+  font-size: 12px;
+  background-color: #32475b !important;
+  padding: 6px;
+  border: none;
+  border-radius: 6%;
+}
+
+.rooms-data-container {
+  height: auto;
+}
+
+#rooms-input-search {
+  width: 75%;
+  padding: 2px;
+  border: none;
+  border-bottom: 1px solid #e3e8eb;
+}
+
+#rooms-input-search:focus {
+  outline: none;
+  border-bottom: 1px solid #32475b;
+}
+
+.rooms-input-btns {
+  border-radius: 14%;
+  border: none;
+  background-color: #e3e8eb;
+  border-color: #d9d9d9;
+  margin: 1px;
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.rooms-input-btns:hover {
+  border: 1px solid #32475b;
+}
+
+#barrier-free-green {
+  color: green;
+}
+
+#barrier-free-red {
+  color: red;
+}
+
+#rooms-data-container {
+  height: auto;
+  max-height: 200px;
+
+  overflow-y: auto;
+}
+
+#show-rooms-data-container {
+  z-index: 1;
+  background-color: #e3e8eb;
+  height: 100%;
+  max-height: auto;
+}
+
+.room-data-items {
+  font-size: 14px;
+  padding: 10px;
+  color: black;
+  border-bottom: 1px solid #e3e8ea;
+}
+
+.room-data-items:hover {
+  background-color: #e3e8eb;
+}
+
+.room-data-items:first-child {
+  margin-top: 10px;
+}
+
+.hide-content {
+  background-color: rgba(200, 209, 219, 0.6) !important;
+  height: 25px;
+  width: 25px;
+  border: 1px solid #354d60 !important;
+  color: transparent;
+  display: inline-block !important;
+  margin: 2px;
+}
+
+#rooms-data-grid {
+  display: grid;
+  grid-template-columns: 60% 1fr;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 60px;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: black;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: 12px;
+}
+.separator::before,
+.separator::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #e3e8eb;
+}
+.separator::before {
+  margin-right: 0.25em;
+}
+.separator::after {
+  margin-left: 0.25em;
+}
+
+#rauminformationen-image-container {
+  width: 160px;
+  height: 220px;
+  border: 1px solid black;
+  float: right;
+  margin: 5px 10px 10px 10px;
+}
+
+#rauminformationen-image {
+  max-width: 100%;
+  max-height: 100%;
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.ant-collapse-content > .ant-collapse-content-box {
+  padding: 0 !important;
+}
+
+#rauminformationen-text {
+  margin: 10px;
+}
+
+#hovered-feature-img-container {
+  position: absolute;
+  z-index: 2;
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+}
+
+#hovered-feature-img {
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 200px;
+  height: 200px;
 }
 
 /* smaller than mobile */

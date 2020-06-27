@@ -31,6 +31,11 @@ export const ContextProvider = (props) => {
   const [search, setSearch] = useState("");
   const [burgerOpen, setBurgerOpen] = useState(false);
   const [entrancesLegend, setEntrancesLegend] = useState(false);
+  const [roomFeatures, setRoomFeatures] = useState([]);
+  const [btnClicked, setBtnClicked] = useState(false);
+  const [clickedRoom, setClickedRoom] = useState(false);
+  const [clickedRoomData, setClickedRoomData] = useState([]);
+  const [roomNames, setRoomNames] = useState("");
 
   return (
     <AppContext.Provider
@@ -54,6 +59,11 @@ export const ContextProvider = (props) => {
         value15: [burgerOpen, setBurgerOpen],
         value16: [clickedBuildingFeature, setClickedBuildingFeature],
         value17: [entrancesLegend, setEntrancesLegend],
+        value18: [roomFeatures, setRoomFeatures],
+        value19: [btnClicked, setBtnClicked],
+        value20: [clickedRoom, setClickedRoom],
+        value21: [clickedRoomData, setClickedRoomData],
+        value22: [roomNames, setRoomNames],
       }}
     >
       {props.children}
