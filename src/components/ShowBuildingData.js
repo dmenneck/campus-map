@@ -143,6 +143,9 @@ const ShowBuildingData = ({ map }) => {
                 <Rooms map={map} />
               </div>
 
+              <div className="separator unselectable">Einrichtungen</div>
+
+              <span>Klicken Sie </span>
               <Button
                 ghost
                 onClick={showDrawer}
@@ -150,7 +153,7 @@ const ShowBuildingData = ({ map }) => {
                   drawerVisibility || hasFacilities ? "hide" : "open-drawer-btn"
                 }
               >
-                Einrichtungen
+                hier
               </Button>
 
               <Drawer

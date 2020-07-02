@@ -1057,7 +1057,7 @@ tbody tr:hover {
 }
 
 #open-drawer-btn {
-  margin: 5px 10px 5px 140px;
+  margin: 0px 10px 10px 10px;
   border: 1px solid black;
 }
 
@@ -1471,6 +1471,11 @@ button:focus {
   background-position: center;
   width: 200px;
   height: 200px;
+}
+
+.rauminformationen-text-spans {
+  display: block;
+  margin-bottom: 10px;
 }
 
 /* smaller than mobile */

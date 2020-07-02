@@ -187,88 +187,92 @@ const Rooms = ({ map }) => {
 
   return (
     <div id="rooms">
-      <div id="toggle-rooms-btn-container">
-        <button onClick={toggleRoomsOne} className="toggle-rooms-btn">
-          1. Etage
-        </button>
-        <button onClick={toggleRoomsTwo} className="toggle-rooms-btn">
-          2. Etage
-        </button>
-        <button onClick={toggleRoomsThree} className="toggle-rooms-btn">
-          3. Etage
-        </button>
-      </div>
+      <div></div>
 
-      <div className={btnClicked ? "rooms-input" : "hide"}>
-        <input
-          placeholder="Suche..."
-          value={search}
-          onChange={searchInput}
-          id="rooms-input-search"
-        />
+      <div>
+        <div id="toggle-rooms-btn-container">
+          <button onClick={toggleRoomsOne} className="toggle-rooms-btn">
+            1. Etage
+          </button>
+          <button onClick={toggleRoomsTwo} className="toggle-rooms-btn">
+            2. Etage
+          </button>
+          <button onClick={toggleRoomsThree} className="toggle-rooms-btn">
+            3. Etage
+          </button>
+        </div>
 
-        <button onClick={resetInput} className="rooms-input-btns">
-          x
-        </button>
-        <button onClick={closeSearchBar} className="rooms-input-btns">
-          .
-        </button>
-      </div>
+        <div className={btnClicked ? "rooms-input" : "hide"}>
+          <input
+            placeholder="Suche..."
+            value={search}
+            onChange={searchInput}
+            id="rooms-input-search"
+          />
 
-      <div
-        id="rooms-data-container"
-        className={btnClicked ? "rooms-input" : "hide"}
-      >
-        {rooms_properties.map((item, index) => (
-          <div key={index} id="rooms-data-grid" className="room-data-items">
-            <div href={item.link} key={index} title={item.names}>
-              Raum {item.room_num}
+          <button onClick={resetInput} className="rooms-input-btns">
+            x
+          </button>
+          <button onClick={closeSearchBar} className="rooms-input-btns">
+            .
+          </button>
+        </div>
+
+        <div
+          id="rooms-data-container"
+          className={btnClicked ? "rooms-input" : "hide"}
+        >
+          {rooms_properties.map((item, index) => (
+            <div key={index} id="rooms-data-grid" className="room-data-items">
+              <div href={item.link} key={index} title={item.names}>
+                Raum {item.room_num}
+              </div>
+              <div>
+                <button
+                  onClick={showRoomData}
+                  className="hide-content"
+                  style={{
+                    backgroundImage: `url(${information})`,
+                    backgroundSize: "75%",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center",
+                    display: "inline",
+                  }}
+                >
+                  {/* next line is being ignored. Code still needs do be there otherwise doesnt work*/}
+                  {item.names}
+                </button>
+                <button
+                  onClick={getExtent}
+                  className="hide-content"
+                  style={{
+                    backgroundImage: `url(${geolocation})`,
+                    backgroundSize: "75%",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center",
+                    display: "inline",
+                  }}
+                >
+                  {/* next line is being ignored. Code still needs do be there otherwise doesnt work*/}
+                  {item.names}
+                </button>
+              </div>
             </div>
-            <div>
-              <button
-                onClick={showRoomData}
-                className="hide-content"
-                style={{
-                  backgroundImage: `url(${information})`,
-                  backgroundSize: "75%",
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center",
-                  display: "inline",
-                }}
-              >
-                {/* next line is being ignored. Code still needs do be there otherwise doesnt work*/}
-                {item.names}
-              </button>
-              <button
-                onClick={getExtent}
-                className="hide-content"
-                style={{
-                  backgroundImage: `url(${geolocation})`,
-                  backgroundSize: "75%",
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center",
-                  display: "inline",
-                }}
-              >
-                {/* next line is being ignored. Code still needs do be there otherwise doesnt work*/}
-                {item.names}
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <Drawer
-        title="Rauminformationen"
-        placement="right"
-        onClose={onClose}
-        visible={drawerVisibility}
-        getContainer={false}
-        width="40%"
-      >
-        <h4>Raum: {roomNumber}</h4>
-        <RoomsContainer />
-      </Drawer>
+        <Drawer
+          title="Rauminformationen"
+          placement="right"
+          onClose={onClose}
+          visible={drawerVisibility}
+          getContainer={false}
+          width="40%"
+        >
+          <h4>Raum: {roomNumber}</h4>
+          <RoomsContainer />
+        </Drawer>
+      </div>
     </div>
   );
 };

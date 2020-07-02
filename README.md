@@ -2,12 +2,9 @@
 
 based on react-geo, OpenLayers and GeoServer
 
-Todos:
+## Todos
 
-- nur ein Item pro Panel
-- hover over feature -> show img of building
-- mobile search wie bei google maps -> div deckt den ganzen Bildschirm
-- ag feature grid von gebäudeübersicht in die Map übernehmen
+-
 
 ## additional informations
 
