@@ -1057,8 +1057,14 @@ tbody tr:hover {
 }
 
 #open-drawer-btn {
-  margin: 0px 10px 10px 10px;
-  border: 1px solid black;
+  margin: 0px auto 10px auto;
+  font-size: 12px;
+  background-color: #32475b !important;
+  color: white;
+  padding: 6px;
+  border: none;
+  border-radius: 6%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
 }
 
 #open-drawer-btn span {
@@ -1075,7 +1081,7 @@ tbody tr:hover {
   margin-right: auto;
   margin-bottom: 10px;
   border-radius: 5%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
 }
 
 .clicked-data-container-text {
@@ -1323,17 +1329,28 @@ button:focus {
   padding: 6px;
   border: none;
   border-radius: 6%;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .rooms-data-container {
   height: auto;
 }
 
+#rooms-data-container {
+  margin-top: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+#rooms-container {
+  background-color: red;
+}
+
 #rooms-input-search {
   width: 75%;
-  padding: 2px;
+  padding: 4px;
   border: none;
-  border-bottom: 1px solid #e3e8eb;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
 }
 
 #rooms-input-search:focus {
@@ -1344,8 +1361,9 @@ button:focus {
 .rooms-input-btns {
   border-radius: 14%;
   border: none;
-  background-color: #e3e8eb;
-  border-color: #d9d9d9;
+  background-color: #32475b !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  color: white;
   margin: 1px;
   width: 30px !important;
   height: 30px !important;
@@ -1388,10 +1406,6 @@ button:focus {
   background-color: #e3e8eb;
 }
 
-.room-data-items:first-child {
-  margin-top: 10px;
-}
-
 .hide-content {
   background-color: rgba(200, 209, 219, 0.6) !important;
   height: 25px;
@@ -1399,7 +1413,11 @@ button:focus {
   border: 1px solid #354d60 !important;
   color: transparent;
   display: inline-block !important;
-  margin: 2px;
+  margin: 6px;
+}
+
+.room-numbers {
+  margin: 6px;
 }
 
 #rooms-data-grid {
@@ -1435,26 +1453,27 @@ button:focus {
 
 #rauminformationen-image-container {
   width: 160px;
-  height: 220px;
+  height: 200px;
   border: 1px solid black;
-  float: right;
-  margin: 5px 10px 10px 10px;
+  float: left;
+  margin: 0px 10px 14px 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
 }
 
 #rauminformationen-image {
-  max-width: 100%;
-  max-height: 100%;
-  background-size: 75%;
-  background-repeat: no-repeat;
-  background-position: center;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 .ant-collapse-content > .ant-collapse-content-box {
   padding: 0 !important;
 }
 
-#rauminformationen-text {
+#rauminformationen-text-grid {
   margin: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 #hovered-feature-img-container {
@@ -1473,9 +1492,90 @@ button:focus {
   height: 200px;
 }
 
-.rauminformationen-text-spans {
-  display: block;
-  margin-bottom: 10px;
+.buildings-buttons {
+  margin: 4px;
+  width: 25px;
+  height: auto;
+  background-color: red;
+}
+
+#buildings-data-container {
+  width: 400px;
+  height: 600px;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background-color: red;
+
+  position: absolute;
+}
+
+.ol-viewport:nth-of-type(2) {
+  display: none !important;
+}
+
+.rauminformationen-grid {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+}
+
+.rauminformationen-type {
+  font-size: 16px;
+  color: grey;
+  margin-bottom: 0 !important;
+}
+
+.rauminformationen-text {
+  margin-bottom: 0 !important;
+}
+
+#rauminformationen-data {
+  margin: 10px;
+}
+
+#rauminformationen-data p {
+  margin: 0;
+}
+
+.text-bold {
+  font-weight: bold;
+  color: #32475b;
+}
+
+#rauminformationen-container {
+  margin: 15px;
+}
+
+#webseite-link {
+  position: absolute;
+  margin-top: 10px;
+  color: #32475b;
+}
+
+#webseite-link:hover {
+  color: #a5b6c7;
+}
+
+#inline {
+  display: inline;
+}
+
+.no-rooms {
+  text-align: center;
+  font-size: 14px;
+}
+
+#no-facilities {
+  text-align: center;
+  font-size: 14px;
+}
+
+#room-number {
+  margin: 10px;
+  font-size: 22px;
+  font-weight: bold;
 }
 
 /* smaller than mobile */

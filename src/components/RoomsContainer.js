@@ -23,12 +23,10 @@ const RoomsContainer = () => {
     return item.email.split(",");
   });
 
-  console.log(filteredData);
-
   // .flat() -> erstellt rekursiv ein neues Array mit allen Elementen von Unterarrays bis zu einer spezifizierten Tiefe
   return (
     <div id="show-rooms-data-container">
-      <Collapse defaultActiveKey={["1"]}>
+      <Collapse>
         {splittedNames.flat().map((name, index) => {
           return (
             <Panel header={name} key={index}>
@@ -42,25 +40,51 @@ const RoomsContainer = () => {
                       ></img>
                     </div>
 
-                    <div id="rauminformationen-text">
-                      <span className="rauminformationen-text-spans">
-                        Email: {item.email.split(",")[index]}
-                      </span>
+                    <div id="rauminformationen-container">
+                      <div>
+                        <div id="rauminformationen-data">
+                          <p className="text-bold">
+                            {item.build_name.split(",")[index]}
+                            <p id="inline">, Raum </p>
+                            {item.room_num.split(",")[0]}
+                          </p>
+                          <p>{item.street.split(",")[index]}</p>
+                          <p>{item.postcode.split(",")[index]}</p>
+                        </div>
 
-                      <span className="rauminformationen-text-spans">
-                        Telefonnummer: {item.tel_num.split(",")[index]}
-                      </span>
+                        <div className="rauminformationen-grid">
+                          <p className="rauminformationen-type">Email:</p>
+                          <p className="rauminformationen-text">
+                            {item.email.split(",")[index]}
+                          </p>
+                        </div>
 
-                      <span className="rauminformationen-text-spans">
-                        Homepage:
+                        <div className="rauminformationen-grid">
+                          <p className="rauminformationen-type">
+                            Telefonnummer:
+                          </p>
+                          <p className="rauminformationen-text">
+                            {item.tel_num.split(",")[index]}
+                          </p>
+                        </div>
+
+                        <div className="rauminformationen-grid">
+                          <p className="rauminformationen-type">Fax:</p>
+                          <p className="rauminformationen-text">
+                            {item.fax_num.split(",")[index]}
+                          </p>
+                        </div>
+
                         <a
                           href={item.homepage.split(",")[index]}
                           key={index}
                           target="_blank"
+                          className="rauminformationen-text"
+                          id="webseite-link"
                         >
-                          hier
+                          Weiter zur Webseite
                         </a>
-                      </span>
+                      </div>
                     </div>
                   </div>
                 );

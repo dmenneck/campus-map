@@ -25,6 +25,42 @@ const Rooms = ({ map }) => {
   const roomsTwo = map.getLayers().getArray()[7];
   const roomsThree = map.getLayers().getArray()[8];
 
+  // check if building has room features. If not -> hide toggle RoomFeatures btns in the return
+  let featuresOne = roomsOne.getSource().getFeatures();
+  let featuresTwo = roomsTwo.getSource().getFeatures();
+  let featuresThree = roomsThree.getSource().getFeatures();
+
+  let etageOneHasFeatures = true;
+  if (featuresOne == 0) {
+    etageOneHasFeatures = false;
+  } else {
+    etageOneHasFeatures = true;
+  }
+
+  let etageTwoHasFeatures = true;
+  if (featuresTwo == 0) {
+    etageTwoHasFeatures = false;
+  } else {
+    etageTwoHasFeatures = true;
+  }
+
+  let etageThreeHasFeatures = true;
+  if (featuresThree == 0) {
+    etageThreeHasFeatures = false;
+  } else {
+    etageThreeHasFeatures = true;
+  }
+
+  // if building has no rooms at all -> render message
+  let noRooms = false;
+  if (
+    etageOneHasFeatures === false &&
+    etageTwoHasFeatures === false &&
+    etageThreeHasFeatures === false
+  ) {
+    noRooms = true;
+  }
+
   const toggleRoomsOne = () => {
     setWhichBtnClicked(1);
 
@@ -87,6 +123,7 @@ const Rooms = ({ map }) => {
   };
 
   const searchInput = (e) => {
+    console.log(e.target.value);
     setSearch(e.target.value);
   };
 
@@ -126,6 +163,10 @@ const Rooms = ({ map }) => {
       return item.getProperties();
     });
   }
+
+  let filteredNames = rooms_properties.filter((name) => {
+    return name.names.toLowerCase().indexOf(search.toLocaleLowerCase()) !== -1;
+  });
 
   let clickedRoomFeatures = [];
   if (whichBtnClicked === 1) {
@@ -185,21 +226,45 @@ const Rooms = ({ map }) => {
     });
   };
 
+  const styleHoveredFeature = (e) => {
+    let targetName = e.target.innerHTML;
+
+    clickedRoomFeatures.map((item) => {
+      console.log(item.getProperties().names);
+
+      if (targetName === item.getProperties().names) {
+        console.log(item);
+      }
+    });
+  };
+
   return (
     <div id="rooms">
       <div></div>
 
       <div>
         <div id="toggle-rooms-btn-container">
-          <button onClick={toggleRoomsOne} className="toggle-rooms-btn">
+          <button
+            onClick={toggleRoomsOne}
+            className={etageOneHasFeatures ? "toggle-rooms-btn" : "hide"}
+          >
             1. Etage
           </button>
-          <button onClick={toggleRoomsTwo} className="toggle-rooms-btn">
+          <button
+            onClick={toggleRoomsTwo}
+            className={etageTwoHasFeatures ? "toggle-rooms-btn" : "hide"}
+          >
             2. Etage
           </button>
-          <button onClick={toggleRoomsThree} className="toggle-rooms-btn">
+          <button
+            onClick={toggleRoomsThree}
+            className={etageThreeHasFeatures ? "toggle-rooms-btn" : "hide"}
+          >
             3. Etage
           </button>
+          <p className={noRooms ? "no-rooms" : "hide"}>
+            Für dieses Gebäude liegen noch keine Rauminformationen vor.
+          </p>
         </div>
 
         <div className={btnClicked ? "rooms-input" : "hide"}>
@@ -222,9 +287,15 @@ const Rooms = ({ map }) => {
           id="rooms-data-container"
           className={btnClicked ? "rooms-input" : "hide"}
         >
-          {rooms_properties.map((item, index) => (
+          {filteredNames.map((item, index) => (
             <div key={index} id="rooms-data-grid" className="room-data-items">
-              <div href={item.link} key={index} title={item.names}>
+              <div
+                href={item.link}
+                key={index}
+                title={item.names}
+                className="room-numbers"
+                onMouseEnter={styleHoveredFeature}
+              >
                 Raum {item.room_num}
               </div>
               <div>
@@ -267,9 +338,9 @@ const Rooms = ({ map }) => {
           onClose={onClose}
           visible={drawerVisibility}
           getContainer={false}
-          width="40%"
+          width="600px"
         >
-          <h4>Raum: {roomNumber}</h4>
+          <p id="room-number">Raum: {roomNumber}</p>
           <RoomsContainer />
         </Drawer>
       </div>

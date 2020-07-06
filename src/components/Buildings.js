@@ -9,6 +9,7 @@ const Buildings = () => {
   const [features, setFeatures] = useState([]);
   const [clickedFeature, setClickedFeature] = useState();
   const [mapVisibile, setIsMapVisible] = useState(false);
+  const [dataDivVisible, setDataDivVisible] = useState(true);
 
   console.log(clickedFeature);
 
@@ -31,8 +32,21 @@ const Buildings = () => {
     view: view,
   });
 
+  const openShowDataDiv = () => {
+    if (dataDivVisible === true) {
+      setDataDivVisible(false);
+    } else {
+      setDataDivVisible(true);
+    }
+  };
+
+  useEffect(() => {
+    openShowDataDiv();
+  }, []);
+
   return (
     <div>
+      <div id={dataDivVisible ? "buildings-data-container" : null}></div>
       <div id="buildings-header">
         <span id="buildings-header-title">Gebäudeübersicht</span>
         <br></br>
@@ -53,23 +67,35 @@ const Buildings = () => {
               <th className="sticky">Name</th>
               <th className="sticky">Addresse</th>
               <th className="sticky">Gebäudenummer</th>
+              <th className="sticky">Weiteres</th>
             </tr>
           </thead>
           <tbody>
             {features.map((item, index) => {
               return (
-                <tr
-                  key={index}
-                  id="body-tr"
-                  onMouseEnter={() =>
-                    littleMap
-                      .getView()
-                      .fit(item.getGeometry(), littleMap.getSize())
-                  }
-                >
+                <tr key={index} id="body-tr">
                   <td>{item.getProperties().name}</td>
                   <td>{item.getProperties().address}</td>
                   <td>{item.getProperties().building_number}</td>
+                  <td>
+                    <button
+                      className="buildings-buttons"
+                      onClick={() =>
+                        littleMap
+                          .getView()
+                          .fit(item.getGeometry(), littleMap.getSize())
+                      }
+                    >
+                      1
+                    </button>
+                    <button className="buildings-buttons">2</button>
+                    <button
+                      className="buildings-buttons"
+                      onClick={openShowDataDiv}
+                    >
+                      3
+                    </button>
+                  </td>
                 </tr>
               );
             })}

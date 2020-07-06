@@ -119,13 +119,10 @@ const ShowBuildingData = ({ map }) => {
               <p className="buildingInformations buildingInformationsName">
                 {name}
               </p>
-
               <p className="buildingInformations building-address">{address}</p>
-
               <div className="separator unselectable">
                 Barrierefreier Eingang
               </div>
-
               <p
                 className="buildingInformations barrier-free-entrance-text"
                 id={
@@ -136,26 +133,25 @@ const ShowBuildingData = ({ map }) => {
               >
                 {barrier_free_entrance}
               </p>
-
               <div className="separator unselectable">Räume</div>
-
               <div>
                 <Rooms map={map} />
               </div>
-
               <div className="separator unselectable">Einrichtungen</div>
-
-              <span>Klicken Sie </span>
-              <Button
+              <button
                 ghost
                 onClick={showDrawer}
                 id={
                   drawerVisibility || hasFacilities ? "hide" : "open-drawer-btn"
                 }
               >
-                hier
-              </Button>
+                Zu den Einrichtungen
+              </button>
 
+              <p id={!hasFacilities ? "hide" : "no-facilities"}>
+                Für dieses Gebäude liegen noch keine Einrichtungsinformationen
+                vor.
+              </p>
               <Drawer
                 title="Einrichtungen"
                 placement="right"
