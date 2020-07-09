@@ -4,7 +4,8 @@ based on react-geo, OpenLayers and GeoServer
 
 ## Todos
 
--
+- get raumpläne/fluchtpläne from buildings
+- display WalkLayerOne
 
 ## additional informations
 

@@ -74,7 +74,7 @@ const SearchComponent = ({ map }) => {
         <div id="search-container">
           <Search
             id="searchBar"
-            placeholder="Suche nach Gebäuden, Räumen, ..."
+            placeholder="Suche nach Gebäuden..."
             onChange={updateSearch}
             style={{ width: 400, height: 50 }}
             value={search}

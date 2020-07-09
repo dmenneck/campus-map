@@ -13,8 +13,6 @@ import buildingsData from "../data/geoData/uniBuildings.geojson";
 import parkingData from "../data/geoData/parking.geojson";
 import familyCampusData from "../data/geoData/familyCampus.geojson";
 
-import entrancesData from "../data/geoData/entrances.geojson";
-
 import parkenÖffentlich from "../data/img/parkenÖffentlich.png";
 import parkenUni from "../data/img/parkenUni.png";
 import parkenKlinik from "../data/img/parkenKlinik.png";
@@ -104,6 +102,11 @@ export const highlightStyle = new Style({
   stroke: new Stroke({ color: "rgba(73, 139, 170, 0.9)", width: 1 }),
 });
 
+export const clickedStyle = new Style({
+  fill: new Fill({ color: "rgba(227, 232, 235, 0.5)" }),
+  stroke: new Stroke({ color: "rgba(73, 139, 170, 0.9)", width: 2 }),
+});
+
 // create Buildings layer
 export const source = new OlVectorSource({
   url: buildingsData,
@@ -160,6 +163,24 @@ export const etageThreeRooms = new OlVector({
       width: 1.2,
     }),
   }),
+});
+
+export const etageOneWalks = new OlVector({
+  source: new OlVectorSource(),
+  style: new Style({
+    stroke: new Stroke({
+      color: "red",
+      width: 1.2,
+    }),
+  }),
+});
+
+export const etageTwoWalks = new OlVector({
+  source: new OlVectorSource(),
+});
+
+export const etageThreeWalks = new OlVector({
+  source: new OlVectorSource(),
 });
 
 // parking styles

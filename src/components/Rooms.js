@@ -25,6 +25,10 @@ const Rooms = ({ map }) => {
   const roomsTwo = map.getLayers().getArray()[7];
   const roomsThree = map.getLayers().getArray()[8];
 
+  const walksOne = map.getLayers().getArray()[9];
+
+  console.log(walksOne.getSource().getFeatures());
+
   // check if building has room features. If not -> hide toggle RoomFeatures btns in the return
   let featuresOne = roomsOne.getSource().getFeatures();
   let featuresTwo = roomsTwo.getSource().getFeatures();
@@ -204,7 +208,6 @@ const Rooms = ({ map }) => {
 
   const clickedBuildingsStyle = new Style({
     stroke: new Stroke({ color: "#af111d", width: 6 }),
-    fill: new Fill({ color: "red" }),
   });
 
   const getExtent = (e) => {
@@ -230,8 +233,6 @@ const Rooms = ({ map }) => {
     let targetName = e.target.innerHTML;
 
     clickedRoomFeatures.map((item) => {
-      console.log(item.getProperties().names);
-
       if (targetName === item.getProperties().names) {
         console.log(item);
       }
@@ -269,17 +270,17 @@ const Rooms = ({ map }) => {
 
         <div className={btnClicked ? "rooms-input" : "hide"}>
           <input
-            placeholder="Suche..."
+            placeholder="Suche MitarbeiterIn..."
             value={search}
             onChange={searchInput}
             id="rooms-input-search"
           />
 
           <button onClick={resetInput} className="rooms-input-btns">
-            x
+            {`<`}
           </button>
           <button onClick={closeSearchBar} className="rooms-input-btns">
-            .
+            X
           </button>
         </div>
 

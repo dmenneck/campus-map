@@ -36,10 +36,15 @@ export const ContextProvider = (props) => {
   const [clickedRoom, setClickedRoom] = useState(false);
   const [clickedRoomData, setClickedRoomData] = useState([]);
   const [roomNames, setRoomNames] = useState("");
+  const [searchEmployeeVisible, setSearchEmployeeVisible] = useState(false);
+  const [buildingsContainerVisible, setBuildingsContainerVisible] = useState(
+    true
+  );
 
   return (
     <AppContext.Provider
       value={{
+        value1: [searchEmployeeVisible, setSearchEmployeeVisible],
         value2: [layerClicked, isLayerClicked],
         value3: [theVectorLayer, setVectorLayer],
         value4: [searchBuildingVisibility, setSearchBuildingVisibility],
@@ -64,6 +69,7 @@ export const ContextProvider = (props) => {
         value20: [clickedRoom, setClickedRoom],
         value21: [clickedRoomData, setClickedRoomData],
         value22: [roomNames, setRoomNames],
+        value23: [buildingsContainerVisible, setBuildingsContainerVisible],
       }}
     >
       {props.children}

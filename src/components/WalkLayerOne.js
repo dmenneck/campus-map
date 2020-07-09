@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from "react";
 import { AppContext } from "./AppContext";
-import roomsOne from "../data/geoData/roomsOne.geojson";
+import WalkLayer from "../data/geoData/roomsOneWalk.geojson";
 
 import GeoJSON from "ol/format/GeoJSON";
 
 let dataOne = "";
 async function fetchDataOne() {
-  const response = await fetch(roomsOne);
+  const response = await fetch(WalkLayer);
   const json = await response.json();
   dataOne = json;
 }
@@ -29,7 +29,7 @@ const RoomLayerOne = ({ map }) => {
     );
 
     // get source of entrance layer
-    const room_layer_source = map.getLayers().getArray()[6].getSource();
+    const room_layer_source = map.getLayers().getArray()[9].getSource();
 
     // transform object to GeoJSON
     const format = new GeoJSON();

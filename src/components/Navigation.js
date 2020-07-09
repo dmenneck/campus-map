@@ -5,9 +5,6 @@ import MobileNav from "./MobileNav";
 import UniKölnLogo from "../data/img/uniKölnLogo.png";
 
 const Navigation = () => {
-  const removeStopScrollingClass = () => {
-    document.body.classList.remove("stop-scrolling");
-  };
   return (
     <div>
       <div id="globalNav">
@@ -24,13 +21,7 @@ const Navigation = () => {
         <NavLink to="./Informations" className="navlinks">
           Infos
         </NavLink>
-        <NavLink
-          to="./Buildings"
-          onClick={removeStopScrollingClass}
-          className="navlinks"
-        >
-          Gebäudeübersicht
-        </NavLink>
+
         <NavLink to="./Map" className="navlinks">
           Lageplan
         </NavLink>

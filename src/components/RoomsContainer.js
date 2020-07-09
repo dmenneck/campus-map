@@ -19,10 +19,6 @@ const RoomsContainer = () => {
     return item.names.split(",");
   });
 
-  let splittedEmails = filteredData.map((item) => {
-    return item.email.split(",");
-  });
-
   // .flat() -> erstellt rekursiv ein neues Array mit allen Elementen von Unterarrays bis zu einer spezifizierten Tiefe
   return (
     <div id="show-rooms-data-container">

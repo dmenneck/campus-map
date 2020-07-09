@@ -31,6 +31,7 @@ const { SubMenu } = Menu;
 
 export default function MenuContainer({ map }) {
   const {
+    value1,
     value4,
     value5,
     value7,
@@ -40,6 +41,7 @@ export default function MenuContainer({ map }) {
     value11,
     value12,
   } = useContext(AppContext);
+  const [searchEmployeeVisible, setSearchEmployeeVisible] = value1;
   const [isDrawerVisible, setIsDrawerVisible] = value5;
   const [searchBuildingVisibility, setSearchBuildingVisibility] = value4;
   const [searchBarVisibility, setSearchBarVisibility] = value7;
@@ -101,8 +103,10 @@ export default function MenuContainer({ map }) {
   };
 
   const toggleSearchBuildingsVisibility = () => {
+    console.log("hello");
     if (searchBuildingVisibility) {
       setSearchBuildingVisibility(false);
+
       setGridBtnOpacity(false);
     } else {
       setSearchBuildingVisibility(true);
@@ -160,7 +164,7 @@ export default function MenuContainer({ map }) {
 
   useEffect(() => {
     // get the bikeLayer
-    const bikeLayerFromMap = map.getLayers().getArray()[11];
+    const bikeLayerFromMap = map.getLayers().getArray()[12];
 
     // use
     setBikeLayer(bikeLayerFromMap);
@@ -173,6 +177,14 @@ export default function MenuContainer({ map }) {
     } else {
       setBikeLayerVisibility(true);
       bikeLayer.setVisible(true);
+    }
+  };
+
+  const toggleSearchEmployeeContainer = () => {
+    if (searchEmployeeVisible) {
+      setSearchEmployeeVisible(false);
+    } else {
+      setSearchEmployeeVisible(true);
     }
   };
 
@@ -302,6 +314,10 @@ export default function MenuContainer({ map }) {
                   backgroundSize: "cover",
                   opacity: searchbarBtnOpacity ? "1" : "0.2",
                 }}
+              ></button>
+              <button
+                onClick={toggleSearchEmployeeContainer}
+                className="unselectable menu-search-btn"
               ></button>
             </Menu.Item>
           </SubMenu>

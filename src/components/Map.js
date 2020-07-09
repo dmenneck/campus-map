@@ -30,6 +30,8 @@ import {
   etageThreeRooms,
   buildings,
   highlightStyle,
+  clickedStyle,
+  etageOneWalks,
 } from "./Layers";
 
 import { EntranceLayer } from "./Layers";
@@ -53,6 +55,8 @@ import HoveredFeatures from "./HoveredFeatures";
 import RoomLayerOne from "./RoomLayerOne";
 import RoomLayerTwo from "./RoomLayerTwo";
 import RoomLayerThree from "./RoomLayerThree";
+import WalkLayerOne from "./WalkLayerOne";
+import SearchEmployee from "./SearchEmployee";
 
 // global variables
 const center = [771105.02, 6608382.01]; //Cologne
@@ -87,6 +91,7 @@ const Map = () => {
       etageOneRooms,
       etageTwoRooms,
       etageThreeRooms,
+      etageOneWalks,
     ],
     controls: defaultControls().extend([
       new FullScreen(),
@@ -98,29 +103,11 @@ const Map = () => {
   // check projection -> EPSG:3857
   // console.log(view.getProjection());
 
-  // change style of clicked feature
-  // select interaction working on "singleclick"
-
-  const room_layer = map.getLayers().getArray()[6];
-  let room_layer_visible = room_layer.getVisible();
-
-  const buildings_active_style = new Style({
-    stroke: new Stroke({ color: "black", width: 1 }),
-    // opacity low
-    fill: new Fill({ color: "rgba(255,255,0,0)" }),
+  // new click select interaction
+  var select = new Select({
+    style: clickedStyle,
   });
-
-  // #253746
-
-  const selectSingleClick = new Select({
-    style: buildings_active_style,
-  });
-
-  const addClickInteraction = () => {
-    map.addInteraction(selectSingleClick);
-  };
-
-  // addClickInteraction();
+  map.addInteraction(select);
 
   // change style of hovered feature
   // select interaction working on "pointermove"
@@ -203,6 +190,7 @@ const Map = () => {
           ></MeasureButton>
         </div>
 
+        <SearchEmployee />
         <GeolocationMobile map={map} />
         <ToggleDrawerBtnMobile />
         <AnalysisFunctionsContainer map={map} />
@@ -223,6 +211,7 @@ const Map = () => {
         <RoomLayerOne map={map} />
         <RoomLayerTwo map={map} />
         <RoomLayerThree map={map} />
+        <WalkLayerOne map={map} />
         <HoveredFeatures map={map} />
       </ContextProvider>
     </div>
