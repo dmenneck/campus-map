@@ -6,8 +6,8 @@ import {
   defaults as defaultControls,
   FullScreen,
   OverviewMap,
+  ScaleLine,
 } from "ol/control";
-import { Style, Fill, Stroke } from "ol/style";
 import Select from "ol/interaction/Select";
 import { pointerMove } from "ol/events/condition";
 
@@ -121,6 +121,10 @@ const Map = () => {
   };
 
   addHoverInteraction();
+
+  // scaleline
+  const scaleline = new ScaleLine();
+  map.addControl(scaleline);
 
   //invisible by default (can be toggled in MenuContainer.js)
   familyCampus.setVisible(false);

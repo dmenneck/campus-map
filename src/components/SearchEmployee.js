@@ -5,9 +5,11 @@ import roomsOne from "../data/geoData/roomsOne.geojson";
 import roomsTwo from "../data/geoData/roomsTwo.geojson";
 import roomsThree from "../data/geoData/roomsThree.geojson";
 
-import GeoJSON from "ol/format/GeoJSON";
+import { Collapse } from "antd";
 
 import { Modal, Button } from "antd";
+
+const { Panel } = Collapse;
 
 let dataOne = "";
 async function fetchDataOne() {
@@ -42,6 +44,8 @@ const SearchEmployee = () => {
 
   const [loading, setLoading] = useState(false);
   const [searchInput, setSearchInput] = useState("");
+  const [clickedFeatureProperties, setClickedFeatureProperties] = useState([]);
+  const [employeeVisible, setEmployeeVisible] = useState(false);
 
   const handleOk = () => {
     setLoading(true);
@@ -54,6 +58,10 @@ const SearchEmployee = () => {
 
   const handleCancel = () => {
     setSearchEmployeeVisible(false);
+  };
+
+  const handleEmployeeCancel = () => {
+    setEmployeeVisible(false);
   };
 
   let dataArrCombined = [];
@@ -74,57 +82,215 @@ const SearchEmployee = () => {
     });
   }
 
-  const featureNames = dataArrCombined.map((item) => {
-    return item.properties.names;
-  });
-
-  let filteredData = featureNames.filter((name) => {
-    return name.toLowerCase().indexOf(searchInput.toLocaleLowerCase()) !== -1;
-  });
-
-  let filteredDataSplitted = filteredData.map((names) => {
-    return names.split(",");
-  });
-
   const getInput = (e) => {
     setSearchInput(e.target.value);
   };
 
-  // console.log(filteredDataSplitted.flat());
+  const getFeatureProperties = (e) => {
+    let clickedName = e.target.closest(".employees").childNodes[2].innerHTML;
+
+    let clickedPropertiesArr = Object.entries(list).map((item, index) => {
+      if (item[1].name === clickedName) {
+        return item;
+      }
+    });
+
+    let undefinedRemoved = clickedPropertiesArr.filter((item) => {
+      return item !== undefined;
+    });
+
+    let clickedProperties = undefinedRemoved.map((i) => {
+      setClickedFeatureProperties(i[1]);
+    });
+
+    setSearchEmployeeVisible(false);
+    setEmployeeVisible(true);
+  };
+
+  console.log(clickedFeatureProperties);
+
+  let namesArr = [];
+  let streetArr = [];
+  let emailArr = [];
+  let fax_numArr = [];
+  let homepageArr = [];
+  let imgArr = [];
+  let build_numArr = [];
+  let tel_numArr = [];
+  let room_numArr = [];
+  let build_nameArr = [];
+  let postcodeArr = [];
+  let titleArr = [];
+
+  let namesPushedToArray = dataArrCombined.map((item) => {
+    namesArr.push(item.properties.names.split(","));
+  });
+
+  let streetPushedToArray = dataArrCombined.map((item) => {
+    if (item.properties.street === undefined) {
+      // nothing happens
+    } else {
+      streetArr.push(item.properties.street.split(","));
+    }
+  });
+
+  let emailPushedToArray = dataArrCombined.map((item) => {
+    emailArr.push(item.properties.email.split(","));
+  });
+
+  let fax_numPushedToArray = dataArrCombined.map((item) => {
+    fax_numArr.push(item.properties.fax_num.split(","));
+  });
+
+  let homepagePushedToArray = dataArrCombined.map((item) => {
+    homepageArr.push(item.properties.homepage.split(","));
+  });
+
+  let imgPushedToArray = dataArrCombined.map((item) => {
+    imgArr.push(item.properties.img.split(","));
+  });
+
+  let build_numPushedToArray = dataArrCombined.map((item) => {
+    build_numArr.push(item.properties.build_num.split(","));
+  });
+
+  let tel_numPushedToArray = dataArrCombined.map((item) => {
+    tel_numArr.push(item.properties.tel_num.split(","));
+  });
+
+  let room_numPushedToArray = dataArrCombined.map((item) => {
+    room_numArr.push(item.properties.room_num.split(","));
+  });
+
+  let build_nameArrPushedToArray = dataArrCombined.map((item) => {
+    build_nameArr.push(item.properties.build_name.split(","));
+  });
+
+  let postcodeArrPushedToArray = dataArrCombined.map((item) => {
+    postcodeArr.push(item.properties.postcode.split(","));
+  });
+
+  let titleArrPushedToArray = dataArrCombined.map((item) => {
+    titleArr.push(item.properties.title.split(","));
+  });
+
+  let dataObj = [
+    {
+      names: namesArr.map((i) => i.toString().split(",")),
+      streets: streetArr.map((item) => item.toString().split(",")),
+      emails: emailArr.map((i) => i.toString().split(",")),
+      fax_nums: fax_numArr.map((i) => i.toString().split(",")),
+      homepages: homepageArr.map((i) => i.toString().split(",")),
+      images: imgArr.map((i) => i.toString().split(",")),
+      build_nums: build_numArr.map((i) => i.toString().split(",")),
+      tel_nums: tel_numArr.map((i) => i.toString().split(",")),
+      room_nums: room_numArr.map((i) => i.toString().split(",")),
+      build_names: build_nameArr.map((i) => i.toString().split(",")),
+      postcodes: postcodeArr.map((i) => i.toString().split(",")),
+      titles: titleArr.map((i) => i.toString().split(",")),
+    },
+  ];
+
+  const featurePropertiesObj = [
+    Object.fromEntries(
+      dataObj[0].names.flat().map((i, index) => [
+        index,
+        {
+          name: i,
+          street: dataObj[0].streets.flat()[index],
+          email: dataObj[0].emails.flat()[index],
+          fax_num: dataObj[0].fax_nums.flat()[index],
+          homepage: dataObj[0].homepages.flat()[index],
+          img: dataObj[0].images.flat()[index],
+          build_num: dataObj[0].build_nums.flat()[index],
+          tel_num: dataObj[0].tel_nums.flat()[index],
+          room_num: dataObj[0].room_nums.flat()[index],
+          build_name: dataObj[0].build_names.flat()[index],
+          postcode: dataObj[0].postcodes.flat()[index],
+          title: dataObj[0].titles.flat()[index],
+        },
+      ])
+    ),
+  ];
+
+  let propertiesList = featurePropertiesObj[0];
+
+  let list = Object.entries(propertiesList).map((item) => {
+    return item[1];
+  });
+
+  let filteredNamesList = list.filter((name) => {
+    return name.name.indexOf(searchInput) >= 0;
+  });
 
   return (
     <div>
       <Modal
         visible={searchEmployeeVisible}
-        title="Suche nach MitarbeiterInnen..."
         onOk={handleOk}
+        width="60%"
+        style={{ top: 50 }}
         onCancel={handleCancel}
         footer={[
           <Button key="back" onClick={handleCancel}>
-            Return
-          </Button>,
-          <Button key="submit" type="primary" onClick={handleOk}>
-            Submit
+            Schließen
           </Button>,
         ]}
       >
-        <label class="field a-field a-field_a1">
+        <label className="field a-field a-field_a1">
           <input
             onChange={getInput}
-            class="field__input a-field__input"
-            placeholder="z.B. Dr. Christian Willmes..."
+            className="field__input a-field__input"
+            placeholder="z.B. Christian Willmes..."
             required
           ></input>
-          <span class="a-field__label-wrap">
-            <span class="a-field__label">MitarbeiterIn...</span>
+          <span className="a-field__label-wrap">
+            <span className="a-field__label">MitarbeiterIn...</span>
           </span>
         </label>
 
         <ul id="employee-container">
-          {filteredDataSplitted.flat().map((item) => {
-            return <li className="employees">{item}</li>;
+          {Object.entries(filteredNamesList).map((item, index) => {
+            return (
+              <div onClick={getFeatureProperties} key={index}>
+                <div className="employees">
+                  <div className="employee-image-container">
+                    <img
+                      className="employees-image"
+                      style={{
+                        backgroundImage: `url(${item[1].img})`,
+                        backgroundSize: "80%",
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "center",
+                      }}
+                    ></img>
+                  </div>
+
+                  <p className="employees-title">{item[1].title} </p>
+                  <p className="employees-name">{item[1].name}</p>
+                  <p className="employees-email">{item[1].email}</p>
+                </div>
+              </div>
+            );
           })}
         </ul>
+      </Modal>
+
+      <Modal
+        visible={employeeVisible}
+        onOk={handleOk}
+        width="400px"
+        style={{ top: 150 }}
+        onCancel={handleEmployeeCancel}
+        footer={[
+          <Button key="back" onClick={handleEmployeeCancel}>
+            Schließen
+          </Button>,
+        ]}
+      >
+        <p>{clickedFeatureProperties.title}</p>
+        <p>{clickedFeatureProperties.name}</p>
+        <p>{clickedFeatureProperties.email}</p>
       </Modal>
     </div>
   );

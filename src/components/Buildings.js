@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+import geolocation from "../data/img/geoLocation.png";
 import { buildings } from "./Layers";
 
 const Buildings = ({ map }) => {
@@ -13,8 +14,9 @@ const Buildings = ({ map }) => {
     setFeatures(buildings.getSource().getFeatures());
   }, []);
 
-  let sortedFeatures = features.map((item) => {
-    return item.getProperties().name;
+  // sort objects in array alphabetically on name
+  let sortedFeatures = features.sort((a, b) => {
+    return a.getProperties().name.localeCompare(b.getProperties().name);
   });
 
   console.log(sortedFeatures);
@@ -32,7 +34,7 @@ const Buildings = ({ map }) => {
             </tr>
           </thead>
           <tbody>
-            {features.map((item, index) => {
+            {sortedFeatures.map((item, index) => {
               return (
                 <tr key={index} id="body-tr">
                   <td>{item.getProperties().name}</td>
@@ -41,14 +43,18 @@ const Buildings = ({ map }) => {
                   <td>
                     <button
                       className="buildings-buttons"
+                      style={{
+                        backgroundImage: `url(${geolocation})`,
+                        backgroundSize: "80%",
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "center",
+                      }}
                       onClick={() =>
                         map.getView().fit(item.getGeometry(), map.getSize())
                       }
                     >
                       1
                     </button>
-                    <button className="buildings-buttons">2</button>
-                    <button className="buildings-buttons">3</button>
                   </td>
                 </tr>
               );

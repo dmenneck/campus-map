@@ -6,6 +6,8 @@ based on react-geo, OpenLayers and GeoServer
 
 - get raumpläne/fluchtpläne from buildings
 - display WalkLayerOne
+- Legende anders positionieren
+- Gebäudeliste und Mitarbeiterliste fertig stellen
 
 ## additional informations
 

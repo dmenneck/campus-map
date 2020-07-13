@@ -49,7 +49,7 @@ const Legend = () => {
       <div>
         <div id="legende-container">
           <h5 className="legende-title">
-            Legende
+            Parkplätze
             <button
               onClick={closeParkingLegende}
               id="close-parking-legende-btn"
@@ -57,15 +57,6 @@ const Legend = () => {
               x
             </button>
           </h5>
-
-          <Divider
-            orientation="left"
-            plain
-            className="unselectable"
-            id="parking-divider"
-          >
-            Parkplätze
-          </Divider>
 
           <div className="legendeGridOne">
             <img src={parkenÖffentlich} alt="" className="legende-images" />
@@ -83,7 +74,7 @@ const Legend = () => {
       <div>
         <div id="legende-container">
           <h5 className="legende-title">
-            Legende
+            Familien Campus Plan
             <button
               onClick={closeFamilyCampusLegende}
               id="close-parking-legende-btn"
@@ -92,14 +83,6 @@ const Legend = () => {
             </button>
           </h5>
 
-          <Divider
-            orientation="left"
-            plain
-            className="unselectable"
-            id="parking-divider"
-          >
-            Familien Campus Plan
-          </Divider>
           <div className="legendeGridTwo">
             <img src={wickelraum} alt="" className="legende-images" />
             <p className="legende-text-grid-two">Wickelraum</p>

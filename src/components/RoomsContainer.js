@@ -19,13 +19,20 @@ const RoomsContainer = () => {
     return item.names.split(",");
   });
 
+  let titles = filteredData.map((item) => {
+    return item.title;
+  });
+
   // .flat() -> erstellt rekursiv ein neues Array mit allen Elementen von Unterarrays bis zu einer spezifizierten Tiefe
   return (
     <div id="show-rooms-data-container">
       <Collapse>
         {splittedNames.flat().map((name, index) => {
           return (
-            <Panel header={name} key={index}>
+            <Panel
+              header={`${titles.toString().split(",")[index]} ${name}`}
+              key={index}
+            >
               {filteredData.map((item) => {
                 return (
                   <div key={index} id="rauminformationen-text-container">
