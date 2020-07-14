@@ -89,6 +89,10 @@ const SearchEmployee = () => {
   const getFeatureProperties = (e) => {
     let clickedName = e.target.closest(".employees").childNodes[2].innerHTML;
 
+    console.log(e.target.closest(".employees"));
+
+    //console.log(clickedName);
+
     let clickedPropertiesArr = Object.entries(list).map((item, index) => {
       if (item[1].name === clickedName) {
         return item;
@@ -223,6 +227,8 @@ const SearchEmployee = () => {
     return name.name.indexOf(searchInput) >= 0;
   });
 
+  console.log(clickedFeatureProperties);
+
   return (
     <div>
       <Modal
@@ -259,16 +265,14 @@ const SearchEmployee = () => {
                       className="employees-image"
                       style={{
                         backgroundImage: `url(${item[1].img})`,
-                        backgroundSize: "80%",
+                        backgroundSize: "cover",
                         backgroundRepeat: "no-repeat",
-                        backgroundPosition: "center",
                       }}
                     ></img>
                   </div>
 
                   <p className="employees-title">{item[1].title} </p>
                   <p className="employees-name">{item[1].name}</p>
-                  <p className="employees-email">{item[1].email}</p>
                 </div>
               </div>
             );
@@ -278,9 +282,8 @@ const SearchEmployee = () => {
 
       <Modal
         visible={employeeVisible}
-        onOk={handleOk}
-        width="400px"
-        style={{ top: 150 }}
+        width="600px"
+        style={{ top: 100 }}
         onCancel={handleEmployeeCancel}
         footer={[
           <Button key="back" onClick={handleEmployeeCancel}>
@@ -288,9 +291,58 @@ const SearchEmployee = () => {
           </Button>,
         ]}
       >
-        <p>{clickedFeatureProperties.title}</p>
-        <p>{clickedFeatureProperties.name}</p>
-        <p>{clickedFeatureProperties.email}</p>
+        <div id="employee-text-container">
+          <div id="employee-image-container">
+            <img
+              src={clickedFeatureProperties.img}
+              id="rauminformationen-image"
+            ></img>
+          </div>
+
+          <div id="rauminformationen-container">
+            <div id="employee">
+              <div id="rauminformationen-data">
+                <div className="text-bold">
+                  <h5 className="text-bold">{`${clickedFeatureProperties.title} ${clickedFeatureProperties.name}`}</h5>
+                  <p>{clickedFeatureProperties.street}</p>
+                  {clickedFeatureProperties.build_name}
+                  <p id="inline">, Raum </p>
+                  {clickedFeatureProperties.room_num}
+                </div>
+              </div>
+
+              <div className="rauminformationen-grid">
+                <p className="rauminformationen-type">Email:</p>
+                <p className="rauminformationen-text">
+                  {clickedFeatureProperties.email}
+                </p>
+              </div>
+
+              <div className="rauminformationen-grid">
+                <p className="rauminformationen-type">Telefonnummer:</p>
+                <p className="rauminformationen-text">
+                  {clickedFeatureProperties.tel_num}
+                </p>
+              </div>
+
+              <div className="rauminformationen-grid">
+                <p className="rauminformationen-type">Fax:</p>
+                <p className="rauminformationen-text">
+                  {clickedFeatureProperties.fax_num}
+                </p>
+              </div>
+
+              <a
+                href={clickedFeatureProperties.homepage}
+                target="_blank"
+                className="rauminformationen-text"
+                id="webseite-link"
+              >
+                Weiter zur Webseite
+              </a>
+            </div>
+          </div>
+        </div>
       </Modal>
     </div>
   );

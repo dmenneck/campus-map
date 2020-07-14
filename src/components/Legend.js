@@ -24,7 +24,7 @@ const Legend = () => {
   // show welcome text 1.5s after initial render
   useEffect(() => {
     message.config({
-      top: 100,
+      top: 50,
     });
 
     const timer = setTimeout(() => {

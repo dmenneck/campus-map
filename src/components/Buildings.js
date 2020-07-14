@@ -30,7 +30,7 @@ const Buildings = ({ map }) => {
               <th className="sticky">Name</th>
               <th className="sticky">Addresse</th>
               <th className="sticky">Gebäudenummer</th>
-              <th className="sticky">Weiteres</th>
+              <th className="sticky">Karte</th>
             </tr>
           </thead>
           <tbody>

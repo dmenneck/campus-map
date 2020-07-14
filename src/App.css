@@ -807,6 +807,12 @@ tbody tr:hover {
 #analysis-btn-three {
   top: 126px;
   right: 104px;
+
+  background-image: url(../src/data/img/measureIconThree.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+
   offset-path: path("M -40 -50 C 20 20, 20 20, 20 20");
   animation: move 0.4s linear alternate;
   animation-fill-mode: forwards;
@@ -871,7 +877,7 @@ tbody tr:hover {
   position: sticky !important;
   top: 0;
   font-size: 18px;
-  border-bottom: 1px solid #32475b;
+
   color: black;
   background-color: #e3e8ea;
   height: 35px;
@@ -1466,6 +1472,15 @@ button:focus {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
 }
 
+#employee-image-container {
+  width: 160px;
+  height: 212px;
+  border: 1px solid black;
+  float: left;
+  margin: 20px 10px 14px 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+}
+
 #rauminformationen-image {
   width: 100%;
   height: 210px;
@@ -1558,6 +1573,10 @@ button:focus {
   margin: 15px;
 }
 
+#employee {
+  padding: 10px 0px 0px 0px;
+}
+
 #webseite-link {
   position: absolute;
   margin-top: 20px;
@@ -1600,12 +1619,17 @@ button:focus {
   padding: 12px;
 }
 
+#employee-container div {
+  margin: 6px;
+}
+
 .employees {
   width: auto;
   height: 200px;
   border: 1px solid black;
   background-color: white;
-  margin: 6px !important;
+  margin: 0px !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
 }
 
 .ant-modal-body {
@@ -1796,19 +1820,12 @@ button:focus {
 }
 
 .employees-image {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   display: block;
   border: 1px solid black;
   margin: 0 auto;
   border-radius: 50%;
-}
-
-.employees-name {
-  margin-top: 20px;
-  padding: 4px;
-  font-size: 14px;
-  display: inline;
 }
 
 .employees-email {
@@ -1816,11 +1833,25 @@ button:focus {
   margin-top: 0px;
   text-align: center;
   font-size: 14px;
+
+  margin: 0 0 0 0;
+}
+
+.employees-name {
+  margin: 0 0 0 0;
+  font-size: 14px;
+  text-align: center;
 }
 
 .employees-title {
-  font-size: 14px;
-  display: inline;
+  margin: 38px 0 0 0;
+  font-size: 12px;
+  padding-bottom: 0;
+  text-align: center;
+}
+
+#employee-text-container {
+  height: 250px !important;
 }
 
 /* media queries */

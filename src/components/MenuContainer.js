@@ -26,6 +26,11 @@ import tilewms from "../data/img/tilewms.PNG";
 import tableIcon from "../data/img/tableIcon.png";
 import searchIcon from "../data/img/suche.png";
 import bicycleIcon from "../data/img/bicycleIcon.png";
+import test1 from "../data/img/test1.PNG";
+import test2 from "../data/img/test2.PNG";
+import test3 from "../data/img/test3.PNG";
+import test4 from "../data/img/test4.PNG";
+import test5 from "../data/img/test5.PNG";
 
 const { SubMenu } = Menu;
 
@@ -244,8 +249,9 @@ export default function MenuContainer({ map }) {
                 onClick={toggleBuildingsLayerVisibility}
                 className="buildings-visibil-btn"
                 style={{
-                  backgroundImage: `url(${buildingsLogo})`,
+                  backgroundImage: `url(${test1})`,
                   backgroundSize: "cover",
+                  backgroundPosition: "center",
                   opacity: buildingsVisibility ? "1" : "0.2",
                 }}
                 title="Gebäude"
@@ -254,8 +260,9 @@ export default function MenuContainer({ map }) {
                 onClick={toggleParkingLayerVisibility}
                 className="buildings-visibil-btn"
                 style={{
-                  backgroundImage: `url(${parkingLogo})`,
+                  backgroundImage: `url(${test2})`,
                   backgroundSize: "cover",
+                  backgroundPosition: "center",
                   opacity: parkingVisibility ? "1" : "0.2",
                 }}
                 title="Parken"
@@ -264,8 +271,9 @@ export default function MenuContainer({ map }) {
                 onClick={toggleFamilyCampusLayerVisibility}
                 className="buildings-visibil-btn"
                 style={{
-                  backgroundImage: `url(${wickelraum})`,
+                  backgroundImage: `url(${test3})`,
                   backgroundSize: "cover",
+                  backgroundPosition: "center",
                   opacity: familyCampusVisibility ? "1" : "0.2",
                 }}
                 title="Familien-Campus"
@@ -310,29 +318,25 @@ export default function MenuContainer({ map }) {
                 onClick={toggleSearchbar}
                 className="unselectable menu-search-btn"
                 style={{
-                  backgroundImage: `url(${searchIcon})`,
+                  backgroundImage: `url(${test4})`,
                   backgroundSize: "cover",
+                  backgroundPosition: "center",
                   opacity: searchbarBtnOpacity ? "1" : "0.2",
                 }}
               ></button>
               <button
                 onClick={toggleSearchEmployeeContainer}
                 className="unselectable menu-search-btn"
+                style={{
+                  backgroundImage: `url(${test5})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
               ></button>
             </Menu.Item>
           </SubMenu>
 
-          <Menu.Item key="4" id="menu-item-four">
-            <InfoCircleOutlined />
-            <span
-              onClick={toggleCampusAreas}
-              className="menu-container-title unselectable"
-            >
-              Bereiche
-            </span>
-          </Menu.Item>
-
-          <Menu.Item key="5" id="menu-item-five">
+          <Menu.Item key="4" id="menu-item-five">
             <InfoCircleOutlined />
             <span
               onClick={toggleDrawer}

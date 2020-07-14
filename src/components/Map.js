@@ -45,7 +45,7 @@ import FetchNextBikeApi from "./FetchNextBikeApi";
 import MenuContainer from "./MenuContainer";
 import { SearchBuildingContainer } from "./SearchBuildingContainer";
 import ToggleMenuContainerBtn from "./ToggleMenuContainerBtn";
-import CampusAreas from "./CampusAreas";
+
 import Legend from "./Legend";
 import EntranceLegende from "./EntranceLegende";
 import AnalysisFunctionsContainer from "./AnalysisFunctionsContainer";
@@ -150,6 +150,8 @@ const Map = () => {
             map={map}
             measureType="line"
             id="analysis-btn-one"
+            fillColor="#b4000e"
+            string="#b4000e"
           ></MeasureButton>
 
           <MeasureButton
@@ -157,14 +159,18 @@ const Map = () => {
             map={map}
             measureType="polygon"
             id="analysis-btn-two"
+            fillColor="#b4000e"
+            string="#b4000e"
           ></MeasureButton>
 
           <MeasureButton
             name="multi"
             map={map}
             measureType="line"
-            multipleDrawing
+            showMeasureInfoOnClickedPoints
             id="analysis-btn-three"
+            fillColor="#b4000e"
+            string="#b4000e"
           ></MeasureButton>
         </div>
 
@@ -201,7 +207,7 @@ const Map = () => {
         <EntranceLayer map={map} />
         <EntranceLegende map={map} />
         <Legend />
-        <CampusAreas map={map} />
+
         <ToggleMenuContainerBtn />
         <SearchBuildingContainer map={map} />
         <FetchNextBikeApi map={map} />
