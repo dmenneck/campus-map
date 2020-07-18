@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Button, Drawer } from "antd";
 
 import { AppContext } from "./AppContext";
@@ -10,11 +10,18 @@ import geolocation from "../data/img/geoLocation.png";
 import information from "../data/img/info.png";
 
 const Rooms = ({ map }) => {
-  const { value19, value20, value21, value22 } = useContext(AppContext);
+  const { value19, value20, value21, value22, value24, value25 } = useContext(
+    AppContext
+  );
   const [clickedRoom, setClickedRoom] = value20;
   const [btnClicked, setBtnClicked] = value19;
+  const [roomsContainer, setRoomsContainer] = value24;
   const [clickedRoomData, setClickedRoomData] = value21;
   const [roomNames, setRoomNames] = value22;
+  const [
+    filteredEmployeeNamesForRooms,
+    setFilteredEmployeeNamesForRooms,
+  ] = value25;
 
   const [search, setSearch] = useState("");
   const [drawerVisibility, setDrawervisibility] = useState(false);
@@ -27,7 +34,7 @@ const Rooms = ({ map }) => {
 
   const walksOne = map.getLayers().getArray()[9];
 
-  console.log(walksOne.getSource().getFeatures());
+  // console.log(walksOne.getSource().getFeatures());
 
   // check if building has room features. If not -> hide toggle RoomFeatures btns in the return
   let featuresOne = roomsOne.getSource().getFeatures();
@@ -67,6 +74,7 @@ const Rooms = ({ map }) => {
 
   const toggleRoomsOne = () => {
     setWhichBtnClicked(1);
+    setRoomsContainer(true);
 
     roomsTwo.setVisible(false);
     roomsThree.setVisible(false);
@@ -86,6 +94,7 @@ const Rooms = ({ map }) => {
 
   const toggleRoomsTwo = () => {
     setWhichBtnClicked(2);
+    setRoomsContainer(true);
 
     roomsOne.setVisible(false);
     roomsThree.setVisible(false);
@@ -105,6 +114,7 @@ const Rooms = ({ map }) => {
 
   const toggleRoomsThree = () => {
     setWhichBtnClicked(3);
+    setRoomsContainer(true);
 
     roomsOne.setVisible(false);
     roomsTwo.setVisible(false);
@@ -168,6 +178,10 @@ const Rooms = ({ map }) => {
     });
   }
 
+  useEffect(() => {
+    setClickedRoomData(rooms_properties);
+  }, [rooms_properties.length]);
+
   let filteredNames = rooms_properties.filter((name) => {
     return name.names.toLowerCase().indexOf(search.toLocaleLowerCase()) !== -1;
   });
@@ -180,18 +194,6 @@ const Rooms = ({ map }) => {
   } else if (whichBtnClicked === 3) {
     clickedRoomFeatures = roomThree_layer_features;
   }
-
-  const showRoomData = (e) => {
-    setClickedRoomData(rooms_properties);
-    setDrawervisibility(true);
-    setRoomNames(e.target.innerHTML);
-
-    if (clickedRoom) {
-      setClickedRoom(false);
-    } else {
-      setClickedRoom(true);
-    }
-  };
 
   let clickedRoomInfo = clickedRoomData.filter((item) => {
     return item.names === roomNames;
@@ -239,6 +241,11 @@ const Rooms = ({ map }) => {
     });
   };
 
+  // change state when Array length changes
+  useEffect(() => {
+    setFilteredEmployeeNamesForRooms(filteredNames);
+  }, [filteredNames.length]);
+
   return (
     <div id="rooms">
       <div></div>
@@ -283,67 +290,6 @@ const Rooms = ({ map }) => {
             X
           </button>
         </div>
-
-        <div
-          id="rooms-data-container"
-          className={btnClicked ? "rooms-input" : "hide"}
-        >
-          {filteredNames.map((item, index) => (
-            <div key={index} id="rooms-data-grid" className="room-data-items">
-              <div
-                href={item.link}
-                key={index}
-                title={item.names}
-                className="room-numbers"
-                onMouseEnter={styleHoveredFeature}
-              >
-                Raum {item.room_num}
-              </div>
-              <div>
-                <button
-                  onClick={showRoomData}
-                  className="hide-content"
-                  style={{
-                    backgroundImage: `url(${information})`,
-                    backgroundSize: "75%",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center",
-                    display: "inline",
-                  }}
-                >
-                  {/* next line is being ignored. Code still needs do be there otherwise doesnt work*/}
-                  {item.names}
-                </button>
-                <button
-                  onClick={getExtent}
-                  className="hide-content"
-                  style={{
-                    backgroundImage: `url(${geolocation})`,
-                    backgroundSize: "75%",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center",
-                    display: "inline",
-                  }}
-                >
-                  {/* next line is being ignored. Code still needs do be there otherwise doesnt work*/}
-                  {item.names}
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <Drawer
-          title="Rauminformationen"
-          placement="right"
-          onClose={onClose}
-          visible={drawerVisibility}
-          getContainer={false}
-          width="600px"
-        >
-          <p id="room-number">Raum: {roomNumber}</p>
-          <RoomsContainer />
-        </Drawer>
       </div>
     </div>
   );

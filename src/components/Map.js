@@ -57,6 +57,7 @@ import RoomLayerTwo from "./RoomLayerTwo";
 import RoomLayerThree from "./RoomLayerThree";
 import WalkLayerOne from "./WalkLayerOne";
 import SearchEmployee from "./SearchEmployee";
+import DisplayRoomsContainer from "./DisplayRoomsContainer";
 
 // global variables
 const center = [771105.02, 6608382.01]; //Cologne
@@ -200,6 +201,7 @@ const Map = () => {
           ></MeasureButton>
         </div>
 
+        <DisplayRoomsContainer map={map} />
         <SearchEmployee />
         <GeolocationMobile map={map} />
         <ToggleDrawerBtnMobile />

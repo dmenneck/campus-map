@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "roomsFour",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": null, "build_num": "303", "names": null, "tel_num": null, "email": null, "homepage": null, "room_num": "Instituts-Bibliothek", "img": null, "fax_num": null, "build_nnam": null, "street": null, "postcode": null, "title": null }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ 6.937733767649516, 50.926926004197455 ], [ 6.93761541538411, 50.926832468761283 ], [ 6.936999983603977, 50.927135454031898 ], [ 6.937118335869387, 50.927230136524258 ], [ 6.937733767649516, 50.926926004197455 ] ] ] ] } }
+]
+}

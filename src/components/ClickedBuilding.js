@@ -15,6 +15,7 @@ function ClickedBuilding({ map }) {
     value15,
     value17,
     value19,
+    value24,
   } = useContext(AppContext);
   const [menuContainerVisibility, setMenuContainerVisibility] = value8;
   const [clickedBuildingsInformation, setclickedBuildingsInformation] = value6;
@@ -24,6 +25,7 @@ function ClickedBuilding({ map }) {
   const [burgerOpen, setBurgerOpen] = value15;
   const [entrancesLegend, setEntrancesLegend] = value17;
   const [btnClicked, setBtnClicked] = value19;
+  const [roomsContainer, setRoomsContainer] = value24;
 
   let data = "";
   async function test() {
@@ -88,6 +90,7 @@ function ClickedBuilding({ map }) {
     setSearch("");
     setBurgerOpen(false);
     setMenuContainerVisibility(false);
+    setRoomsContainer(false);
 
     setBtnClicked(false);
 

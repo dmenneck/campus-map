@@ -40,6 +40,11 @@ export const ContextProvider = (props) => {
   const [buildingsContainerVisible, setBuildingsContainerVisible] = useState(
     true
   );
+  const [roomsContainer, setRoomsContainer] = useState(false);
+  const [
+    filteredEmployeeNamesForRooms,
+    setFilteredEmployeeNamesForRooms,
+  ] = useState([]);
 
   return (
     <AppContext.Provider
@@ -70,6 +75,11 @@ export const ContextProvider = (props) => {
         value21: [clickedRoomData, setClickedRoomData],
         value22: [roomNames, setRoomNames],
         value23: [buildingsContainerVisible, setBuildingsContainerVisible],
+        value24: [roomsContainer, setRoomsContainer],
+        value25: [
+          filteredEmployeeNamesForRooms,
+          setFilteredEmployeeNamesForRooms,
+        ],
       }}
     >
       {props.children}

@@ -5,11 +5,9 @@ import roomsOne from "../data/geoData/roomsOne.geojson";
 import roomsTwo from "../data/geoData/roomsTwo.geojson";
 import roomsThree from "../data/geoData/roomsThree.geojson";
 
-import { Collapse } from "antd";
+import LazyLoad from "react-lazyload";
 
 import { Modal, Button } from "antd";
-
-const { Panel } = Collapse;
 
 let dataOne = "";
 async function fetchDataOne() {
@@ -39,8 +37,9 @@ async function fetchDataThree() {
 fetchDataThree();
 
 const SearchEmployee = () => {
-  const { value1 } = useContext(AppContext);
+  const { value1, value4 } = useContext(AppContext);
   const [searchEmployeeVisible, setSearchEmployeeVisible] = value1;
+  const [searchBuildingVisibility, setSearchBuildingVisibility] = value4;
 
   const [loading, setLoading] = useState(false);
   const [searchInput, setSearchInput] = useState("");
@@ -61,6 +60,7 @@ const SearchEmployee = () => {
   };
 
   const handleEmployeeCancel = () => {
+    setSearchBuildingVisibility(false);
     setEmployeeVisible(false);
   };
 
@@ -110,8 +110,6 @@ const SearchEmployee = () => {
     setSearchEmployeeVisible(false);
     setEmployeeVisible(true);
   };
-
-  console.log(clickedFeatureProperties);
 
   let namesArr = [];
   let streetArr = [];
@@ -227,8 +225,6 @@ const SearchEmployee = () => {
     return name.name.indexOf(searchInput) >= 0;
   });
 
-  console.log(clickedFeatureProperties);
-
   return (
     <div>
       <Modal
@@ -255,20 +251,15 @@ const SearchEmployee = () => {
           </span>
         </label>
 
-        <ul id="employee-container">
+        <ul id={searchInput ? "employee-container" : "hide"}>
           {Object.entries(filteredNamesList).map((item, index) => {
             return (
               <div onClick={getFeatureProperties} key={index}>
                 <div className="employees">
                   <div className="employee-image-container">
-                    <img
-                      className="employees-image"
-                      style={{
-                        backgroundImage: `url(${item[1].img})`,
-                        backgroundSize: "cover",
-                        backgroundRepeat: "no-repeat",
-                      }}
-                    ></img>
+                    <LazyLoad key={index} overflow throttle={100} height={200}>
+                      <img className="employees-image" src={item[1].img} />
+                    </LazyLoad>
                   </div>
 
                   <p className="employees-title">{item[1].title} </p>

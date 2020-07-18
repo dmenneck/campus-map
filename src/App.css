@@ -1395,7 +1395,6 @@ button:focus {
 
 #rooms-data-container {
   height: auto;
-  max-height: 200px;
 
   overflow-y: auto;
 }
@@ -1816,12 +1815,15 @@ button:focus {
 
 .employee-image-container {
   height: 80px;
+  width: 100%;
+  object-fit: contain;
   padding: 10px;
 }
 
 .employees-image {
   width: 100px;
   height: 100px;
+  object-fit: cover;
   display: block;
   border: 1px solid black;
   margin: 0 auto;
@@ -1852,6 +1854,31 @@ button:focus {
 
 #employee-text-container {
   height: 250px !important;
+}
+
+#rooms-data-list {
+  z-index: 1;
+
+  background-color: none;
+  width: 400px;
+  height: 200px;
+
+  position: fixed;
+  left: 50%;
+  bottom: -100px;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+}
+
+.site-drawer-render-in-current-wrapper {
+  position: relative;
+  height: 200px;
+  padding: 48px;
+  overflow: hidden;
+  text-align: center;
+  background: #fafafa;
+  border: 1px solid #ebedf0;
+  border-radius: 2px;
 }
 
 /* media queries */

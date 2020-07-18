@@ -308,15 +308,17 @@ export default function MenuContainer({ map }) {
               <button
                 onClick={toggleSearchBuildingsVisibility}
                 className="unselectable menu-search-btn"
+                title="Gebäudeliste"
                 style={{
                   backgroundImage: `url(${tableIcon})`,
                   backgroundSize: "cover",
-                  opacity: gridBtnOpacity ? "1" : "0.2",
+                  opacity: searchBuildingVisibility ? "1" : "0.2",
                 }}
               ></button>
               <button
                 onClick={toggleSearchbar}
                 className="unselectable menu-search-btn"
+                title="Suchleiste"
                 style={{
                   backgroundImage: `url(${test4})`,
                   backgroundSize: "cover",
@@ -327,10 +329,12 @@ export default function MenuContainer({ map }) {
               <button
                 onClick={toggleSearchEmployeeContainer}
                 className="unselectable menu-search-btn"
+                title="MitarbeiterInnensuche"
                 style={{
                   backgroundImage: `url(${test5})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
+                  opacity: searchEmployeeVisible ? "1" : "0.2",
                 }}
               ></button>
             </Menu.Item>

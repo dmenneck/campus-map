@@ -19,8 +19,6 @@ const Buildings = ({ map }) => {
     return a.getProperties().name.localeCompare(b.getProperties().name);
   });
 
-  console.log(sortedFeatures);
-
   return (
     <div>
       <div id="buildings-table-container">

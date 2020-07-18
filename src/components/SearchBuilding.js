@@ -19,10 +19,6 @@ const SearchBuilding = ({ map }) => {
   const [loading, setLoading] = useState(false);
   const [searchInput, setSearchInput] = useState("");
 
-  const showModal = () => {
-    setSearchBuildingVisibility(true);
-  };
-
   const handleOk = () => {
     setLoading(true);
     setTimeout(() => {

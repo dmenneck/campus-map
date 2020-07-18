@@ -8,7 +8,7 @@ import Point from "ol/geom/Point";
 import Control from "ol/control/Control";
 
 const GeolocationMobile = ({ map }) => {
-  return <div>hello</div>;
+  return <div></div>;
 };
 
 export default GeolocationMobile;

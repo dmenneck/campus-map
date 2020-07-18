@@ -6,6 +6,7 @@ import { Card, Drawer, Button, Divider } from "antd";
 
 const ShowBuildingData = ({ map }) => {
   const { value6, value2 } = useContext(AppContext);
+
   const [clickedBuildingsInformation, setclickedBuildingsInformation] = value6;
   const [layerClicked, isLayerClicked] = value2;
   const [drawerVisibility, setDrawervisibility] = useState(false);
@@ -73,7 +74,8 @@ const ShowBuildingData = ({ map }) => {
   //check if attribute has an image. If not -> set logo (noImage) as image
   let noImage;
   if (image === null) {
-    noImage = "https://www.lernfox.de/wp-content/uploads/Uni-Koeln-Logo.png";
+    noImage =
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/SiegelUniK%C3%B6ln.svg/1200px-SiegelUniK%C3%B6ln.svg.png";
   }
 
   const showDrawer = () => {
@@ -111,6 +113,7 @@ const ShowBuildingData = ({ map }) => {
               alt=""
               style={{
                 backgroundImage: `url(${image ? image : noImage})`,
+                backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
               }}
             />
