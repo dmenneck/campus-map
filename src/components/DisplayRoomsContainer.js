@@ -4,11 +4,14 @@ import { AppContext } from "./AppContext";
 
 import RoomsContainer from "./RoomsContainer";
 
+import Style from "ol/style/Style";
+import { Fill, Stroke } from "ol/style";
+
 import geolocation from "../data/img/geoLocation.png";
 import information from "../data/img/info.png";
 
-const DisplayRoomsContainer = () => {
-  const { value24, value25, value21, value19, value22 } = useContext(
+const DisplayRoomsContainer = ({ map }) => {
+  const { value24, value25, value21, value19, value22, value26 } = useContext(
     AppContext
   );
 
@@ -20,8 +23,47 @@ const DisplayRoomsContainer = () => {
     setFilteredEmployeeNamesForRooms,
   ] = value25;
   const [roomNames, setRoomNames] = value22;
+  const [whichBtnClicked, setWhichBtnClicked] = value26;
 
   const [drawerVisibility, setDrawervisibility] = useState(false);
+
+  const roomOne_layer_features = map
+    .getLayers()
+    .getArray()[6]
+    .getSource()
+    .getFeatures();
+
+  const roomTwo_layer_features = map
+    .getLayers()
+    .getArray()[7]
+    .getSource()
+    .getFeatures();
+
+  const roomThree_layer_features = map
+    .getLayers()
+    .getArray()[8]
+    .getSource()
+    .getFeatures();
+
+  let clickedRoomFeatures = [];
+  if (whichBtnClicked === 1) {
+    clickedRoomFeatures = roomOne_layer_features;
+  } else if (whichBtnClicked === 2) {
+    clickedRoomFeatures = roomTwo_layer_features;
+  } else if (whichBtnClicked === 3) {
+    clickedRoomFeatures = roomThree_layer_features;
+  }
+
+  let etageClicked = "";
+  if (whichBtnClicked === 1) {
+    etageClicked = "Erdgeschoss";
+  } else if (whichBtnClicked === 2) {
+    etageClicked = "1. Etage";
+  } else if (whichBtnClicked === 3) {
+    etageClicked = "2. Etage";
+  }
+
+  console.log(etageClicked);
 
   const onClose = () => {
     setDrawervisibility(false);
@@ -35,13 +77,9 @@ const DisplayRoomsContainer = () => {
     setRoomsContainer(true);
   };
 
-  console.log(clickedRoomData);
-
   let clickedRoomInfo = clickedRoomData.filter((item) => {
     return item.names === roomNames;
   });
-
-  console.log(clickedRoomInfo);
 
   let roomNumber = "";
   clickedRoomInfo.map((item) => {
@@ -51,6 +89,29 @@ const DisplayRoomsContainer = () => {
   const showRoomData = (e) => {
     setDrawervisibility(true);
     setRoomNames(e.target.innerHTML);
+  };
+
+  const clickedBuildingsStyle = new Style({
+    stroke: new Stroke({ color: "#af111d", width: 6 }),
+  });
+
+  const getExtent = (e) => {
+    let targetName = e.target.innerHTML;
+
+    let mappedFeatures = clickedRoomFeatures.map((item) => {
+      if (targetName === item.get("names")) {
+        map.getView().fit(item.getGeometry(), map.getSize());
+
+        // clear style of previous clicked building
+        item.setStyle(null);
+        // setStyle of currently clicked building
+        item.setStyle(clickedBuildingsStyle);
+        // clear style after 3s
+        setTimeout(() => {
+          item.setStyle(null);
+        }, 1500);
+      }
+    });
   };
 
   if (roomsContainer) {
@@ -66,6 +127,7 @@ const DisplayRoomsContainer = () => {
             style={{ position: "absolute" }}
             height="200"
           >
+            <div id="rooms-data-list-header">Südbau - {etageClicked}</div>
             <div
               id="rooms-data-container"
               className={btnClicked ? "rooms-input" : "hide"}
@@ -100,6 +162,7 @@ const DisplayRoomsContainer = () => {
                       {item.names}
                     </button>
                     <button
+                      onClick={getExtent}
                       className="hide-content"
                       style={{
                         backgroundImage: `url(${geolocation})`,

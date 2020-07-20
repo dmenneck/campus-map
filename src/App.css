@@ -1048,7 +1048,6 @@ tbody tr:hover {
   height: 300px;
   background-color: #fff;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 2%;
 }
 
 #close-data-container-btn {
@@ -1106,7 +1105,6 @@ tbody tr:hover {
   position: relative;
   overflow-y: auto;
   height: 100%;
-  border-radius: 2%;
 }
 
 .unselectable {
@@ -1147,7 +1145,6 @@ button:focus {
 }
 
 .ant-notification-notice {
-  background-color: #c8d1db !important;
   color: white !important;
   padding: 0 !important;
 }
@@ -1169,15 +1166,38 @@ button:focus {
 }
 
 .legende-title {
-  background-color: #e3e8ea;
   width: 100%;
-  color: black;
+  color: white;
   padding: 5px;
   height: 35px;
-  border-radius: 8px 8px 0 0;
   margin: 0;
   display: inline-block;
   font-size: 20px;
+  display: inline;
+}
+
+#legende-title-container {
+  width: 100%;
+  height: 30px;
+  background-color: #32475b;
+}
+
+.close-legende-title-container {
+  float: right;
+  background-color: #32475b;
+  border: none;
+  color: white;
+  margin: 4px;
+  padding-right: 4px;
+}
+
+#logo-greetings {
+  width: 50px;
+  height: 50px;
+}
+
+#span-greetings {
+  margin-left: 8px;
 }
 
 #parking-divider {
@@ -1336,11 +1356,16 @@ button:focus {
   margin-right: 5px;
   font-size: 12px;
   background-color: #32475b !important;
-  padding: 6px;
+  height: 30px;
+  padding: 4px;
   border: none;
   border-radius: 6%;
-
+  width: 55px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.ant-notification-topLeft {
+  margin-left: 10px !important;
 }
 
 .rooms-data-container {
@@ -1348,7 +1373,6 @@ button:focus {
 }
 
 #rooms-data-container {
-  margin-top: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -1642,19 +1666,20 @@ button:focus {
 /* input field in SearchEmployee.js */
 .field {
   --uiFieldPlaceholderColor: var(--fieldPlaceholderColor, #767676);
-  margin: 20px 14px 8px 22px;
+  margin: 20px 14px 8px 20px;
 }
 
 .field__input {
   background-color: transparent;
   border-radius: 0;
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #f0f0f0;
+  border-top: 1px solid #f0f0f0;
 
   -webkit-appearance: none;
   -moz-appearance: none;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
 
+  margin-top: 20px;
   font-family: inherit;
   font-size: 1em;
 }
@@ -1671,13 +1696,17 @@ button:focus {
 }
 
 .a-field {
-  --uiFieldHeight: var(--fieldHeight, 2.5rem);
+  --uiFieldHeight: var(--fieldHeight, 3.5rem);
   --uiFieldBorderColor: var(--fieldBorderColor);
 
   position: relative;
-  width: 30%;
+  width: 90%;
+  display: flex;
 
-  box-sizing: border-box;
+  display: table;
+  margin-right: auto;
+  margin-left: auto;
+
   font-size: var(--uiFieldFontSize);
   padding-top: 0.4rem;
 }
@@ -1858,14 +1887,13 @@ button:focus {
 
 #rooms-data-list {
   z-index: 1;
-
   background-color: none;
   width: 400px;
   height: 200px;
-
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   position: fixed;
   left: 50%;
-  bottom: -100px;
+  bottom: -80px;
   transform: translate(-50%, -50%);
   margin: 0 auto;
 }
@@ -1879,6 +1907,12 @@ button:focus {
   background: #fafafa;
   border: 1px solid #ebedf0;
   border-radius: 2px;
+}
+
+#rooms-data-list-header {
+  background-color: #e3e8ea;
+  padding: 5px;
+  font-weight: bold;
 }
 
 /* media queries */

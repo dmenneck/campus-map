@@ -2,17 +2,22 @@ import React, { useState, useContext, useEffect } from "react";
 import { Button, Drawer } from "antd";
 
 import { AppContext } from "./AppContext";
-import Style from "ol/style/Style";
-import { Fill, Stroke } from "ol/style";
+
 import RoomsContainer from "./RoomsContainer";
 
 import geolocation from "../data/img/geoLocation.png";
 import information from "../data/img/info.png";
 
 const Rooms = ({ map }) => {
-  const { value19, value20, value21, value22, value24, value25 } = useContext(
-    AppContext
-  );
+  const {
+    value19,
+    value20,
+    value21,
+    value22,
+    value24,
+    value25,
+    value26,
+  } = useContext(AppContext);
   const [clickedRoom, setClickedRoom] = value20;
   const [btnClicked, setBtnClicked] = value19;
   const [roomsContainer, setRoomsContainer] = value24;
@@ -25,7 +30,7 @@ const Rooms = ({ map }) => {
 
   const [search, setSearch] = useState("");
   const [drawerVisibility, setDrawervisibility] = useState(false);
-  const [whichBtnClicked, setWhichBtnClicked] = useState();
+  const [whichBtnClicked, setWhichBtnClicked] = value26;
 
   // get rooms layer
   const roomsOne = map.getLayers().getArray()[6];
@@ -208,29 +213,6 @@ const Rooms = ({ map }) => {
     setDrawervisibility(false);
   };
 
-  const clickedBuildingsStyle = new Style({
-    stroke: new Stroke({ color: "#af111d", width: 6 }),
-  });
-
-  const getExtent = (e) => {
-    let targetName = e.target.innerHTML;
-
-    let mappedFeatures = clickedRoomFeatures.map((item) => {
-      if (targetName === item.get("names")) {
-        map.getView().fit(item.getGeometry(), map.getSize());
-
-        // clear style of previous clicked building
-        item.setStyle(null);
-        // setStyle of currently clicked building
-        item.setStyle(clickedBuildingsStyle);
-        // clear style after 3s
-        setTimeout(() => {
-          item.setStyle(null);
-        }, 1500);
-      }
-    });
-  };
-
   const styleHoveredFeature = (e) => {
     let targetName = e.target.innerHTML;
 
@@ -256,19 +238,19 @@ const Rooms = ({ map }) => {
             onClick={toggleRoomsOne}
             className={etageOneHasFeatures ? "toggle-rooms-btn" : "hide"}
           >
-            1. Etage
+            EG
           </button>
           <button
             onClick={toggleRoomsTwo}
             className={etageTwoHasFeatures ? "toggle-rooms-btn" : "hide"}
           >
-            2. Etage
+            1. Etage
           </button>
           <button
             onClick={toggleRoomsThree}
             className={etageThreeHasFeatures ? "toggle-rooms-btn" : "hide"}
           >
-            3. Etage
+            2. Etage
           </button>
           <p className={noRooms ? "no-rooms" : "hide"}>
             Für dieses Gebäude liegen noch keine Rauminformationen vor.

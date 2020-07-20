@@ -247,7 +247,7 @@ const SearchEmployee = () => {
             required
           ></input>
           <span className="a-field__label-wrap">
-            <span className="a-field__label">MitarbeiterIn...</span>
+            <span className="a-field__label">Suche nach MitarbeiterIn...</span>
           </span>
         </label>
 

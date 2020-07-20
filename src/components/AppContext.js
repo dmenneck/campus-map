@@ -45,6 +45,7 @@ export const ContextProvider = (props) => {
     filteredEmployeeNamesForRooms,
     setFilteredEmployeeNamesForRooms,
   ] = useState([]);
+  const [whichBtnClicked, setWhichBtnClicked] = useState();
 
   return (
     <AppContext.Provider
@@ -80,6 +81,7 @@ export const ContextProvider = (props) => {
           filteredEmployeeNamesForRooms,
           setFilteredEmployeeNamesForRooms,
         ],
+        value26: [whichBtnClicked, setWhichBtnClicked],
       }}
     >
       {props.children}
