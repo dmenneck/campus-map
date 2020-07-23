@@ -165,6 +165,19 @@ export const etageThreeRooms = new OlVector({
   }),
 });
 
+export const etageFourRooms = new OlVector({
+  source: new OlVectorSource(),
+  style: new Style({
+    fill: new Fill({
+      color: "grey",
+    }),
+    stroke: new Stroke({
+      color: "black",
+      width: 1.2,
+    }),
+  }),
+});
+
 export const etageOneWalks = new OlVector({
   source: new OlVectorSource(),
   style: new Style({

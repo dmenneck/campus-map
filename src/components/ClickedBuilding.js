@@ -98,9 +98,11 @@ function ClickedBuilding({ map }) {
     const rooms_one_layer = map.getLayers().getArray()[6];
     const rooms_two_layer = map.getLayers().getArray()[7];
     const rooms_three_layer = map.getLayers().getArray()[8];
+    const rooms_four_layer = map.getLayers().getArray()[10];
     rooms_one_layer.setVisible(false);
     rooms_two_layer.setVisible(false);
     rooms_three_layer.setVisible(false);
+    rooms_four_layer.setVisible(false);
 
     // check wether layer (one of the buidling polygons) is clicked or not
     if (!dataValues && !properties) {

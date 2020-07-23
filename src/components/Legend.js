@@ -12,6 +12,8 @@ import parkenÖffentlich from "../data/img/parkenÖffentlich.png";
 import parkenUni from "../data/img/parkenUni.png";
 import UniKölnLogo from "../data/img/logo-uni.png";
 
+import { parking, familyCampus } from "./Layers";
+
 import { Divider } from "antd";
 const Legend = () => {
   const { value10, value11, value12 } = useContext(AppContext);
@@ -42,14 +44,6 @@ const Legend = () => {
     }, 1500);
     return () => clearTimeout(timer);
   }, []);
-
-  const closeParkingLegende = () => {
-    setParkingLegendeVisibility(false);
-  };
-
-  const closeFamilyCampusLegende = () => {
-    setFamilyCampusLegendeVisibility(false);
-  };
 
   notification.config({
     top: 60,

@@ -36,6 +36,7 @@ const Rooms = ({ map }) => {
   const roomsOne = map.getLayers().getArray()[6];
   const roomsTwo = map.getLayers().getArray()[7];
   const roomsThree = map.getLayers().getArray()[8];
+  const roomsFour = map.getLayers().getArray()[10];
 
   const walksOne = map.getLayers().getArray()[9];
 
@@ -45,6 +46,7 @@ const Rooms = ({ map }) => {
   let featuresOne = roomsOne.getSource().getFeatures();
   let featuresTwo = roomsTwo.getSource().getFeatures();
   let featuresThree = roomsThree.getSource().getFeatures();
+  let featuresFour = roomsFour.getSource().getFeatures();
 
   let etageOneHasFeatures = true;
   if (featuresOne == 0) {
@@ -67,12 +69,20 @@ const Rooms = ({ map }) => {
     etageThreeHasFeatures = true;
   }
 
+  let etageFourHasFeatures = true;
+  if (featuresFour == 0) {
+    etageFourHasFeatures = false;
+  } else {
+    etageFourHasFeatures = true;
+  }
+
   // if building has no rooms at all -> render message
   let noRooms = false;
   if (
     etageOneHasFeatures === false &&
     etageTwoHasFeatures === false &&
-    etageThreeHasFeatures === false
+    etageThreeHasFeatures === false &&
+    etageFourHasFeatures === false
   ) {
     noRooms = true;
   }
@@ -83,6 +93,7 @@ const Rooms = ({ map }) => {
 
     roomsTwo.setVisible(false);
     roomsThree.setVisible(false);
+    roomsFour.setVisible(false);
 
     if (btnClicked === true) {
       setBtnClicked(false);
@@ -103,6 +114,7 @@ const Rooms = ({ map }) => {
 
     roomsOne.setVisible(false);
     roomsThree.setVisible(false);
+    roomsFour.setVisible(false);
 
     if (btnClicked === true) {
       setBtnClicked(false);
@@ -123,6 +135,7 @@ const Rooms = ({ map }) => {
 
     roomsOne.setVisible(false);
     roomsTwo.setVisible(false);
+    roomsFour.setVisible(false);
 
     if (btnClicked === true) {
       setBtnClicked(false);
@@ -134,6 +147,27 @@ const Rooms = ({ map }) => {
       roomsThree.setVisible(false);
     } else {
       roomsThree.setVisible(true);
+    }
+  };
+
+  const toggleRoomsFour = () => {
+    setWhichBtnClicked(4);
+    setRoomsContainer(true);
+
+    roomsOne.setVisible(false);
+    roomsTwo.setVisible(false);
+    roomsThree.setVisible(false);
+
+    if (btnClicked === true) {
+      setBtnClicked(false);
+    } else {
+      setBtnClicked(true);
+    }
+
+    if (roomsFour.getVisible() === true) {
+      roomsFour.setVisible(false);
+    } else {
+      roomsFour.setVisible(true);
     }
   };
 
@@ -168,6 +202,12 @@ const Rooms = ({ map }) => {
     .getSource()
     .getFeatures();
 
+  const roomFour_layer_features = map
+    .getLayers()
+    .getArray()[10]
+    .getSource()
+    .getFeatures();
+
   let rooms_properties = [];
   if (whichBtnClicked === 1) {
     rooms_properties = roomOne_layer_features.map((item) => {
@@ -179,6 +219,10 @@ const Rooms = ({ map }) => {
     });
   } else if (whichBtnClicked === 3) {
     rooms_properties = roomThree_layer_features.map((item) => {
+      return item.getProperties();
+    });
+  } else if (whichBtnClicked === 4) {
+    rooms_properties = roomFour_layer_features.map((item) => {
       return item.getProperties();
     });
   }
@@ -198,6 +242,8 @@ const Rooms = ({ map }) => {
     clickedRoomFeatures = roomTwo_layer_features;
   } else if (whichBtnClicked === 3) {
     clickedRoomFeatures = roomThree_layer_features;
+  } else if (whichBtnClicked === 4) {
+    clickedRoomFeatures = roomFour_layer_features;
   }
 
   let clickedRoomInfo = clickedRoomData.filter((item) => {
@@ -251,6 +297,12 @@ const Rooms = ({ map }) => {
             className={etageThreeHasFeatures ? "toggle-rooms-btn" : "hide"}
           >
             2. Etage
+          </button>
+          <button
+            onClick={toggleRoomsFour}
+            className={etageFourHasFeatures ? "toggle-rooms-btn" : "hide"}
+          >
+            3. Etage
           </button>
           <p className={noRooms ? "no-rooms" : "hide"}>
             Für dieses Gebäude liegen noch keine Rauminformationen vor.

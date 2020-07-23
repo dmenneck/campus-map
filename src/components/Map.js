@@ -32,6 +32,7 @@ import {
   highlightStyle,
   clickedStyle,
   etageOneWalks,
+  etageFourRooms,
 } from "./Layers";
 
 import { EntranceLayer } from "./Layers";
@@ -55,6 +56,7 @@ import HoveredFeatures from "./HoveredFeatures";
 import RoomLayerOne from "./RoomLayerOne";
 import RoomLayerTwo from "./RoomLayerTwo";
 import RoomLayerThree from "./RoomLayerThree";
+import RoomLayerFour from "./RoomLayerFour";
 import WalkLayerOne from "./WalkLayerOne";
 import SearchEmployee from "./SearchEmployee";
 import DisplayRoomsContainer from "./DisplayRoomsContainer";
@@ -93,6 +95,7 @@ const Map = () => {
       etageTwoRooms,
       etageThreeRooms,
       etageOneWalks,
+      etageFourRooms,
     ],
     controls: defaultControls().extend([
       new FullScreen(),
@@ -137,6 +140,7 @@ const Map = () => {
   etageOneRooms.setVisible(false);
   etageTwoRooms.setVisible(false);
   etageThreeRooms.setVisible(false);
+  etageFourRooms.setVisible(false);
 
   // block scrolling
   document.body.classList.add("stop-scrolling");
@@ -208,7 +212,7 @@ const Map = () => {
         <AnalysisFunctionsContainer map={map} />
         <EntranceLayer map={map} />
         <EntranceLegende map={map} />
-        <Legend />
+        <Legend map={map} />
 
         <ToggleMenuContainerBtn />
         <SearchBuildingContainer map={map} />
@@ -223,6 +227,7 @@ const Map = () => {
         <RoomLayerOne map={map} />
         <RoomLayerTwo map={map} />
         <RoomLayerThree map={map} />
+        <RoomLayerFour map={map} />
         <WalkLayerOne map={map} />
         <HoveredFeatures map={map} />
       </ContextProvider>

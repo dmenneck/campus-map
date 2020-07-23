@@ -1661,6 +1661,7 @@ button:focus {
 
 .employees:hover {
   background-color: #a5b6c7;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
 }
 
 /* input field in SearchEmployee.js */

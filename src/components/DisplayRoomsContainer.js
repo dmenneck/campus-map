@@ -10,6 +10,13 @@ import { Fill, Stroke } from "ol/style";
 import geolocation from "../data/img/geoLocation.png";
 import information from "../data/img/info.png";
 
+import {
+  etageOneRooms,
+  etageTwoRooms,
+  etageThreeRooms,
+  etageFourRooms,
+} from "./Layers";
+
 const DisplayRoomsContainer = ({ map }) => {
   const { value24, value25, value21, value19, value22, value26 } = useContext(
     AppContext
@@ -61,6 +68,8 @@ const DisplayRoomsContainer = ({ map }) => {
     etageClicked = "1. Etage";
   } else if (whichBtnClicked === 3) {
     etageClicked = "2. Etage";
+  } else if (whichBtnClicked === 4) {
+    etageClicked = "3. Etage";
   }
 
   console.log(etageClicked);
@@ -114,6 +123,31 @@ const DisplayRoomsContainer = ({ map }) => {
     });
   };
 
+  let allLayerNotVisible = false;
+
+  if (
+    etageOneRooms.getVisible() === false &&
+    etageTwoRooms.getVisible() === false &&
+    etageThreeRooms.getVisible() === false &&
+    etageFourRooms.getVisible() === false
+  ) {
+    allLayerNotVisible = true;
+  }
+
+  let onlyRoomsWithEmployees = filteredEmployeeNamesForRooms.map((item) => {
+    if (item.names !== "-") {
+      return item;
+    }
+  });
+
+  let onlyRoomsWithEmployeesUndefindedRemoved = onlyRoomsWithEmployees.filter(
+    (item) => {
+      return item !== undefined;
+    }
+  );
+
+  console.log(onlyRoomsWithEmployeesUndefindedRemoved);
+
   if (roomsContainer) {
     return (
       <div>
@@ -132,7 +166,7 @@ const DisplayRoomsContainer = ({ map }) => {
               id="rooms-data-container"
               className={btnClicked ? "rooms-input" : "hide"}
             >
-              {filteredEmployeeNamesForRooms.map((item, index) => (
+              {onlyRoomsWithEmployeesUndefindedRemoved.map((item, index) => (
                 <div
                   key={index}
                   id="rooms-data-grid"

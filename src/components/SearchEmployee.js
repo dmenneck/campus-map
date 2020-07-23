@@ -225,6 +225,20 @@ const SearchEmployee = () => {
     return name.name.indexOf(searchInput) >= 0;
   });
 
+  let employeesWithoutMinusItems = filteredNamesList.map((item) => {
+    if (item.name[0] !== "-") {
+      return item;
+    }
+  });
+
+  let employeesWithoutMinusItemsDefaultRemoved = employeesWithoutMinusItems.filter(
+    (item) => {
+      return item !== undefined;
+    }
+  );
+
+  console.log(employeesWithoutMinusItemsDefaultRemoved);
+
   return (
     <div>
       <Modal
@@ -252,22 +266,29 @@ const SearchEmployee = () => {
         </label>
 
         <ul id={searchInput ? "employee-container" : "hide"}>
-          {Object.entries(filteredNamesList).map((item, index) => {
-            return (
-              <div onClick={getFeatureProperties} key={index}>
-                <div className="employees">
-                  <div className="employee-image-container">
-                    <LazyLoad key={index} overflow throttle={100} height={200}>
-                      <img className="employees-image" src={item[1].img} />
-                    </LazyLoad>
-                  </div>
+          {Object.entries(employeesWithoutMinusItemsDefaultRemoved).map(
+            (item, index) => {
+              return (
+                <div onClick={getFeatureProperties} key={index}>
+                  <div className="employees">
+                    <div className="employee-image-container">
+                      <LazyLoad
+                        key={index}
+                        overflow
+                        throttle={100}
+                        height={200}
+                      >
+                        <img className="employees-image" src={item[1].img} />
+                      </LazyLoad>
+                    </div>
 
-                  <p className="employees-title">{item[1].title} </p>
-                  <p className="employees-name">{item[1].name}</p>
+                    <p className="employees-title">{item[1].title} </p>
+                    <p className="employees-name">{item[1].name}</p>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            }
+          )}
         </ul>
       </Modal>
 
