@@ -28,7 +28,7 @@ export const ContextProvider = (props) => {
     setFamilyCampusLegendeVisibility,
   ] = useState(false);
   const [analysisBtnsVisibility, setAnalysisBtnsVisibility] = useState(false);
-  const [search, setSearch] = useState("");
+  const [searchBuilding, setSearchBuilding] = useState("");
   const [burgerOpen, setBurgerOpen] = useState(false);
   const [entrancesLegend, setEntrancesLegend] = useState(false);
   const [roomFeatures, setRoomFeatures] = useState([]);
@@ -46,6 +46,8 @@ export const ContextProvider = (props) => {
     setFilteredEmployeeNamesForRooms,
   ] = useState([]);
   const [whichBtnClicked, setWhichBtnClicked] = useState();
+  const [buildingSearchBar, setBuildingSearchBar] = useState(true);
+  const [searchPerson, setSearchPerson] = useState("");
 
   return (
     <AppContext.Provider
@@ -66,7 +68,7 @@ export const ContextProvider = (props) => {
           setFamilyCampusLegendeVisibility,
         ],
         value13: [analysisBtnsVisibility, setAnalysisBtnsVisibility],
-        value14: [search, setSearch],
+        value14: [searchBuilding, setSearchBuilding],
         value15: [burgerOpen, setBurgerOpen],
         value16: [clickedBuildingFeature, setClickedBuildingFeature],
         value17: [entrancesLegend, setEntrancesLegend],
@@ -82,6 +84,8 @@ export const ContextProvider = (props) => {
           setFilteredEmployeeNamesForRooms,
         ],
         value26: [whichBtnClicked, setWhichBtnClicked],
+        value27: [buildingSearchBar, setBuildingSearchBar],
+        value28: [searchPerson, setSearchPerson],
       }}
     >
       {props.children}

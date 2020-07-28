@@ -7,13 +7,19 @@ import Suche from "../data/img/suche.png";
 import Style from "ol/style/Style";
 import { Fill, Stroke } from "ol/style";
 
+import test4 from "../data/img/test4.PNG";
+import test5 from "../data/img/test5.PNG";
+import close from "../data/img/close.png";
+
 const { Search } = Input;
 
 const SearchComponent = ({ map }) => {
-  const { value7, value2, value14 } = useContext(AppContext);
+  const { value7, value2, value14, value27, value28 } = useContext(AppContext);
   const [layerClicked, isLayerClicked] = value2;
   const [searchBarVisibility, setSearchBarVisibility] = value7;
-  const [search, setSearch] = value14;
+  const [searchBuilding, setSearchBuilding] = value14;
+  const [buildingSearchBar, setBuildingSearchBar] = value27;
+  const [searchPerson, setSearchPerson] = value28;
 
   const [features, setFeatures] = useState([]);
   const [clickedFeature, setClickedFeature] = useState("");
@@ -32,12 +38,18 @@ const SearchComponent = ({ map }) => {
 
   let names = features.map((item) => item.values_.name);
 
-  const updateSearch = (e) => {
-    setSearch(e.target.value);
+  const updateSearchBuilding = (e) => {
+    setSearchBuilding(e.target.value);
+  };
+
+  const updateSearchPerson = (e) => {
+    setSearchPerson(e.target.value);
   };
 
   let filteredNames = names.filter((name) => {
-    return name.toLowerCase().indexOf(search.toLocaleLowerCase()) !== -1;
+    return (
+      name.toLowerCase().indexOf(searchBuilding.toLocaleLowerCase()) !== -1
+    );
   });
 
   const filteredNamesGetFeatures = (e) => {
@@ -65,7 +77,19 @@ const SearchComponent = ({ map }) => {
   };
 
   const resetInput = () => {
-    setSearch("");
+    setSearchBuilding("");
+    setSearchPerson("");
+  };
+
+  const toggleSearchInputs = () => {
+    setSearchBuilding("");
+    setSearchPerson("");
+
+    if (buildingSearchBar) {
+      setBuildingSearchBar(false);
+    } else {
+      setBuildingSearchBar(true);
+    }
   };
 
   if (searchBarVisibility) {
@@ -74,19 +98,43 @@ const SearchComponent = ({ map }) => {
         <div id="search-container">
           <Search
             id="searchBar"
-            placeholder="Suche nach Gebäuden..."
-            onChange={updateSearch}
+            placeholder={
+              buildingSearchBar
+                ? "Suche nach Gebäuden..."
+                : "Suche nach Mitarbeiter*innen..."
+            }
+            onChange={
+              buildingSearchBar ? updateSearchBuilding : updateSearchPerson
+            }
             style={{ width: 400, height: 50 }}
-            value={search}
+            value={buildingSearchBar ? searchBuilding : searchPerson}
           />
+
           <div id="searchbar-btns">
-            <button className="reset-search-input" onClick={resetInput}>
-              X
-            </button>
+            <button
+              className="toggle-person-buildings-searchbar"
+              onClick={toggleSearchInputs}
+              style={{
+                backgroundImage: `url(${buildingSearchBar ? test5 : test4})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            ></button>
+            <button
+              className="reset-search-input"
+              onClick={resetInput}
+              style={{
+                backgroundImage: `url(${close})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            ></button>
           </div>
         </div>
 
-        <ul id={search ? "filtered-names-container-max-height" : "hide"}>
+        <ul
+          id={searchBuilding ? "filtered-names-container-max-height" : "hide"}
+        >
           {filteredNames.map((name, index) => (
             <li
               key={index}

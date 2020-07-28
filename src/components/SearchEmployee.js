@@ -37,9 +37,10 @@ async function fetchDataThree() {
 fetchDataThree();
 
 const SearchEmployee = () => {
-  const { value1, value4 } = useContext(AppContext);
+  const { value1, value4, value28 } = useContext(AppContext);
   const [searchEmployeeVisible, setSearchEmployeeVisible] = value1;
   const [searchBuildingVisibility, setSearchBuildingVisibility] = value4;
+  const [searchPerson, setSearchPerson] = value28;
 
   const [loading, setLoading] = useState(false);
   const [searchInput, setSearchInput] = useState("");
@@ -81,10 +82,6 @@ const SearchEmployee = () => {
       dataArrCombined.push(item);
     });
   }
-
-  const getInput = (e) => {
-    setSearchInput(e.target.value);
-  };
 
   const getFeatureProperties = (e) => {
     let clickedName = e.target.closest(".employees").childNodes[2].innerHTML;
@@ -222,7 +219,7 @@ const SearchEmployee = () => {
   });
 
   let filteredNamesList = list.filter((name) => {
-    return name.name.indexOf(searchInput) >= 0;
+    return name.name.indexOf(searchPerson) >= 0;
   });
 
   let employeesWithoutMinusItems = filteredNamesList.map((item) => {
@@ -241,31 +238,8 @@ const SearchEmployee = () => {
 
   return (
     <div>
-      <Modal
-        visible={searchEmployeeVisible}
-        onOk={handleOk}
-        width="60%"
-        style={{ top: 50 }}
-        onCancel={handleCancel}
-        footer={[
-          <Button key="back" onClick={handleCancel}>
-            Schließen
-          </Button>,
-        ]}
-      >
-        <label className="field a-field a-field_a1">
-          <input
-            onChange={getInput}
-            className="field__input a-field__input"
-            placeholder="z.B. Christian Willmes..."
-            required
-          ></input>
-          <span className="a-field__label-wrap">
-            <span className="a-field__label">Suche nach MitarbeiterIn...</span>
-          </span>
-        </label>
-
-        <ul id={searchInput ? "employee-container" : "hide"}>
+      <div id="search-employee-container">
+        <ul id={searchPerson ? "employee-container" : "hide"}>
           {Object.entries(employeesWithoutMinusItemsDefaultRemoved).map(
             (item, index) => {
               return (
@@ -290,7 +264,7 @@ const SearchEmployee = () => {
             }
           )}
         </ul>
-      </Modal>
+      </div>
 
       <Modal
         visible={employeeVisible}

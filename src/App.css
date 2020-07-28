@@ -290,7 +290,7 @@ body {
 }
 
 .ant-input-search {
-  width: 312px !important;
+  width: 262px !important;
   height: 48px !important;
   border-radius: 8px 8px 0 0;
   padding: 10px !important;
@@ -303,11 +303,33 @@ body {
 
 .reset-search-input {
   background-color: #fff;
+  width: 25px;
+  height: 25px;
+  margin-right: 0px;
+  margin-left: 5px;
+
+  border: 1px solid transparent;
+}
+
+.toggle-person-buildings-searchbar {
+  background-color: #fff;
   width: 35px;
   height: 35px;
   margin-right: 0px;
   margin-left: 0px;
+  margin-top: 10px;
   border: 1px solid transparent;
+}
+
+#search-employee-container {
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  width: 800px;
+  left: 50%;
+  margin-right: -50%;
+  margin-top: 240px;
+  transform: translate(-50%, -50%);
 }
 
 #legende-container {
@@ -323,16 +345,12 @@ body {
 }
 
 #searchbar-btns {
-  width: 45px;
   position: absolute;
-  top: 4px;
   display: inline-block;
-  padding: 2px;
-  border-left: 1px solid #32475b;
 }
 
 #search-container {
-  width: 352px !important;
+  width: 340px !important;
   height: 48px !important;
   background-color: #fff;
   border-radius: 8px 8px 8px 8px;

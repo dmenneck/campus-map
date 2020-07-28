@@ -36,7 +36,6 @@ const { SubMenu } = Menu;
 
 export default function MenuContainer({ map }) {
   const {
-    value1,
     value4,
     value5,
     value7,
@@ -46,7 +45,7 @@ export default function MenuContainer({ map }) {
     value11,
     value12,
   } = useContext(AppContext);
-  const [searchEmployeeVisible, setSearchEmployeeVisible] = value1;
+
   const [isDrawerVisible, setIsDrawerVisible] = value5;
   const [searchBuildingVisibility, setSearchBuildingVisibility] = value4;
   const [searchBarVisibility, setSearchBarVisibility] = value7;
@@ -185,14 +184,6 @@ export default function MenuContainer({ map }) {
     }
   };
 
-  const toggleSearchEmployeeContainer = () => {
-    if (searchEmployeeVisible) {
-      setSearchEmployeeVisible(false);
-    } else {
-      setSearchEmployeeVisible(true);
-    }
-  };
-
   if (menuContainerVisibility) {
     return (
       <div id="menu-container" className="menu">
@@ -324,17 +315,6 @@ export default function MenuContainer({ map }) {
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   opacity: searchbarBtnOpacity ? "1" : "0.2",
-                }}
-              ></button>
-              <button
-                onClick={toggleSearchEmployeeContainer}
-                className="unselectable menu-search-btn"
-                title="MitarbeiterInnensuche"
-                style={{
-                  backgroundImage: `url(${test5})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  opacity: searchEmployeeVisible ? "1" : "0.2",
                 }}
               ></button>
             </Menu.Item>
