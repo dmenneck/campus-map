@@ -234,8 +234,6 @@ const SearchEmployee = () => {
     }
   );
 
-  console.log(employeesWithoutMinusItemsDefaultRemoved);
-
   return (
     <div>
       <div id="search-employee-container">
@@ -246,14 +244,11 @@ const SearchEmployee = () => {
                 <div onClick={getFeatureProperties} key={index}>
                   <div className="employees">
                     <div className="employee-image-container">
-                      <LazyLoad
-                        key={index}
-                        overflow
-                        throttle={100}
-                        height={200}
-                      >
-                        <img className="employees-image" src={item[1].img} />
-                      </LazyLoad>
+                      <img
+                        className="employees-image"
+                        src={item[1].img}
+                        loading="eager"
+                      />
                     </div>
 
                     <p className="employees-title">{item[1].title} </p>

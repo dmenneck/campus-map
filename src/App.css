@@ -7,10 +7,6 @@
   font-size: 16px;
 }
 
-body {
-  overflow-x: hidden;
-}
-
 /* https://stackoverflow.com/questions/15325322/multiple-custom-scrollbars */
 ::-webkit-scrollbar {
   width: 8px;
@@ -293,7 +289,7 @@ body {
   width: 262px !important;
   height: 48px !important;
   border-radius: 8px 8px 0 0;
-  padding: 10px !important;
+  padding: 10px 0 10px 10px !important;
   border: 1px solid transparent !important;
 }
 
@@ -303,33 +299,34 @@ body {
 
 .reset-search-input {
   background-color: #fff;
-  width: 25px;
-  height: 25px;
-  margin-right: 0px;
-  margin-left: 5px;
+  width: 26px;
+  height: 26px;
+  margin-left: 50px;
+  border: 1px solid white;
 
-  border: 1px solid transparent;
+  top: 10px;
+  position: absolute;
 }
 
 .toggle-person-buildings-searchbar {
-  background-color: #fff;
-  width: 35px;
-  height: 35px;
-  margin-right: 0px;
-  margin-left: 0px;
-  margin-top: 10px;
-  border: 1px solid transparent;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  border: 1px solid white;
+  top: 6px;
+  position: absolute;
 }
 
 #search-employee-container {
   position: absolute;
   z-index: 1;
-  background-color: white;
-  width: 800px;
   left: 50%;
   margin-right: -50%;
-  margin-top: 240px;
+  margin-top: 300px;
   transform: translate(-50%, -50%);
+  background-color: whitesmoke;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+  border: 1px solid black !important;
 }
 
 #legende-container {
@@ -345,12 +342,11 @@ body {
 }
 
 #searchbar-btns {
-  position: absolute;
   display: inline-block;
 }
 
 #search-container {
-  width: 340px !important;
+  width: 360px !important;
   height: 48px !important;
   background-color: #fff;
   border-radius: 8px 8px 8px 8px;
@@ -1651,10 +1647,11 @@ button:focus {
 #employee-container {
   max-height: 424px;
   width: 100%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+
   overflow-y: auto;
-  background-color: #e3e8eb;
+
   display: grid;
+  margin-top: 16px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   padding: 12px;
@@ -1667,7 +1664,7 @@ button:focus {
 .employees {
   width: auto;
   height: 200px;
-  border: 1px solid black;
+
   background-color: white;
   margin: 0px !important;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);

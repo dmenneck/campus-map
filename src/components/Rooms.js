@@ -38,10 +38,6 @@ const Rooms = ({ map }) => {
   const roomsThree = map.getLayers().getArray()[8];
   const roomsFour = map.getLayers().getArray()[10];
 
-  const walksOne = map.getLayers().getArray()[9];
-
-  // console.log(walksOne.getSource().getFeatures());
-
   // check if building has room features. If not -> hide toggle RoomFeatures btns in the return
   let featuresOne = roomsOne.getSource().getFeatures();
   let featuresTwo = roomsTwo.getSource().getFeatures();

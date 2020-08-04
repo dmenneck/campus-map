@@ -110,26 +110,22 @@ const SearchComponent = ({ map }) => {
             value={buildingSearchBar ? searchBuilding : searchPerson}
           />
 
-          <div id="searchbar-btns">
-            <button
-              className="toggle-person-buildings-searchbar"
-              onClick={toggleSearchInputs}
-              style={{
-                backgroundImage: `url(${buildingSearchBar ? test5 : test4})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            ></button>
-            <button
-              className="reset-search-input"
-              onClick={resetInput}
-              style={{
-                backgroundImage: `url(${close})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            ></button>
-          </div>
+          <button
+            className="toggle-person-buildings-searchbar"
+            onClick={toggleSearchInputs}
+            style={{
+              backgroundImage: `url(${buildingSearchBar ? test5 : test4})`,
+              backgroundSize: "99% 99%",
+            }}
+          ></button>
+          <button
+            className="reset-search-input"
+            onClick={resetInput}
+            style={{
+              backgroundImage: `url(${close})`,
+              backgroundSize: "99% 99%",
+            }}
+          ></button>
         </div>
 
         <ul

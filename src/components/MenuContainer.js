@@ -168,7 +168,7 @@ export default function MenuContainer({ map }) {
 
   useEffect(() => {
     // get the bikeLayer
-    const bikeLayerFromMap = map.getLayers().getArray()[12];
+    const bikeLayerFromMap = map.getLayers().getArray()[13];
 
     // use
     setBikeLayer(bikeLayerFromMap);

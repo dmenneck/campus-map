@@ -72,8 +72,6 @@ const DisplayRoomsContainer = ({ map }) => {
     etageClicked = "3. Etage";
   }
 
-  console.log(etageClicked);
-
   const onClose = () => {
     setDrawervisibility(false);
   };
@@ -146,20 +144,18 @@ const DisplayRoomsContainer = ({ map }) => {
     }
   );
 
-  console.log(onlyRoomsWithEmployeesUndefindedRemoved);
-
   if (roomsContainer) {
     return (
       <div>
-        <div id="rooms-data-list">
+        <div id={allLayerNotVisible ? "hide" : "rooms-data-list"}>
           <Drawer
             placement="bottom"
             closable={false}
             onClose={onClose}
-            visible={roomsContainer}
+            visible={allLayerNotVisible ? false : roomsContainer}
             getContainer={false}
             style={{ position: "absolute" }}
-            height="200"
+            height={allLayerNotVisible ? "0" : "200"}
           >
             <div id="rooms-data-list-header">Südbau - {etageClicked}</div>
             <div
