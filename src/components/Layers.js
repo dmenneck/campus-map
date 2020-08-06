@@ -22,8 +22,8 @@ import elternKindRaum from "../data/img/elternKindRaum.png";
 import kita from "../data/img/kita.png";
 import spielplatz from "../data/img/spielplatz.png";
 import unisex from "../data/img/unisex.png";
-import bluedot from "../data/img/bluedot.png";
-import orangedot from "../data/img/orangedot.png";
+import bluedot from "../data/img/blued.png";
+import orangedot from "../data/img/oranged.png";
 
 // map tiles (nrwWms & osmTileLayer)
 export const nrwWms = new OlLayerTile({
