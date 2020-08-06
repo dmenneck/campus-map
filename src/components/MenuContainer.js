@@ -312,7 +312,7 @@ export default function MenuContainer({ map }) {
                 title="Suchleiste"
                 style={{
                   backgroundImage: `url(${test4})`,
-                  backgroundSize: "cover",
+                  backgroundSize: "99% 99%",
                   backgroundPosition: "center",
                   opacity: searchbarBtnOpacity ? "1" : "0.2",
                 }}

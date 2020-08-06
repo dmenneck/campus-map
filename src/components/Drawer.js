@@ -18,7 +18,7 @@ const DrawerComponent = () => {
   let width = "";
 
   if (window.innerWidth > 550) {
-    width = "426px";
+    width = "526px";
   } else {
     width = "100%";
   }
@@ -64,10 +64,6 @@ const DrawerComponent = () => {
             <a href="http://www.facebook.de" title="Facebook" target="_blank">
               <img src={youtubeIcon} className="social-media-icons" />
             </a>
-          </div>
-
-          <div>
-            <p>3</p>
           </div>
         </div>
         <div id="drawer-logo-container">

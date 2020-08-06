@@ -5,6 +5,7 @@
   box-sizing: border-box;
   color: #15222b;
   font-size: 16px;
+  overflow: hidden;
 }
 
 /* https://stackoverflow.com/questions/15325322/multiple-custom-scrollbars */
@@ -252,7 +253,6 @@
   position: absolute;
   bottom: 10px;
   left: 0;
-  border-top: 1px solid black;
 }
 
 #Name {
@@ -322,7 +322,7 @@
   z-index: 1;
   left: 50%;
   margin-right: -50%;
-  margin-top: 300px;
+  margin-top: 350px;
   transform: translate(-50%, -50%);
   background-color: whitesmoke;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
@@ -1319,7 +1319,6 @@ button:focus {
 
 .drawer-header-text {
   font-size: 20px;
-  border-bottom: 1px solid black;
 }
 
 .social-media-icons {
@@ -1647,9 +1646,7 @@ button:focus {
 #employee-container {
   max-height: 424px;
   width: 100%;
-
   overflow-y: auto;
-
   display: grid;
   margin-top: 16px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -1662,12 +1659,11 @@ button:focus {
 }
 
 .employees {
-  width: auto;
+  width: 160px;
   height: 200px;
-
   background-color: white;
   margin: 0px !important;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
 }
 
 .ant-modal-body {
@@ -1859,7 +1855,7 @@ button:focus {
 }
 
 .employee-image-container {
-  height: 80px;
+  height: 120px;
   width: 100%;
   object-fit: contain;
   padding: 10px;
@@ -1891,7 +1887,6 @@ button:focus {
 }
 
 .employees-title {
-  margin: 38px 0 0 0;
   font-size: 12px;
   padding-bottom: 0;
   text-align: center;
