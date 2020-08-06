@@ -219,7 +219,7 @@ const SearchEmployee = () => {
   });
 
   let filteredNamesList = list.filter((name) => {
-    return name.name.indexOf(searchPerson) >= 0;
+    return name.name.toLowerCase().indexOf(searchPerson.toLowerCase()) >= 0;
   });
 
   let employeesWithoutMinusItems = filteredNamesList.map((item) => {
