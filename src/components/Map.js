@@ -97,10 +97,7 @@ const Map = () => {
       etageOneWalks,
       etageFourRooms,
     ],
-    controls: defaultControls().extend([
-      new FullScreen(),
-      costumOverviewMapControl,
-    ]),
+    controls: defaultControls().extend([costumOverviewMapControl]),
     view: view,
   });
 
