@@ -52,7 +52,8 @@
 
 #globalNavLogo a span {
   color: white;
-  font-size: 14px;
+  font-size: 17px;
+  font-weight: normal;
   margin-right: 10px;
 }
 
