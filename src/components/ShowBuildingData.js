@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { AppContext } from "./AppContext";
 import Rooms from "./Rooms";
 
-import { Card, Drawer, Button, Divider } from "antd";
+import { Drawer } from "antd";
 
 const ShowBuildingData = ({ map }) => {
   const { value6, value2 } = useContext(AppContext);

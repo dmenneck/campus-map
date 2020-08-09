@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 import { Drawer, Button } from "antd";
 import { AppContext } from "./AppContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 
 import RoomsContainer from "./RoomsContainer";
 
