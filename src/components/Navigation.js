@@ -17,7 +17,7 @@ const Navigation = () => {
       <div id="globalNav">
         <img id="uniKölnLogo" src={UniKölnLogo} alt=""></img>
         <div id="globalNavLogo">
-          <a href="Map.js">
+          <a href="Map">
             Campus Map <span>Universität zu Köln</span>
           </a>
         </div>

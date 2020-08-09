@@ -17,7 +17,6 @@ const App = () => {
       <Switch>
         <Route render={() => <Contact />} path="/Contact" />
         <Route render={() => <Informations />} path="/Informations" />
-
         <Route render={() => <Map />} path="/" />
       </Switch>
     </BrowserRouter>
