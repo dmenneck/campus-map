@@ -127,7 +127,7 @@ const ShowBuildingData = ({ map }) => {
                 Barrierefreier Eingang
               </div>
               <p
-                className="buildingInformations barrier-free-entrance-text"
+                className="buildingInformations barrier-free-entrance-text unselectable"
                 id={
                   barrier_free_entrance === "vorhanden"
                     ? "barrier-free-green"

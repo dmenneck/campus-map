@@ -1034,12 +1034,12 @@ tbody tr:hover {
 
 #filtered-names-container-max-height {
   background-color: white;
-  width: 352px;
+  width: 360px;
   height: auto;
   max-height: 218px;
   overflow-y: auto;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
+  border-radius: 4px 4px;
 }
 
 .mapped-filtered-names {
@@ -1263,16 +1263,15 @@ button:focus {
   position: sticky !important;
   top: 0 !important;
   background-color: #e3e8ea !important;
-  border-bottom: 1px solid #32475b !important;
   color: black !important;
   padding: 10px !important;
   border-radius: none !important;
-  height: 40px !important;
+  height: 50px !important;
 }
 
 .ant-drawer-close {
   border: 1px solid white !important;
-  margin: 5px 10px 0 10px !important;
+  margin: 12px 10px 0 10px !important;
   width: 25px !important;
   height: 25px !important;
   background-image: url(../src/data/img/closeIcon.PNG) !important;

@@ -190,7 +190,7 @@ const DisplayRoomsContainer = ({ map }) => {
                         display: "inline",
                       }}
                     >
-                      {/* next line is being ignored. Code still needs do be there otherwise doesnt work*/}
+                      {/* next line is being ignored. Code still needs do be there otherwise doesn't work*/}
                       {item.names}
                     </button>
                     <button
@@ -204,7 +204,7 @@ const DisplayRoomsContainer = ({ map }) => {
                         display: "inline",
                       }}
                     >
-                      {/* next line is being ignored. Code still needs do be there otherwise doesnt work*/}
+                      {/* next line is being ignored. Code still needs do be there otherwise doesn't work*/}
                       {item.names}
                     </button>
                   </div>
@@ -222,7 +222,7 @@ const DisplayRoomsContainer = ({ map }) => {
           getContainer={false}
           width="600px"
         >
-          <p id="room-number">Raum: {roomNumber}</p>
+          <p id="room-number">Raum {roomNumber}</p>
           <RoomsContainer />
         </Drawer>
       </div>
