@@ -77,7 +77,7 @@ const RoomsContainer = () => {
                             {item.fax_num.split(",")[index]}
                           </p>
                         </div>
-
+                        <br></br>
                         <a
                           href={item.homepage.split(",")[index]}
                           key={index}
