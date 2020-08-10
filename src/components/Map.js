@@ -39,7 +39,7 @@ import { EntranceLayer } from "./Layers";
 import { ControlButtons } from "./ControlButtons";
 
 import { ContextProvider } from "./AppContext";
-import DrawerComponent from "./Drawer";
+
 import ClickedBuilding from "./ClickedBuilding";
 import SearchComponent from "./Search";
 import FetchNextBikeApi from "./FetchNextBikeApi";
@@ -50,7 +50,6 @@ import ToggleMenuContainerBtn from "./ToggleMenuContainerBtn";
 import Legend from "./Legend";
 import EntranceLegende from "./EntranceLegende";
 import AnalysisFunctionsContainer from "./AnalysisFunctionsContainer";
-import ToggleDrawerBtnMobile from "./ToggleDrawerBtnMobile";
 import GeolocationMobile from "./GeolocationMobile";
 import HoveredFeatures from "./HoveredFeatures";
 import RoomLayerOne from "./RoomLayerOne";
@@ -205,7 +204,7 @@ const Map = () => {
         <DisplayRoomsContainer map={map} />
         <SearchEmployee />
         <GeolocationMobile map={map} />
-        <ToggleDrawerBtnMobile />
+
         <AnalysisFunctionsContainer map={map} />
         <EntranceLayer map={map} />
         <EntranceLegende map={map} />
@@ -217,7 +216,7 @@ const Map = () => {
         <MenuContainer map={map} />
 
         <ClickedBuilding map={map} />
-        <DrawerComponent />
+
         <ControlButtons map={map} />
         <SearchComponent map={map} />
         <MapComponent map={map} />

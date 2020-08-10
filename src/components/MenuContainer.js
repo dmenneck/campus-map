@@ -37,7 +37,6 @@ const { SubMenu } = Menu;
 export default function MenuContainer({ map }) {
   const {
     value4,
-    value5,
     value7,
     value8,
     value9,
@@ -46,7 +45,6 @@ export default function MenuContainer({ map }) {
     value12,
   } = useContext(AppContext);
 
-  const [isDrawerVisible, setIsDrawerVisible] = value5;
   const [searchBuildingVisibility, setSearchBuildingVisibility] = value4;
   const [searchBarVisibility, setSearchBarVisibility] = value7;
   const [menuContainerVisibility, setMenuContainerVisibility] = value8;
@@ -115,14 +113,6 @@ export default function MenuContainer({ map }) {
     } else {
       setSearchBuildingVisibility(true);
       setGridBtnOpacity(true);
-    }
-  };
-
-  const toggleDrawer = () => {
-    if (isDrawerVisible) {
-      setIsDrawerVisible(false);
-    } else {
-      setIsDrawerVisible(true);
     }
   };
 
@@ -319,16 +309,6 @@ export default function MenuContainer({ map }) {
               ></button>
             </Menu.Item>
           </SubMenu>
-
-          <Menu.Item key="4" id="menu-item-five">
-            <InfoCircleOutlined />
-            <span
-              onClick={toggleDrawer}
-              className="menu-container-title unselectable"
-            >
-              Weitere Informationen
-            </span>
-          </Menu.Item>
         </Menu>
       </div>
     );

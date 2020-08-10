@@ -3,7 +3,6 @@ import React, { createContext, useState } from "react";
 export const AppContext = createContext();
 
 export const ContextProvider = (props) => {
-  const [isDrawerVisible, setIsDrawerVisible] = useState(false);
   const [
     clickedBuildingsInformation,
     setclickedBuildingsInformation,
@@ -56,7 +55,6 @@ export const ContextProvider = (props) => {
         value2: [layerClicked, isLayerClicked],
         value3: [theVectorLayer, setVectorLayer],
         value4: [searchBuildingVisibility, setSearchBuildingVisibility],
-        value5: [isDrawerVisible, setIsDrawerVisible],
         value6: [clickedBuildingsInformation, setclickedBuildingsInformation],
         value7: [searchBarVisibility, setSearchBarVisibility],
         value8: [menuContainerVisibility, setMenuContainerVisibility],

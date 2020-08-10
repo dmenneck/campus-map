@@ -1413,6 +1413,7 @@ button:focus {
 
 #rooms-data-container {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin-top: 34px;
 }
 
 #rooms-container {
@@ -1533,7 +1534,7 @@ button:focus {
   height: 212px;
   border: 1px solid black;
   float: left;
-  margin: 0px 10px 14px 10px;
+  margin: 10px 10px 14px 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
 }
 
@@ -1622,7 +1623,7 @@ button:focus {
 }
 
 #rauminformationen-data {
-  margin: 10px;
+  margin-bottom: 10px;
 }
 
 #rauminformationen-data p {
@@ -1635,7 +1636,7 @@ button:focus {
 }
 
 #rauminformationen-container {
-  margin: 15px;
+  margin: 8px;
 }
 
 #employee {
@@ -1952,6 +1953,10 @@ button:focus {
   background-color: #e3e8ea;
   padding: 5px;
   font-weight: bold;
+
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 /* media queries */
