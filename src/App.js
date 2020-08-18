@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Navigation from "./components/Navigation";
 
-import Buildings from "./components/Buildings";
 import Informations from "./components/Informations";
 import Map from "./components/Map";
 import Contact from "./components/Contact";
