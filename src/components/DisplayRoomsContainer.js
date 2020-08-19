@@ -220,7 +220,7 @@ const DisplayRoomsContainer = ({ map }) => {
           onClose={onCloseTwo}
           visible={drawerVisibility}
           getContainer={false}
-          width="600px"
+          width={window.innerWidth > "800" ? "600px" : "100%"}
         >
           <p id="room-number">Raum {roomNumber}</p>
           <RoomsContainer />

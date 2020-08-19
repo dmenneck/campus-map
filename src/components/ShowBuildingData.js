@@ -5,11 +5,11 @@ import Rooms from "./Rooms";
 import { Drawer } from "antd";
 
 const ShowBuildingData = ({ map }) => {
-  const { value6, value2 } = useContext(AppContext);
+  const { value6, value2, value29 } = useContext(AppContext);
 
   const [clickedBuildingsInformation, setclickedBuildingsInformation] = value6;
   const [layerClicked, isLayerClicked] = value2;
-  const [drawerVisibility, setDrawervisibility] = useState(false);
+  const [drawerVisibility, setDrawervisibility] = value29;
 
   // get attributes out of the clicked buildings informations stored in the state
   let name = clickedBuildingsInformation.name;

@@ -10,6 +10,7 @@ import information from "../data/img/info.png";
 
 const Rooms = ({ map }) => {
   const {
+    value2,
     value19,
     value20,
     value21,
@@ -29,8 +30,9 @@ const Rooms = ({ map }) => {
   ] = value25;
 
   const [search, setSearch] = useState("");
-  const [drawerVisibility, setDrawervisibility] = useState(false);
+
   const [whichBtnClicked, setWhichBtnClicked] = value26;
+  const [layerClicked, isLayerClicked] = value2;
 
   // get rooms layer
   const roomsOne = map.getLayers().getArray()[6];
@@ -84,6 +86,7 @@ const Rooms = ({ map }) => {
   }
 
   const toggleRoomsOne = () => {
+    isLayerClicked(false);
     setWhichBtnClicked(1);
     setRoomsContainer(true);
 
@@ -105,6 +108,7 @@ const Rooms = ({ map }) => {
   };
 
   const toggleRoomsTwo = () => {
+    isLayerClicked(false);
     setWhichBtnClicked(2);
     setRoomsContainer(true);
 
@@ -126,6 +130,7 @@ const Rooms = ({ map }) => {
   };
 
   const toggleRoomsThree = () => {
+    isLayerClicked(false);
     setWhichBtnClicked(3);
     setRoomsContainer(true);
 
@@ -147,6 +152,7 @@ const Rooms = ({ map }) => {
   };
 
   const toggleRoomsFour = () => {
+    isLayerClicked(false);
     setWhichBtnClicked(4);
     setRoomsContainer(true);
 
@@ -250,10 +256,6 @@ const Rooms = ({ map }) => {
   clickedRoomInfo.map((item) => {
     roomNumber = item.room_num;
   });
-
-  const onClose = () => {
-    setDrawervisibility(false);
-  };
 
   const styleHoveredFeature = (e) => {
     let targetName = e.target.innerHTML;

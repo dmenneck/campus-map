@@ -47,6 +47,7 @@ export const ContextProvider = (props) => {
   const [whichBtnClicked, setWhichBtnClicked] = useState();
   const [buildingSearchBar, setBuildingSearchBar] = useState(true);
   const [searchPerson, setSearchPerson] = useState("");
+  const [drawerVisibility, setDrawervisibility] = useState(false);
 
   return (
     <AppContext.Provider
@@ -84,6 +85,7 @@ export const ContextProvider = (props) => {
         value26: [whichBtnClicked, setWhichBtnClicked],
         value27: [buildingSearchBar, setBuildingSearchBar],
         value28: [searchPerson, setSearchPerson],
+        value29: [drawerVisibility, setDrawervisibility],
       }}
     >
       {props.children}
