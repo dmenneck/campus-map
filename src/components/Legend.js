@@ -24,7 +24,16 @@ const Legend = () => {
     setFamilyCampusLegendeVisibility,
   ] = value12;
 
+  console.log(window.innerWidth);
+
   // show welcome text 1.5s after initial render
+  let lowerThan500 = false;
+  if (window.innerWidth > 500) {
+    lowerThan500 = true;
+  } else {
+    lowerThan500 = false;
+  }
+
   useEffect(() => {
     message.config({
       top: 50,
@@ -36,13 +45,15 @@ const Legend = () => {
         <span id="span-greetings">Willkommen auf dem Lageplan der UzK!</span>
       </div>
     );
-    const timer = setTimeout(() => {
-      message.info({
-        content: data,
-        icon: "",
-      });
-    }, 1500);
-    return () => clearTimeout(timer);
+    if (window.innerWidth > 500) {
+      const timer = setTimeout(() => {
+        message.info({
+          content: data,
+          icon: "",
+        });
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   notification.config({

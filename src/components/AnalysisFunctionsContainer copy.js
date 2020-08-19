@@ -24,6 +24,7 @@ const AnalysisFunctionsContainer = ({ map }) => {
 
     btnsContainer.classList.remove("measure-btn-container");
     mobileBtnsContainer.classList.remove("measure-btn-container");
+    mobileBtnsContainer.style.display = "block";
 
     if (analysisBtnsVisibility) {
       btnOne.classList.add("hide");
