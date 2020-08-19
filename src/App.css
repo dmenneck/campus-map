@@ -1265,14 +1265,14 @@ button:focus {
   top: 0 !important;
   background-color: #e3e8ea !important;
   color: black !important;
-  padding: 10px !important;
+  padding: 6px !important;
   border-radius: none !important;
-  height: 50px !important;
+  height: 35px !important;
 }
 
 .ant-drawer-close {
   border: 1px solid white !important;
-  margin: 12px 10px 0 10px !important;
+  margin: 5px 10px 0 10px !important;
   width: 25px !important;
   height: 25px !important;
   background-image: url(../src/data/img/closeIcon.PNG) !important;
