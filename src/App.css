@@ -2026,6 +2026,8 @@ button:focus {
   }
 }
 
+/* /*
+
 /* smaller than tablet */
 @media (max-width: 550px) {
   #rauminformationen-image-container {
