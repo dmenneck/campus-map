@@ -1997,9 +1997,9 @@ button:focus {
   }
 
   .data-container-img {
-    margin: 0 !important;
+    margin: 10px !important;
     height: 260px !important;
-    width: 100% !important;
+    width: calc(100% - 20px) !important;
   }
 }
 
@@ -2025,8 +2025,6 @@ button:focus {
     margin: 0 !important;
   }
 }
-
-/* /*
 
 /* smaller than tablet */
 @media (max-width: 550px) {
