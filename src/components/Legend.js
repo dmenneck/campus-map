@@ -24,8 +24,6 @@ const Legend = () => {
     setFamilyCampusLegendeVisibility,
   ] = value12;
 
-  console.log(window.innerWidth);
-
   // show welcome text 1.5s after initial render
   let lowerThan500 = false;
   if (window.innerWidth > 500) {

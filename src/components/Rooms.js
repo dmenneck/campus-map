@@ -86,6 +86,12 @@ const Rooms = ({ map }) => {
   }
 
   const toggleRoomsOne = () => {
+    let features = featuresOne.map((item) => {
+      return item.getProperties();
+    });
+    setFilteredEmployeeNamesForRooms(features);
+    setClickedRoomData(features);
+
     isLayerClicked(false);
     setWhichBtnClicked(1);
     setRoomsContainer(true);
@@ -108,6 +114,12 @@ const Rooms = ({ map }) => {
   };
 
   const toggleRoomsTwo = () => {
+    let features = featuresTwo.map((item) => {
+      return item.getProperties();
+    });
+    setFilteredEmployeeNamesForRooms(features);
+    setClickedRoomData(features);
+
     isLayerClicked(false);
     setWhichBtnClicked(2);
     setRoomsContainer(true);
@@ -130,6 +142,12 @@ const Rooms = ({ map }) => {
   };
 
   const toggleRoomsThree = () => {
+    let features = featuresThree.map((item) => {
+      return item.getProperties();
+    });
+    setFilteredEmployeeNamesForRooms(features);
+    setClickedRoomData(features);
+
     isLayerClicked(false);
     setWhichBtnClicked(3);
     setRoomsContainer(true);
@@ -152,6 +170,12 @@ const Rooms = ({ map }) => {
   };
 
   const toggleRoomsFour = () => {
+    let features = featuresFour.map((item) => {
+      return item.getProperties();
+    });
+    setFilteredEmployeeNamesForRooms(features);
+    setClickedRoomData(features);
+
     isLayerClicked(false);
     setWhichBtnClicked(4);
     setRoomsContainer(true);
@@ -173,104 +197,47 @@ const Rooms = ({ map }) => {
     }
   };
 
-  const closeSearchBar = () => {
-    setBtnClicked(false);
-  };
-
-  const searchInput = (e) => {
-    console.log(e.target.value);
-    setSearch(e.target.value);
-  };
-
-  const resetInput = () => {
-    setSearch("");
-  };
-
-  const roomOne_layer_features = map
-    .getLayers()
-    .getArray()[6]
-    .getSource()
-    .getFeatures();
-
-  const roomTwo_layer_features = map
-    .getLayers()
-    .getArray()[7]
-    .getSource()
-    .getFeatures();
-
-  const roomThree_layer_features = map
-    .getLayers()
-    .getArray()[8]
-    .getSource()
-    .getFeatures();
-
-  const roomFour_layer_features = map
-    .getLayers()
-    .getArray()[10]
-    .getSource()
-    .getFeatures();
-
   let rooms_properties = [];
   if (whichBtnClicked === 1) {
-    rooms_properties = roomOne_layer_features.map((item) => {
+    rooms_properties = featuresOne.map((item) => {
       return item.getProperties();
     });
   } else if (whichBtnClicked === 2) {
-    rooms_properties = roomTwo_layer_features.map((item) => {
+    rooms_properties = featuresTwo.map((item) => {
       return item.getProperties();
     });
   } else if (whichBtnClicked === 3) {
-    rooms_properties = roomThree_layer_features.map((item) => {
+    rooms_properties = featuresThree.map((item) => {
       return item.getProperties();
     });
   } else if (whichBtnClicked === 4) {
-    rooms_properties = roomFour_layer_features.map((item) => {
+    rooms_properties = featuresFour.map((item) => {
       return item.getProperties();
     });
   }
 
-  useEffect(() => {
-    setClickedRoomData(rooms_properties);
-  }, [rooms_properties.length]);
+  console.log(rooms_properties);
 
-  let filteredNames = rooms_properties.filter((name) => {
-    return name.names.toLowerCase().indexOf(search.toLocaleLowerCase()) !== -1;
-  });
+  // for drawer left
+  //useEffect(() => {
+  //  setClickedRoomData(rooms_properties);
+  //}, [rooms_properties.length]);
 
   let clickedRoomFeatures = [];
   if (whichBtnClicked === 1) {
-    clickedRoomFeatures = roomOne_layer_features;
+    clickedRoomFeatures = featuresOne;
   } else if (whichBtnClicked === 2) {
-    clickedRoomFeatures = roomTwo_layer_features;
+    clickedRoomFeatures = featuresTwo;
   } else if (whichBtnClicked === 3) {
-    clickedRoomFeatures = roomThree_layer_features;
+    clickedRoomFeatures = featuresThree;
   } else if (whichBtnClicked === 4) {
-    clickedRoomFeatures = roomFour_layer_features;
+    clickedRoomFeatures = featuresFour;
   }
 
-  let clickedRoomInfo = clickedRoomData.filter((item) => {
-    return item.names === roomNames;
-  });
-
-  let roomNumber = "";
-  clickedRoomInfo.map((item) => {
-    roomNumber = item.room_num;
-  });
-
-  const styleHoveredFeature = (e) => {
-    let targetName = e.target.innerHTML;
-
-    clickedRoomFeatures.map((item) => {
-      if (targetName === item.getProperties().names) {
-        console.log(item);
-      }
-    });
-  };
-
   // change state when Array length changes
-  useEffect(() => {
-    setFilteredEmployeeNamesForRooms(filteredNames);
-  }, [filteredNames.length]);
+  // useEffect(() => {
+  //   setFilteredEmployeeNamesForRooms(rooms_properties);
+  // }, [rooms_properties.length]);
 
   return (
     <div id="rooms">
@@ -305,22 +272,6 @@ const Rooms = ({ map }) => {
           <p className={noRooms ? "no-rooms" : "hide"}>
             Für dieses Gebäude liegen noch keine Rauminformationen vor.
           </p>
-        </div>
-
-        <div className={btnClicked ? "rooms-input" : "hide"}>
-          <input
-            placeholder="Suche MitarbeiterIn..."
-            value={search}
-            onChange={searchInput}
-            id="rooms-input-search"
-          />
-
-          <button onClick={resetInput} className="rooms-input-btns">
-            {`<`}
-          </button>
-          <button onClick={closeSearchBar} className="rooms-input-btns">
-            X
-          </button>
         </div>
       </div>
     </div>

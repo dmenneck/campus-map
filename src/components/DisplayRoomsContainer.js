@@ -7,7 +7,7 @@ import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import RoomsContainer from "./RoomsContainer";
 
 import Style from "ol/style/Style";
-import { Fill, Stroke } from "ol/style";
+import { Stroke } from "ol/style";
 
 import geolocation from "../data/img/geoLocation.png";
 import information from "../data/img/info.png";
@@ -145,6 +145,10 @@ const DisplayRoomsContainer = ({ map }) => {
       return item !== undefined;
     }
   );
+
+  setTimeout(() => {
+    //console.log(onlyRoomsWithEmployeesUndefindedRemoved);
+  }, 1000);
 
   if (roomsContainer) {
     return (
