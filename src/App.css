@@ -163,6 +163,14 @@
   border-color: #7a93ab !important;
 }
 
+h5 {
+  position: absolute;
+  font-size: 50px;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* OL Controls */
 .ol-control {
   background-color: rgba(200, 209, 219, 0) !important;
