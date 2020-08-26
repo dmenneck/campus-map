@@ -220,14 +220,13 @@ h5 {
 }
 
 .ol-zoomslider {
-  bottom: 36px !important;
+  bottom: 46px !important;
   top: unset !important;
   right: 15px !important;
   left: auto !important;
   width: 30px;
 
   background: rgba(47, 101, 125, 0.8) !important;
-  border: 1px solid rgba(0, 0, 0, 0.8) !important;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 

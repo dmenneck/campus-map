@@ -36,12 +36,18 @@ const SearchBuilding = ({ map }) => {
     setFeatures(buildings.getSource().getFeatures());
   }, []);
 
+  let modalWith = "60vw";
+
+  if (window.innerWidth <= 1270) {
+    modalWith = "80vw";
+  }
+
   return (
     <div>
       <Modal
         visible={searchBuildingVisibility}
         title="Gebäudeliste"
-        width={"60vw"}
+        width={modalWith}
         onOk={handleOk}
         onCancel={handleCancel}
         footer={[
