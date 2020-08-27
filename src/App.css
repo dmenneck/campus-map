@@ -987,6 +987,10 @@ tbody tr:hover {
   cursor: pointer;
 }
 
+#hamburger-menu-container div span:first-child {
+  margin-top: 0 !important;
+}
+
 .hide {
   display: none !important;
 }
@@ -2088,18 +2092,6 @@ button:focus {
 
   #getlocationbtn {
     display: none;
-  }
-
-  #hamburger-menu-container {
-    position: absolute;
-    z-index: 1;
-    top: calc(100% - 65px);
-    bottom: 5px;
-    right: 10px;
-    padding: 15px;
-    background-color: white;
-    border-radius: 50px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   }
 
   #open-analysis-btns {

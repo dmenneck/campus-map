@@ -284,7 +284,7 @@ const SearchEmployee = () => {
             <div id="employee">
               <div id="rauminformationen-data">
                 <div className="text-bold">
-                  <h5 className="text-bold">{`${clickedFeatureProperties.title} ${clickedFeatureProperties.name}`}</h5>
+                  <h3>{`${clickedFeatureProperties.title} ${clickedFeatureProperties.name}`}</h3>
                   <p>{clickedFeatureProperties.street}</p>
                   {clickedFeatureProperties.build_name}
                   <p id="inline">, Raum </p>
