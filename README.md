@@ -4,6 +4,14 @@
 
 - [About the Project](#about-the-project)
   - [Built With](#built-with)
+  - [Development requirements](#development-requirements)
+  - [Getting Started](#getting-started)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Additional informations](#additional-informations)
+  - [Contributing](#contributing)
+  - [License](#license)
+  - [Contact](#contact)
 
 <!-- ABOUT THE PROJECT -->
 
@@ -19,6 +27,8 @@ Here are some of the campus maps key features:
 - based on modern web2.0 technologies such as React.js, Node and AJAX
 - search for buildings, persons and facilities related informations
 - and many more to come...
+
+<!-- Built With -->
 
 ### Built With
 
