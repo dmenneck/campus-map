@@ -30,11 +30,10 @@
     "react-lazyload": "^3.0.0",
     "react-openlayers": "^0.2.1",
     "react-router-dom": "^5.1.2",
-    "styled-components": "^5.2.0",
-    "webpack": "^4.44.2"
+    "styled-components": "^5.2.0"
   },
   "scripts": {
-    "start": "gatsby develop -p 3333 -o",
+    "develop": "gatsby develop",
     "build": "gatsby build"
   },
   "eslintConfig": {
@@ -53,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "webpack": "^4.44.2",
     "webpack-bundle-analyzer": "^3.8.0"
   }
 }
