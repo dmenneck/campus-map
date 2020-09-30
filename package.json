@@ -12,9 +12,13 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "antd": "^3.26.14",
+    "babel-plugin-styled-components": "^1.11.1",
     "compression": "^1.7.4",
     "dayjs": "^1.8.23",
     "express": "^4.17.1",
+    "gatsby": "^2.24.66",
+    "gatsby-cli": "^2.12.101",
+    "gatsby-plugin-styled-components": "^3.3.12",
     "install": "^0.13.0",
     "morgan": "^1.10.0",
     "ol": "^5.3.3",
@@ -26,13 +30,12 @@
     "react-lazyload": "^3.0.0",
     "react-openlayers": "^0.2.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.1"
+    "styled-components": "^5.2.0",
+    "webpack": "^4.44.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "gatsby develop -p 3333 -o",
+    "build": "gatsby build"
   },
   "eslintConfig": {
     "extends": "react-app"
