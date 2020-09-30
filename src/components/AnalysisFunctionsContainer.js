@@ -49,6 +49,6 @@ const AnalysisFunctionsContainer = ({ map }) => {
   return <div id="open-analysis-btns" onClick={toggleAnalysisBtns}></div>;
 };
 
-// test
+// test 2
 
 export default AnalysisFunctionsContainer;
